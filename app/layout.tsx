@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
-import { Manrope, Inter, Geist } from 'next/font/google'
+import { Manrope, Inter } from 'next/font/google'
 import './globals.css'
-import { cn } from "@/lib/utils";
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+import Header from '@/components/layout/Header'
+import Footer from '@/components/layout/Footer'
 
 const manrope = Manrope({
   variable: '--font-manrope',
@@ -23,7 +22,38 @@ export const metadata: Metadata = {
     default: 'Digicorpex — Agence Web & Digital',
   },
   description:
-    'Digicorpex est une agence web & digital spécialisée en développement web, design UX/UI et stratégie SEO.',
+    'Digicorpex est une agence web & digital spécialisée en développement web, design UX/UI et stratégie SEO. Bordeaux.',
+  openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    siteName: 'Digicorpex',
+    title: 'Digicorpex — Agence Web & Digital',
+    description:
+      'Digicorpex est une agence web & digital spécialisée en développement web, design UX/UI et stratégie SEO. Bordeaux.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Digicorpex — Agence Web & Digital',
+    description:
+      'Digicorpex est une agence web & digital spécialisée en développement web, design UX/UI et stratégie SEO.',
+  },
+  metadataBase: new URL('https://digicorpex.com'),
+}
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Digicorpex',
+  url: 'https://digicorpex.com',
+  email: 'contact@digicorpex.com',
+  telephone: '+33674058657',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Bordeaux',
+    addressRegion: 'Nouvelle-Aquitaine',
+    addressCountry: 'FR',
+  },
+  sameAs: [],
 }
 
 export default function RootLayout({
@@ -32,9 +62,19 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr" className={cn(manrope.variable, inter.variable, "font-sans", geist.variable)}>
+    <html lang="fr" className={`${manrope.variable} ${inter.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+      </head>
       <body className="bg-surface text-on-surface font-body min-h-screen flex flex-col">
-        {children}
+        <Header />
+        <main className="flex-1 pt-16">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   )
