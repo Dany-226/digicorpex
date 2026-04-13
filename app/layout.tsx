@@ -51,6 +51,7 @@ const organizationSchema = {
     '@type': 'PostalAddress',
     addressLocality: 'Bordeaux',
     addressRegion: 'Nouvelle-Aquitaine',
+    postalCode: '33000',
     addressCountry: 'FR',
   },
   sameAs: [],

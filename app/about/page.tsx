@@ -6,10 +6,14 @@ export const metadata: Metadata = {
   title: 'À propos — Digicorpex',
   description:
     'Digicorpex est une agence web & digital fondée à Bordeaux. Nous concevons des présences digitales qui génèrent une croissance mesurable.',
+  alternates: {
+    canonical: 'https://digicorpex.com/about',
+  },
   openGraph: {
     title: 'À propos — Digicorpex, agence web Bordeaux',
     description:
       'Digicorpex est une agence web & digital fondée à Bordeaux. Développement web, design UX/UI et stratégie SEO.',
+    url: 'https://digicorpex.com/about',
   },
 }
 

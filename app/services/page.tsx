@@ -7,10 +7,14 @@ export const metadata: Metadata = {
   title: 'Services — Développement Web, Design UX/UI & SEO',
   description:
     'Développement web sur-mesure, design UX/UI et stratégie SEO. Digicorpex architekte votre présence digitale de A à Z. Bordeaux.',
+  alternates: {
+    canonical: 'https://digicorpex.com/services',
+  },
   openGraph: {
     title: 'Services — Développement Web, Design UX/UI & SEO | Digicorpex',
     description:
       'Développement web sur-mesure, design UX/UI et stratégie SEO. Digicorpex architekte votre présence digitale de A à Z.',
+    url: 'https://digicorpex.com/services',
   },
 }
 

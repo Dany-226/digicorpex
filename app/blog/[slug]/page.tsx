@@ -74,14 +74,19 @@ export async function generateMetadata({
   const result = getArticleBySlug(params.slug)
   if (!result) return {}
   const { meta } = result
+  const canonicalUrl = `https://digicorpex.com/blog/${meta.slug}`
   return {
     title: meta.title,
     description: meta.description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       title: `${meta.title} | Digicorpex`,
       description: meta.description,
       type: 'article',
       publishedTime: meta.date,
+      url: canonicalUrl,
     },
   }
 }
