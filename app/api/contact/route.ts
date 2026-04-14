@@ -1,12 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
 
-// Lazy init — avoids module-level crash when RESEND_API_KEY is empty at build
-let _resend: Resend | null = null
-function getResend() {
-  if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY)
-  return _resend
-}
+const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email'
 
 interface ContactBody {
   nom: string
@@ -56,30 +50,38 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    /* ── Send via Resend ── */
-    const { error } = await getResend().emails.send({
-      from: 'Digicorpex <noreply@digicorpex.com>',
-      to: ['contact@digicorpex.com'],
-      replyTo: body.email,
-      subject: `Nouvelle demande — ${body.objectif} — ${body.nom}`,
-      html: `
-        <h2>Nouvelle demande de contact</h2>
-        <table>
-          <tr><td><strong>Nom</strong></td><td>${body.nom}</td></tr>
-          <tr><td><strong>Email</strong></td><td>${body.email}</td></tr>
-          <tr><td><strong>Objectif</strong></td><td>${body.objectif}</td></tr>
-        </table>
-        <h3>Brief projet</h3>
-        <p>${body.brief.replace(/\n/g, '<br>')}</p>
-        <hr>
-        <p style="color:#999;font-size:12px">Envoyé via digicorpex.com — RGPD accepté</p>
-      `,
+    /* ── Send via Brevo Transactional Email API ── */
+    const res = await fetch(BREVO_API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': process.env.BREVO_API_KEY ?? '',
+      },
+      body: JSON.stringify({
+        sender: { name: 'Digicorpex', email: 'noreply@digicorpex.com' },
+        to: [{ email: 'contact@digicorpex.com' }],
+        replyTo: { email: body.email },
+        subject: `Nouvelle demande — ${body.objectif} — ${body.nom}`,
+        htmlContent: `
+          <h2>Nouvelle demande de contact</h2>
+          <table>
+            <tr><td><strong>Nom</strong></td><td>${body.nom}</td></tr>
+            <tr><td><strong>Email</strong></td><td>${body.email}</td></tr>
+            <tr><td><strong>Objectif</strong></td><td>${body.objectif}</td></tr>
+          </table>
+          <h3>Brief projet</h3>
+          <p>${body.brief.replace(/\n/g, '<br>')}</p>
+          <hr>
+          <p style="color:#999;font-size:12px">Envoyé via digicorpex.com — RGPD accepté</p>
+        `,
+      }),
     })
 
-    if (error) {
-      console.error('[Resend error]', error)
+    if (!res.ok) {
+      const detail = await res.text()
+      console.error('[Brevo error]', res.status, detail)
       return NextResponse.json(
-        { error: 'Erreur lors de l\'envoi.' },
+        { error: "Erreur lors de l'envoi." },
         { status: 500 }
       )
     }
