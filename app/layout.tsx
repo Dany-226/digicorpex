@@ -19,7 +19,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: {
     template: '%s | Digicorpex',
-    default: 'Digicorpex — Agence Web & Digital',
+    default: 'Digicorpex - Agence Web & Digital',
   },
   description:
     'Digicorpex est une agence web & digital spécialisée en développement web, design UX/UI et stratégie SEO. Bordeaux.',
@@ -27,13 +27,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     siteName: 'Digicorpex',
-    title: 'Digicorpex — Agence Web & Digital',
+    title: 'Digicorpex - Agence Web & Digital',
     description:
       'Digicorpex est une agence web & digital spécialisée en développement web, design UX/UI et stratégie SEO. Bordeaux.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Digicorpex — Agence Web & Digital',
+    title: 'Digicorpex - Agence Web & Digital',
     description:
       'Digicorpex est une agence web & digital spécialisée en développement web, design UX/UI et stratégie SEO.',
   },

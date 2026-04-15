@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import type { ArticleMeta } from '@/lib/mdx'
 
@@ -36,17 +37,17 @@ export default function BlogPreview({ articles }: BlogPreviewProps) {
         {/* Asymmetric grid 8/4 */}
         <div className="grid lg:grid-cols-12 gap-16">
 
-          {/* Featured article — col-span-8 */}
+          {/* Featured article -col-span-8 */}
           <article className="lg:col-span-8">
             <Link href={`/blog/${featured.slug}`} className="block group">
               {/* Image */}
-              <div className="aspect-[16/9] overflow-hidden rounded-sm bg-surface-container mb-8 grayscale hover:grayscale-0 transition-all duration-700">
-                <div
-                  className="w-full h-full group-hover:scale-105 transition-transform duration-700"
-                  style={{
-                    background:
-                      'linear-gradient(135deg, #e5eff7 0%, #cadde9 50%, #a4b4be 100%)',
-                  }}
+              <div className="relative aspect-[16/9] overflow-hidden rounded-sm bg-surface-container mb-8 grayscale hover:grayscale-0 transition-all duration-700">
+                <Image
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+                  alt={featured.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  sizes="(max-width: 1024px) 100vw, 66vw"
                 />
               </div>
 
@@ -73,7 +74,7 @@ export default function BlogPreview({ articles }: BlogPreviewProps) {
             </Link>
           </article>
 
-          {/* Sidebar — col-span-4 */}
+          {/* Sidebar -col-span-4 */}
           <aside className="lg:col-span-4">
             <div className="flex flex-col">
               {sideArticles.map((article, i) => (
@@ -93,7 +94,7 @@ export default function BlogPreview({ articles }: BlogPreviewProps) {
               ))}
             </div>
 
-            {/* Mobile — "Tous les articles" */}
+            {/* Mobile -"Tous les articles" */}
             <Link
               href="/blog"
               className="md:hidden mt-8 inline-flex items-center gap-2 text-xs font-label uppercase tracking-widest text-secondary"

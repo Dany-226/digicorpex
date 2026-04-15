@@ -4,14 +4,14 @@ import { Building2, ArrowRight, MapPin } from 'lucide-react'
 import ContactForm from '@/components/shared/ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Contact — Initier un Partenariat',
+  title: 'Contact - Initier un Partenariat',
   description:
     'Décrivez votre projet en 5 minutes. Digicorpex vous répond avec une proposition personnalisée sous 48h. Bordeaux.',
   alternates: {
     canonical: 'https://digicorpex.com/contact',
   },
   openGraph: {
-    title: 'Contact Digicorpex — Initier un Partenariat',
+    title: 'Contact Digicorpex -Initier un Partenariat',
     description:
       'Décrivez votre projet en 5 minutes. Réponse personnalisée sous 48h.',
     url: 'https://digicorpex.com/contact',
@@ -24,7 +24,7 @@ export default function ContactPage() {
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-16">
 
-          {/* ── Colonne gauche — lg:col-span-5 ─────── */}
+          {/* ── Colonne gauche -lg:col-span-5 ─────── */}
           <div className="lg:col-span-5 flex flex-col gap-10">
 
             {/* Label + H1 */}
@@ -129,7 +129,7 @@ export default function ContactPage() {
 
           </div>
 
-          {/* ── Colonne droite — lg:col-span-7 ─────── */}
+          {/* ── Colonne droite -lg:col-span-7 ─────── */}
           <div className="lg:col-span-7">
             <ContactForm />
           </div>

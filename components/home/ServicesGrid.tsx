@@ -41,7 +41,7 @@ export default function ServicesGrid() {
           <div className="w-20 h-1.5 bg-secondary rounded-sm" />
         </div>
 
-        {/* Grid — shared borders technique */}
+        {/* Grid - shared borders technique */}
         <div className="grid grid-cols-1 md:grid-cols-3 border-t border-l border-outline-variant/20">
           {services.map(({ icon: Icon, title, description }) => (
             <div

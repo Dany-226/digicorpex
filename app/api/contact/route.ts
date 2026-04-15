@@ -61,7 +61,7 @@ export async function POST(req: NextRequest) {
         sender: { name: 'Digicorpex', email: 'noreply@digicorpex.com' },
         to: [{ email: 'contact@digicorpex.com' }],
         replyTo: { email: body.email },
-        subject: `Nouvelle demande — ${body.objectif} — ${body.nom}`,
+        subject: `Nouvelle demande - ${body.objectif} - ${body.nom}`,
         htmlContent: `
           <h2>Nouvelle demande de contact</h2>
           <table>
@@ -72,7 +72,7 @@ export async function POST(req: NextRequest) {
           <h3>Brief projet</h3>
           <p>${body.brief.replace(/\n/g, '<br>')}</p>
           <hr>
-          <p style="color:#999;font-size:12px">Envoyé via digicorpex.com — RGPD accepté</p>
+          <p style="color:#999;font-size:12px">Envoyé via digicorpex.com - RGPD accepté</p>
         `,
       }),
     })

@@ -82,7 +82,7 @@ export default function ContactForm() {
   return (
     <div className="bg-surface-container-lowest p-10 shadow-[0px_48px_48px_rgba(38,52,61,0.06)]">
 
-      {/* ── Card header — progress dots ── */}
+      {/* ── Card header -progress dots ── */}
       <div className="flex items-center gap-3 mb-8">
         {[0, 1, 2].map((i) => (
           <div
@@ -98,7 +98,7 @@ export default function ContactForm() {
         </span>
       </div>
 
-      {/* ── Step 0 — Informations + Objectif ── */}
+      {/* ── Step 0 -Informations + Objectif ── */}
       {step === 0 && (
         <div className="space-y-8">
           {/* Nom + Email 2-col grid */}
@@ -162,7 +162,7 @@ export default function ContactForm() {
         </div>
       )}
 
-      {/* ── Step 1 — Brief ── */}
+      {/* ── Step 1 -Brief ── */}
       {step === 1 && (
         <div className="space-y-8">
           <div>
@@ -204,14 +204,14 @@ export default function ContactForm() {
         </div>
       )}
 
-      {/* ── Step 2 — Validation + Submit ── */}
+      {/* ── Step 2 -Validation + Submit ── */}
       {step === 2 && (
         <div className="space-y-8">
           {/* Summary */}
           <div className="bg-surface-container-low p-6 space-y-3">
             <div className="flex justify-between text-sm">
               <span className="text-on-surface-variant font-label">Contact</span>
-              <span className="font-medium text-on-surface">{form.nom} — {form.email}</span>
+              <span className="font-medium text-on-surface">{form.nom} - {form.email}</span>
             </div>
             <div className="h-px bg-outline-variant/20" />
             <div className="flex justify-between text-sm">
@@ -247,7 +247,7 @@ export default function ContactForm() {
             </span>
           </label>
 
-          {/* Footer — lock + submit */}
+          {/* Footer -lock + submit */}
           <div>
             {status === 'error' && (
               <p className="text-sm text-red-500 mb-4">
@@ -278,7 +278,7 @@ export default function ContactForm() {
             </div>
             <p className="flex items-center gap-1.5 text-xs text-on-surface-variant/60 mt-4">
               <Lock size={11} />
-              Transmission sécurisée — données confidentielles
+              Transmission sécurisée - données confidentielles
             </p>
           </div>
         </div>

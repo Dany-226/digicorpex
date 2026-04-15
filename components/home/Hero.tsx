@@ -1,16 +1,17 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, ChevronsRight } from 'lucide-react'
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden py-24 md:py-32 px-8">
-      {/* Decorative band — top right */}
+      {/* Decorative band -top right */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-surface-container-low -z-10 opacity-50" />
 
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-16 lg:gap-8 items-center">
 
-          {/* ── Left column — text ──────────────────── */}
+          {/* ── Left column -text ──────────────────── */}
           <div className="lg:col-span-7 flex flex-col gap-8">
 
             {/* Expertise Badge */}
@@ -52,21 +53,27 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* ── Right column — visual ────────────────── */}
+          {/* ── Right column -visual ────────────────── */}
           <div className="lg:col-span-5 relative">
             <div className="relative aspect-square">
 
-              {/* Image placeholder — remplacer par next/image en production */}
-              <div className="w-full h-full rounded-sm overflow-hidden grayscale opacity-90">
+              <div className="w-full h-full rounded-sm overflow-hidden relative">
+                <Image
+                  src="/images/hero-seascape.png"
+                  alt="Paysage marin - Digicorpex agence digitale Bordeaux"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  priority
+                />
+                {/* Gradient bleu-gris design system : surface → secondary */}
                 <div
-                  className="w-full h-full"
+                  className="absolute inset-0"
                   style={{
                     background:
-                      'linear-gradient(135deg, #ddeaf3 0%, #cadde9 35%, #a4b4be 70%, #8fa0ac 100%)',
+                      'linear-gradient(135deg, rgba(238,244,250,0.45) 0%, rgba(71,97,124,0.55) 60%, rgba(38,52,61,0.70) 100%)',
                   }}
                 />
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary/20 to-transparent" />
               </div>
 
               {/* Float stat card */}

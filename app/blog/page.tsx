@@ -1,17 +1,18 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { getAllArticles } from '@/lib/mdx'
 import { ArrowRight, ChevronRight, Award } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Blog — Insights & Stratégie Digitale',
+  title: 'Blog - Insights & Stratégie Digitale',
   description:
     'Articles sur le développement web, le design UX/UI et la stratégie SEO. Ressources éditoriales par Digicorpex, Bordeaux.',
   alternates: {
     canonical: 'https://digicorpex.com/blog',
   },
   openGraph: {
-    title: 'Blog Digicorpex — Insights & Stratégie Digitale',
+    title: 'Blog Digicorpex -Insights & Stratégie Digitale',
     description:
       'Articles sur le développement web, le design UX/UI et la stratégie SEO.',
     url: 'https://digicorpex.com/blog',
@@ -35,7 +36,7 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
 
-            {/* Left — badge + H1 */}
+            {/* Left -badge + H1 */}
             <div>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-tertiary-container text-on-tertiary-container text-xs font-label uppercase tracking-widest rounded-full mb-6 block w-fit">
                 Insights &amp; Strategy
@@ -47,7 +48,7 @@ export default function BlogPage() {
               </h1>
             </div>
 
-            {/* Right — search */}
+            {/* Right -search */}
             <div className="md:pb-3 w-full md:w-72">
               <label
                 htmlFor="search"
@@ -79,13 +80,13 @@ export default function BlogPage() {
                 <article>
                   <Link href={`/blog/${featured.slug}`} className="group block">
                     {/* Image */}
-                    <div className="aspect-[16/9] overflow-hidden rounded-sm bg-surface-container mb-8 grayscale hover:grayscale-0 transition-all duration-700">
-                      <div
-                        className="w-full h-full group-hover:scale-105 transition-transform duration-700"
-                        style={{
-                          background:
-                            'linear-gradient(135deg, #ddeaf3 0%, #cadde9 50%, #a4b4be 100%)',
-                        }}
+                    <div className="relative aspect-[16/9] overflow-hidden rounded-sm bg-surface-container mb-8 grayscale hover:grayscale-0 transition-all duration-700">
+                      <Image
+                        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+                        alt={featured.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        sizes="(max-width: 1024px) 100vw, 66vw"
                       />
                     </div>
 
@@ -131,13 +132,13 @@ export default function BlogPage() {
                         className="group block"
                       >
                         {/* Image aspect-square */}
-                        <div className="aspect-square overflow-hidden rounded-sm bg-surface-container mb-5 grayscale hover:grayscale-0 transition-all duration-700">
-                          <div
-                            className="w-full h-full group-hover:scale-105 transition-transform duration-700"
-                            style={{
-                              background:
-                                'linear-gradient(135deg, #e5eff7 0%, #cadde9 50%, #a4b4be 100%)',
-                            }}
+                        <div className="relative aspect-square overflow-hidden rounded-sm bg-surface-container mb-5 grayscale hover:grayscale-0 transition-all duration-700">
+                          <Image
+                            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80"
+                            alt={article!.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-700"
+                            sizes="(max-width: 640px) 100vw, 33vw"
                           />
                         </div>
 
@@ -236,7 +237,7 @@ export default function BlogPage() {
                 </h4>
                 <p className="text-sm text-on-tertiary-container/80 leading-relaxed">
                   Nos stratégies sont construites sur des données réelles et
-                  des retours d'expérience terrain — pas des frameworks théoriques.
+                  des retours d'expérience terrain - pas des frameworks théoriques.
                 </p>
               </div>
 

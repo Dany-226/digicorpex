@@ -1,16 +1,17 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowRight, Target, Zap, Eye, Users } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'À propos — Digicorpex',
+  title: 'À propos - Digicorpex',
   description:
     'Digicorpex est une agence web & digital fondée à Bordeaux. Nous concevons des présences digitales qui génèrent une croissance mesurable.',
   alternates: {
     canonical: 'https://digicorpex.com/about',
   },
   openGraph: {
-    title: 'À propos — Digicorpex, agence web Bordeaux',
+    title: 'À propos - Digicorpex, agence web Bordeaux',
     description:
       'Digicorpex est une agence web & digital fondée à Bordeaux. Développement web, design UX/UI et stratégie SEO.',
     url: 'https://digicorpex.com/about',
@@ -40,7 +41,7 @@ const values = [
     icon: Target,
     title: 'Précision architecturale',
     description:
-      'Chaque décision technique et créative est motivée par un objectif business précis. Nous ne construisons pas pour construire — nous construisons pour performer.',
+      'Chaque décision technique et créative est motivée par un objectif business précis. Nous ne construisons pas pour construire - nous construisons pour performer.',
   },
   {
     icon: Eye,
@@ -52,13 +53,13 @@ const values = [
     icon: Zap,
     title: 'Impact mesurable',
     description:
-      "La qualité d'un site se juge dans les données — trafic organique, taux de conversion, temps de chargement. Nous définissons les indicateurs avant de commencer.",
+      "La qualité d'un site se juge dans les données - trafic organique, taux de conversion, temps de chargement. Nous définissons les indicateurs avant de commencer.",
   },
   {
     icon: Users,
     title: 'Partenariat long terme',
     description:
-      "Nous refusons les projets one-shot. Notre modèle est celui de l'architecte — nous construisons avec vous, pas pour vous, sur la durée.",
+      "Nous refusons les projets one-shot. Notre modèle est celui de l'architecte - nous construisons avec vous, pas pour vous, sur la durée.",
   },
 ]
 
@@ -102,13 +103,13 @@ export default function AboutPage() {
             {/* Visual */}
             <div className="lg:col-span-5">
               <div className="aspect-square bg-surface-container-low p-2">
-                <div className="w-full h-full grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden rounded-sm">
-                  <div
-                    className="w-full h-full"
-                    style={{
-                      background:
-                        'linear-gradient(135deg, #ddeaf3 0%, #cadde9 40%, #8fa0ac 100%)',
-                    }}
+                <div className="relative w-full h-full grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden rounded-sm">
+                  <Image
+                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
+                    alt="Équipe Digicorpex - agence web Bordeaux"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 42vw"
                   />
                 </div>
               </div>
@@ -132,7 +133,7 @@ export default function AboutPage() {
                 <p>
                   Nous sommes basés à Bordeaux et nous travaillons avec des entreprises
                   qui veulent faire de leur présence digitale un avantage
-                  concurrentiel réel — pas une case à cocher. E-commerce, SaaS,
+                  concurrentiel réel - pas une case à cocher. E-commerce, SaaS,
                   cabinets de conseil, professionnels de santé : nos clients ont
                   des secteurs différents, mais un besoin commun.
                 </p>

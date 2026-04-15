@@ -38,5 +38,5 @@ export function StatItem({
   )
 }
 
-/* Default export kept for backwards compat — unused */
+/* Default export kept for backwards compat - unused */
 export default StatGrid

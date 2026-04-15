@@ -1,17 +1,18 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { CheckCircle2, ArrowRight, ChevronsRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Services — Développement Web, Design UX/UI & SEO',
+  title: 'Services - Développement Web, Design UX/UI & SEO',
   description:
     'Développement web sur-mesure, design UX/UI et stratégie SEO. Digicorpex architekte votre présence digitale de A à Z. Bordeaux.',
   alternates: {
     canonical: 'https://digicorpex.com/services',
   },
   openGraph: {
-    title: 'Services — Développement Web, Design UX/UI & SEO | Digicorpex',
+    title: 'Services - Développement Web, Design UX/UI & SEO | Digicorpex',
     description:
       'Développement web sur-mesure, design UX/UI et stratégie SEO. Digicorpex architekte votre présence digitale de A à Z.',
     url: 'https://digicorpex.com/services',
@@ -30,7 +31,8 @@ interface Service {
   ctaLabel: string
   ctaHref: string
   reversed: boolean
-  gradient: string
+  image: string
+  imageAlt: string
 }
 
 const services: Service[] = [
@@ -49,7 +51,8 @@ const services: Service[] = [
     ctaLabel: 'Démarrer votre projet',
     ctaHref: '/contact',
     reversed: false,
-    gradient: 'linear-gradient(135deg, #ddeaf3 0%, #c0d4e4 40%, #8fa0ac 100%)',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Développement web Next.js et React - MacBook avec code',
   },
   {
     number: '02',
@@ -66,7 +69,8 @@ const services: Service[] = [
     ctaLabel: 'Voir notre approche design',
     ctaHref: '/contact',
     reversed: true,
-    gradient: 'linear-gradient(135deg, #e5eff7 0%, #cadde9 45%, #a4b4be 100%)',
+    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Design UX/UI et prototypage - interface numérique',
   },
   {
     number: '03',
@@ -83,7 +87,8 @@ const services: Service[] = [
     ctaLabel: 'Auditer mon site',
     ctaHref: '/contact',
     reversed: false,
-    gradient: 'linear-gradient(135deg, #eef4fa 0%, #d5e5ef 40%, #a4b4be 100%)',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
+    imageAlt: 'Stratégie SEO et analytics - tableau de bord de données',
   },
 ]
 
@@ -140,10 +145,12 @@ export default function ServicesPage() {
               >
                 <div className="bg-surface-container-low p-2">
                   <div className="aspect-video relative overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
-                    {/* Placeholder — remplacer par next/image */}
-                    <div
-                      className="w-full h-full"
-                      style={{ background: service.gradient }}
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 58vw"
                     />
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-secondary/10 mix-blend-multiply" />

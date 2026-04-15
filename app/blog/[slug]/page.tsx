@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getAllArticles, getArticleBySlug } from '@/lib/mdx'
@@ -8,7 +9,7 @@ import StatGrid, { StatItem } from '@/components/blog/StatGrid'
 import { Calendar, Clock, ChevronRight, Award, ChevronsRight } from 'lucide-react'
 
 /* ─────────────────────────────────────────────────
-   MDX components — mapped to design system
+   MDX components -mapped to design system
 ───────────────────────────────────────────────── */
 const mdxComponents = {
   h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -151,7 +152,7 @@ export default function ArticlePage({
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
 
-      {/* ── Article header — max-w-4xl ────────────── */}
+      {/* ── Article header -max-w-4xl ────────────── */}
       <section className="pt-16 pb-12 px-8 bg-surface">
         <div className="max-w-4xl mx-auto">
 
@@ -177,12 +178,13 @@ export default function ArticlePage({
           <div className="border-y border-outline-variant/15 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             {/* Author */}
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-surface-container-high overflow-hidden shrink-0">
-                <div
-                  className="w-full h-full"
-                  style={{
-                    background: 'linear-gradient(135deg, #cadde9, #8fa0ac)',
-                  }}
+              <div className="relative w-12 h-12 rounded-full bg-surface-container-high overflow-hidden shrink-0">
+                <Image
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80"
+                  alt="Équipe Digicorpex"
+                  fill
+                  className="object-cover"
+                  sizes="48px"
                 />
               </div>
               <div>
@@ -210,42 +212,43 @@ export default function ArticlePage({
         </div>
       </section>
 
-      {/* ── Featured image — max-w-7xl ────────────── */}
+      {/* ── Featured image -max-w-7xl ────────────── */}
       <div className="px-8 mb-16 bg-surface">
         <div className="max-w-7xl mx-auto">
-          <div className="aspect-[21/9] w-full overflow-hidden rounded-sm bg-surface-container">
-            <div
-              className="w-full h-full"
-              style={{
-                background:
-                  'linear-gradient(135deg, #ddeaf3 0%, #c0d4e4 35%, #a4b4be 70%, #8fa0ac 100%)',
-              }}
+          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-sm bg-surface-container">
+            <Image
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80"
+              alt={meta.title}
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
             />
           </div>
         </div>
       </div>
 
-      {/* ── Article grid — 12 cols ────────────────── */}
+      {/* ── Article grid -12 cols ────────────────── */}
       <section className="px-8 pb-24 bg-surface">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-16">
 
-            {/* Social sidebar — col-span-1 sticky */}
+            {/* Social sidebar -col-span-1 sticky */}
             <aside className="hidden lg:flex lg:col-span-1 justify-center">
               <div className="sticky top-24 border-r border-outline-variant/15 pr-4">
                 <SocialSidebar />
               </div>
             </aside>
 
-            {/* Article content — col-span-7 */}
+            {/* Article content -col-span-7 */}
             <article className="lg:col-span-7">
-              {/* Lead paragraph override — first p gets special styling */}
+              {/* Lead paragraph override -first p gets special styling */}
               <div className="[&>p:first-child]:text-xl [&>p:first-child]:md:text-2xl [&>p:first-child]:font-light [&>p:first-child]:leading-relaxed [&>p:first-child]:text-on-surface/90 [&>p:first-child]:mb-12 [&>blockquote>p]:text-2xl [&>blockquote>p]:font-medium [&>blockquote>p]:italic [&>blockquote>p]:text-secondary [&>blockquote>p]:mb-0">
                 <MDXRemote source={content} components={mdxComponents} />
               </div>
             </article>
 
-            {/* Right sidebar — col-span-4 */}
+            {/* Right sidebar -col-span-4 */}
             <aside className="lg:col-span-4 flex flex-col gap-8">
 
               {/* Expertise Badge block */}
@@ -259,7 +262,7 @@ export default function ArticlePage({
                   Architecture Certified
                 </h4>
                 <p className="text-sm text-on-tertiary-container/80 leading-relaxed">
-                  Nos articles sont rédigés par des praticiens actifs — chaque
+                  Nos articles sont rédigés par des praticiens actifs - chaque
                   conseil est issu de projets réels.
                 </p>
               </div>
@@ -314,19 +317,20 @@ export default function ArticlePage({
         </div>
       </section>
 
-      {/* ── Author section — max-w-4xl ────────────── */}
+      {/* ── Author section -max-w-4xl ────────────── */}
       <section className="px-8 py-0 pb-24 bg-surface">
         <div className="max-w-4xl mx-auto">
           <div className="bg-surface-container-low p-12 flex flex-col sm:flex-row gap-8">
 
             {/* Avatar */}
             <div className="shrink-0">
-              <div className="w-32 h-32 rounded-sm overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 bg-surface-container-high">
-                <div
-                  className="w-full h-full"
-                  style={{
-                    background: 'linear-gradient(135deg, #cadde9, #8fa0ac)',
-                  }}
+              <div className="relative w-32 h-32 rounded-sm overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 bg-surface-container-high">
+                <Image
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=256&q=80"
+                  alt="Équipe Digicorpex"
+                  fill
+                  className="object-cover"
+                  sizes="128px"
                 />
               </div>
             </div>
@@ -337,7 +341,7 @@ export default function ArticlePage({
                 Équipe Digicorpex
               </p>
               <p className="text-xs font-label uppercase tracking-wider text-on-surface-variant mb-4">
-                Agence Web &amp; Digital — Bordeaux
+                Agence Web &amp; Digital - Bordeaux
               </p>
               <p className="text-sm text-on-surface-variant leading-relaxed mb-6">
                 Nous accompagnons les entreprises dans la construction de leur
@@ -366,7 +370,7 @@ export default function ArticlePage({
         </div>
       </section>
 
-      {/* ── Lead Magnet — max-w-7xl ───────────────── */}
+      {/* ── Lead Magnet -max-w-7xl ───────────────── */}
       <section className="px-8 pb-32 bg-surface">
         <div className="max-w-7xl mx-auto">
           <div className="bg-secondary px-8 py-24 md:p-24 rounded-sm relative overflow-hidden">
