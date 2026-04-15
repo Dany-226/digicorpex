@@ -60,7 +60,7 @@ export default function Hero() {
               <div className="w-full h-full rounded-sm overflow-hidden relative">
                 <Image
                   src="/images/hero-seascape.png"
-                  alt="Paysage marin - Digicorpex agence digitale Bordeaux"
+                  alt="Architecture - Digicorpex agence digitale Bordeaux"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 42vw"
