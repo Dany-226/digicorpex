@@ -41,14 +41,9 @@ export default function BlogPreview({ articles }: BlogPreviewProps) {
           <article className="lg:col-span-8">
             <Link href={`/blog/${featured.slug}`} className="block group">
               {/* Image */}
-              <div className="relative aspect-[16/9] overflow-hidden rounded-sm bg-surface-container mb-8 grayscale hover:grayscale-0 transition-all duration-700">
-                <Image
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
-                  alt={featured.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                  sizes="(max-width: 1024px) 100vw, 66vw"
-                />
+              <div className="relative aspect-[16/9] overflow-hidden rounded-sm mb-8">
+                <img src="/images/graphs.jpg" alt="Data & performance" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-slate-700/30 to-blue-900/10" />
               </div>
 
               {/* Meta */}

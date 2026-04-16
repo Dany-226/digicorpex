@@ -57,23 +57,9 @@ export default function Hero() {
           <div className="lg:col-span-5 relative">
             <div className="relative aspect-square">
 
-              <div className="w-full h-full rounded-sm overflow-hidden relative">
-                <Image
-                  src="/images/hero-seascape.png"
-                  alt="Architecture - Digicorpex agence digitale Bordeaux"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                  priority
-                />
-                {/* Gradient bleu-gris design system : surface → secondary */}
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      'linear-gradient(135deg, rgba(238,244,250,0.45) 0%, rgba(71,97,124,0.55) 60%, rgba(38,52,61,0.70) 100%)',
-                  }}
-                />
+              <div className="relative w-full h-full min-h-[480px] rounded-sm overflow-hidden">
+                <img src="/images/archi.jpg" alt="Architecture digitale" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-600/50 to-transparent" />
               </div>
 
               {/* Float stat card */}
