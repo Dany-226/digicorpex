@@ -144,7 +144,7 @@ export default function ServicesPage() {
                 )}
               >
                 <div className="bg-surface-container-low p-2">
-                  <div className="aspect-video relative overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+                  <div className="aspect-video relative overflow-hidden rounded-sm">
                     <Image
                       src={service.image}
                       alt={service.imageAlt}
@@ -152,8 +152,7 @@ export default function ServicesPage() {
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 58vw"
                     />
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-secondary/10 mix-blend-multiply" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-slate-600/20 to-blue-900/10" />
                   </div>
                 </div>
               </div>
