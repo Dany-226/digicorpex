@@ -22,14 +22,14 @@ export default function TarifAuto() {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-3xl">
           {plans.map(({ price, label, text }) => (
-            <div key={label} className="border border-slate-600 p-10 rounded-sm">
-              <p className="font-headline text-3xl font-light text-white mb-2 tracking-tight">
+            <div key={label} className="bg-slate-700/50 backdrop-blur border border-slate-600 p-10 rounded-sm">
+              <p className="font-headline text-4xl font-light text-white mb-2 tracking-tight">
                 {price}
               </p>
-              <p className="text-[10px] font-label uppercase tracking-[0.2em] text-slate-400 mb-6">
+              <p className="text-xs font-label uppercase tracking-widest text-slate-400 mb-6">
                 {label}
               </p>
-              <p className="text-sm font-light text-slate-400 leading-relaxed">
+              <p className="text-sm font-light text-slate-300 leading-relaxed">
                 {text}
               </p>
             </div>

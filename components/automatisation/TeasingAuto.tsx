@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function TeasingAuto() {
   return (
-    <section className="py-24 px-8 bg-white">
+    <section className="py-24 px-8 bg-white border-t border-slate-100">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-16 items-center">
 
@@ -21,7 +21,7 @@ export default function TeasingAuto() {
             </p>
             <Link
               href="/contact"
-              className="text-sm font-label text-slate-800 border-b border-slate-300 pb-1 hover:border-slate-800 transition-colors duration-300"
+              className="text-sm font-label text-slate-700 underline underline-offset-4 hover:text-slate-900 transition-colors duration-300"
             >
               Être parmi les premiers →
             </Link>
