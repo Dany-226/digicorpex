@@ -6,6 +6,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { getAllArticles, getArticleBySlug } from '@/lib/mdx'
 import SocialSidebar from '@/components/blog/SocialSidebar'
 import StatGrid, { StatItem } from '@/components/blog/StatGrid'
+import DiagnosticLeadMagnet from '@/components/blog/DiagnosticLeadMagnet'
 import { Calendar, Clock, ChevronRight, Award, ChevronsRight } from 'lucide-react'
 
 /* ─────────────────────────────────────────────────
@@ -375,71 +376,7 @@ export default function ArticlePage({
       </section>
 
       {/* ── Lead Magnet -max-w-7xl ───────────────── */}
-      <section className="px-8 pb-32 bg-surface">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-secondary px-8 py-24 md:p-24 rounded-sm relative overflow-hidden">
-
-            {/* Decorative band */}
-            <div className="absolute top-0 right-0 w-1/3 h-full bg-white/5 skew-x-12 translate-x-1/2 pointer-events-none" />
-
-            <div className="grid lg:grid-cols-2 gap-16 items-center relative">
-
-              {/* Pitch */}
-              <div>
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-on-secondary/10 text-on-secondary text-xs font-label uppercase tracking-widest rounded-full mb-6">
-                  Ressource gratuite
-                </span>
-                <h3 className="font-headline text-4xl md:text-5xl font-extrabold text-on-secondary tracking-tight leading-[1.1] mb-6">
-                  Recevez notre guide
-                  <br />
-                  stratégie digitale 2026.
-                </h3>
-                <p className="text-on-secondary/80 text-lg leading-relaxed">
-                  30 pages de frameworks actionnables pour bâtir une présence
-                  digitale qui génère des leads qualifiés.
-                </p>
-              </div>
-
-              {/* Form */}
-              <div className="bg-white p-10 rounded-sm shadow-2xl">
-                <h4 className="font-headline font-bold text-on-surface text-xl mb-6">
-                  Accès immédiat
-                </h4>
-
-                <div className="space-y-5">
-                  <div>
-                    <label className="block text-xs font-label uppercase tracking-widest text-on-surface-variant mb-2">
-                      Adresse email
-                    </label>
-                    <input
-                      type="email"
-                      className="w-full bg-transparent border-0 border-b-2 border-primary-container focus:border-secondary rounded-none px-0 py-3 text-on-surface outline-none transition-colors text-sm"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-label uppercase tracking-widest text-on-surface-variant mb-2">
-                      Votre secteur
-                    </label>
-                    <select className="w-full bg-transparent border-0 border-b-2 border-primary-container focus:border-secondary rounded-none px-0 py-3 text-on-surface outline-none transition-colors text-sm appearance-none">
-                      <option value="">Sélectionner</option>
-                      <option>Commerce & E-commerce</option>
-                      <option>Services B2B</option>
-                      <option>Santé & Bien-être</option>
-                      <option>Autre</option>
-                    </select>
-                  </div>
-
-                  <button className="w-full bg-secondary text-on-secondary py-3.5 rounded-sm font-headline font-bold text-sm uppercase tracking-widest hover:bg-secondary-dim transition-colors duration-300 mt-2">
-                    Télécharger le guide
-                  </button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
+      <DiagnosticLeadMagnet />
     </>
   )
 }
