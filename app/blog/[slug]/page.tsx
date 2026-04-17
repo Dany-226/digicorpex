@@ -215,16 +215,20 @@ export default function ArticlePage({
       {/* ── Featured image -max-w-7xl ────────────── */}
       <div className="px-8 mb-16 bg-surface">
         <div className="max-w-7xl mx-auto">
-          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-sm bg-surface-container">
-            <Image
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80"
-              alt={meta.title}
-              fill
-              className="object-cover"
-              sizes="100vw"
-              priority
-            />
-          </div>
+          {meta.coverImage ? (
+            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-sm bg-surface-container">
+              <Image
+                src={meta.coverImage}
+                alt={meta.title}
+                fill
+                className="object-cover"
+                sizes="100vw"
+                priority
+              />
+            </div>
+          ) : (
+            <div className="w-full h-64 rounded-sm bg-gradient-to-br from-slate-700 to-slate-900" />
+          )}
         </div>
       </div>
 

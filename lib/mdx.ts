@@ -9,6 +9,7 @@ export interface ArticleMeta {
   readTime: string
   category: string
   slug: string
+  coverImage?: string
 }
 
 const BLOG_DIR = path.join(process.cwd(), 'content/blog')

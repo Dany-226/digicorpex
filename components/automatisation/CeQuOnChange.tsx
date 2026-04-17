@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Phone, FileText, Sparkles } from 'lucide-react'
 
 const cards = [
@@ -15,6 +16,7 @@ const cards = [
     icon: Sparkles,
     title: 'Votre entreprise, enfin mémorisée',
     text: 'Toute la connaissance de votre structure, accessible en une question. Rien de perdu, tout de retrouvé.',
+    articleLink: true,
   },
 ]
 
@@ -28,7 +30,7 @@ export default function CeQuOnChange() {
         </h2>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {cards.map(({ icon: Icon, title, text }) => (
+          {cards.map(({ icon: Icon, title, text, articleLink }) => (
             <div key={title} className="bg-slate-50 border-l-4 border-slate-300 p-10 rounded-sm">
               <Icon size={32} className="text-slate-400 mb-6" strokeWidth={1.5} />
               <h3 className="font-headline font-semibold text-lg text-slate-800 mb-4 leading-snug">
@@ -37,6 +39,14 @@ export default function CeQuOnChange() {
               <p className="text-sm font-light text-slate-500 leading-relaxed">
                 {text}
               </p>
+              {articleLink && (
+                <Link
+                  href="/blog/wiki-ia-memoire-entreprise"
+                  className="text-sm text-slate-400 hover:text-slate-200 underline underline-offset-4 transition-colors mt-4 inline-block"
+                >
+                  Lire : ce que coûte l&apos;absence de mémoire →
+                </Link>
+              )}
             </div>
           ))}
         </div>
