@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnostic d'automatisation — Digicorpex</title>
+<style>
+  @page {
+    margin: 40px;
+    @bottom-center {
+      content: "confidentiel — digicorpex.com";
+      font-size: 10px;
+      color: #94a3b8;
+      font-family: system-ui, sans-serif;
+      letter-spacing: 0.1em;
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: #475569;
+    background: #fff;
+    font-size: 14px;
+    line-height: 1.7;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 48px;
+  }
+
+  .page-header .brand {
+    font-size: 16px;
+    font-weight: 300;
+    color: #0f172a;
+    letter-spacing: 0.05em;
+  }
+
+  .page-header .doc-type {
+    font-size: 10px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  /* ── Cover page ── */
+  .cover {
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 80px;
+  }
+
+  .cover-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #94a3b8;
+    margin-bottom: 24px;
+  }
+
+  .cover-title {
+    font-size: 48px;
+    font-weight: 300;
+    color: #0f172a;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+  }
+
+  .cover-subtitle {
+    font-size: 16px;
+    font-weight: 300;
+    color: #64748b;
+    line-height: 1.6;
+    max-width: 520px;
+    margin-bottom: 48px;
+  }
+
+  .cover-meta {
+    font-size: 11px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .cover-divider {
+    width: 40px;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 32px 0;
+  }
+
+  /* ── Page breaks ── */
+  .page-break {
+    page-break-before: always;
+    break-before: page;
+    padding-top: 48px;
+  }
+
+  /* ── Section headers ── */
+  .section-number {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #94a3b8;
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 300;
+    color: #0f172a;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-top: 40px;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-top: 28px;
+    margin-bottom: 8px;
+  }
+
+  p {
+    margin-bottom: 16px;
+    color: #475569;
+  }
+
+  .section-intro {
+    font-size: 15px;
+    color: #64748b;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  /* ── Questions ── */
+  .question-block {
+    margin-bottom: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .question-block:last-child {
+    border-bottom: none;
+  }
+
+  .question-number {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #94a3b8;
+    margin-bottom: 6px;
+  }
+
+  .question-text {
+    font-size: 15px;
+    font-weight: 500;
+    color: #0f172a;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .question-context {
+    font-size: 12px;
+    color: #64748b;
+    font-style: italic;
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: #475569;
+  }
+
+  .option-box {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #cbd5e1;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .option-score {
+    font-size: 10px;
+    color: #94a3b8;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+
+  /* ── Score grid ── */
+  .score-grid {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 24px;
+    margin: 32px 0;
+  }
+
+  .score-grid-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #64748b;
+    margin-bottom: 16px;
+  }
+
+  .score-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 13px;
+  }
+
+  .score-row:last-child { border-bottom: none; }
+
+  .score-range {
+    font-weight: 600;
+    color: #0f172a;
+  }
+
+  /* ── Case studies ── */
+  .case-block {
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .case-block:last-child { border-bottom: none; }
+
+  .case-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #94a3b8;
+    margin-bottom: 6px;
+  }
+
+  .case-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 4px;
+  }
+
+  .case-sector {
+    font-size: 11px;
+    color: #64748b;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .before-col, .after-col {
+    padding: 16px 20px;
+  }
+
+  .before-col {
+    background: #fef2f2;
+    border-left: 3px solid #fca5a5;
+  }
+
+  .after-col {
+    background: #f0fdf4;
+    border-left: 3px solid #86efac;
+  }
+
+  .ba-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .before-col .ba-label { color: #dc2626; }
+  .after-col .ba-label { color: #16a34a; }
+
+  .ba-item {
+    font-size: 12px;
+    color: #475569;
+    margin-bottom: 6px;
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .ba-item::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: #94a3b8;
+  }
+
+  .case-impact {
+    background: #f8fafc;
+    padding: 14px 20px;
+    font-size: 12px;
+    color: #475569;
+    border-left: 2px solid #cbd5e1;
+    font-style: italic;
+  }
+
+  /* ── Cost grid ── */
+  .cost-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 13px;
+  }
+
+  .cost-table th {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .cost-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #475569;
+    vertical-align: top;
+  }
+
+  .cost-table tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+
+  .cost-table .input-cell {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    min-width: 80px;
+    height: 28px;
+  }
+
+  .total-row td {
+    font-weight: 600;
+    color: #0f172a;
+    background: #f1f5f9 !important;
+    border-top: 2px solid #0f172a;
+  }
+
+  /* ── Decision questions ── */
+  .decision-block {
+    margin-bottom: 36px;
+    padding: 24px;
+    background: #f8fafc;
+    border-left: 3px solid #0f172a;
+  }
+
+  .decision-number {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #94a3b8;
+    margin-bottom: 8px;
+  }
+
+  .decision-question {
+    font-size: 16px;
+    font-weight: 500;
+    color: #0f172a;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .decision-note {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.6;
+  }
+
+  .yes-no {
+    display: flex;
+    gap: 20px;
+    margin-top: 14px;
+  }
+
+  .yes-no label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #0f172a;
+    cursor: pointer;
+  }
+
+  .yes-no input {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* ── Closing page ── */
+  .closing {
+    padding-top: 60px;
+    text-align: center;
+  }
+
+  .closing-line {
+    width: 40px;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 32px auto;
+  }
+
+  .closing-contact {
+    font-size: 12px;
+    color: #94a3b8;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── Print overrides ── */
+  @media print {
+    body { padding: 0; }
+    .page-break { padding-top: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     HEADER (répété sur toutes les pages via CSS)
+════════════════════════════════════════ -->
+<div class="page-header">
+  <span class="brand">digicorpex</span>
+  <span class="doc-type">diagnostic d'automatisation</span>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE DE GARDE
+════════════════════════════════════════ -->
+<div class="cover">
+  <div class="cover-label">Document confidentiel · Avril 2026</div>
+
+  <div class="cover-title">
+    Ce que vos journées<br>vous coûtent vraiment.
+  </div>
+
+  <div class="cover-subtitle">
+    Un diagnostic en 12 questions calibrées sur le terrain, 5 cas réels avant/après,
+    une grille de calcul et trois questions pour décider en 10 minutes.
+  </div>
+
+  <div class="cover-divider"></div>
+
+  <div class="cover-meta">
+    Digicorpex · digicorpex.com · contact@digicorpex.com
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 1 — LES 12 QUESTIONS
+════════════════════════════════════════ -->
+<div class="page-break">
+  <div class="section-number">Section 01 — Le diagnostic</div>
+  <h1>Les 12 questions</h1>
+  <p class="section-intro">
+    Pour chaque question, cochez la réponse qui correspond le mieux à votre situation actuelle.
+    Comptez vos points à la fin. Pas de bonnes réponses — seulement une image honnête de ce que vous gérez aujourd'hui.
+  </p>
+
+  <!-- Q1 -->
+  <div class="question-block">
+    <div class="question-number">Question 01 / 12</div>
+    <div class="question-text">Combien d'heures par semaine votre équipe consacre-t-elle à des tâches strictement répétitives — saisies, relances, copies entre outils ?</div>
+    <div class="question-context">Estimez honnêtement : inclure les relances clients non répondues, la mise à jour manuelle du CRM, la retranscription d'informations d'un outil à un autre.</div>
+    <div class="options">
+      <div class="option"><div class="option-box"></div> Moins de 3 heures au total <span class="option-score">0 pt</span></div>
+      <div class="option"><div class="option-box"></div> Entre 3 et 8 heures <span class="option-score">1 pt</span></div>
+      <div class="option"><div class="option-box"></div> Entre 8 et 20 heures <span class="option-score">2 pts</span></div>
+      <div class="option"><div class="option-box"></div> Plus de 20 heures — c'est permanent <span class="option-score">3 pts</span></div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="question-block">
+    <div class="question-number">Question 02 / 12</div>
+    <div class="question-text">Quand un collaborateur part, comment se passe la transmission de sa connaissance client ?</div>
+    <div class="question-context">Pensez au dernier départ dans votre équipe : qu'est-ce qui a vraiment été transmis, et combien de temps a-t-il fallu pour que le remplaçant soit autonome ?</div>
+    <div class="options">
+      <div class="option"><div class="option-box"></div> Tout est documenté, la transmission prend quelques jours <span class="option-score">0 pt</span></div>
+      <div class="option"><div class="option-box"></div> Une passation orale de quelques heures, avec des lacunes <span class="option-score">1 pt</span></div>
+      <div class="option"><div class="option-box"></div> Plusieurs semaines de flottement, des clients mécontents <span class="option-score">2 pts</span></div>
+      <div class="option"><div class="option-box"></div> On a perdu des informations critiques, on ne sait pas exactement quoi <span class="option-score">3 pts</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page-break">
+  <!-- Q3 -->
+  <div class="question-block">
+    <div class="question-number">Question 03 / 12</div>
+    <div class="question-text">Combien de temps faut-il pour produire un devis ou un contrat standard pour un nouveau client ?</div>
+    <div class="question-context">Incluez le temps de recherche d'informations, la rédaction, les allers-retours internes et les corrections avant envoi.</div>
+    <div class="options">
+      <div class="option"><div class="option-box"></div> Moins de 30 minutes, modèle automatisé <span class="option-score">0 pt</span></div>
+      <div class="option"><div class="option-box"></div> 1 à 2 heures, avec un modèle partiellement rempli manuellement <span class="option-score">1 pt</span></div>
+      <div class="option"><div class="option-box"></div> Une demi-journée, avec des vérifications et corrections <span class="option-score">2 pts</span></div>
+      <div class="option"><div class="option-box"></div> Plus d'une journée, ou le processus est imprévisible <span class="option-score">3 pts</span></div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="question-block">
+    <div class="question-number">Question 04 / 12</div>
+    <div class="question-text">Quel est votre délai de réponse moyen à une demande entrante (email, formulaire, appel) pendant les heures de bureau ?</div>
+    <div class="question-context">Une réponse automatique de confirmation ne compte pas — on parle d'une vraie réponse qualifiée avec une information utile pour le prospect.</div>
+    <div class="options">
+      <div class="option"><div class="option-box"></div> Moins de 2 heures, de manière fiable <span class="option-score">0 pt</span></div>
+      <div class="option"><div class="option-box"></div> Dans la journée, selon la charge <span class="option-score">1 pt</span></div>
+      <div class="option"><div class="option-box"></div> 24 à 48h, certaines demandes se perdent <span class="option-score">2 pts</span></div>
+      <div class="option"><div class="option-box"></div> Plus de 48h régulièrement, ou réponses incomplètes <span class="option-score">3 pts</span></div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="question-block">
+    <div class="question-number">Question 05 / 12</div>
+    <div class="question-text">Comment est stockée la connaissance client — les préférences, l'historique des décisions, les engagements pris ?</div>
+    <div class="question-context">Êtes-vous capable, aujourd'hui, de répondre en 2 minutes à la question : "Quelles sont les conditions particulières accordées au client X ?" sans avoir à appeler quelqu'un ?</div>
+    <div class="options">
+      <div class="option"><div class="option-box"></div> Tout est dans le CRM, structuré et à jour <span class="option-score">0 pt</span></div>
+      <div class="option"><div class="option-box"></div> Dans le CRM et des emails, cherchable avec effort <span class="option-score">1 pt</span></div>
+      <div class="option"><div class="option-box"></div> Dans des emails, des notes personnelles, des tableurs non partagés <span class="option-score">2 pts</span></div>
+      <div class="option"><div class="option-box"></div> Dans la tête des collaborateurs, principalement <span class="option-score">3 pts</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page-break">
+  <!-- Q6 -->
+  <div class="question-block">
+    <div class="question-number">Question 06 / 12</div>
+    <div class="question-text">Quelle part de vos saisies de données est effectuée deux fois ou plus dans des outils différents ?</div>
+    <div class="question-context">Exemple typique : saisir une commande dans le bon de commande, puis la reporter dans le CRM, puis dans le fichier de suivi comptable.</div>
+    <div class="options">
+      <div class="option"><div class="option-box"></div> Quasiment aucune — les outils sont connectés <span class="option-score">0 pt</span></div>
+      <div class="option"><div class="option-box"></div> Quelques cas ponctuels, gérables <span class="option-score">1 pt</span></div>
+      <div class="option"><div class="option-box"></div> Une part significative des données est ressaisie régulièrement <span class="option-score">2 pts</span></div>
+      <div class="option"><div class="option-box"></div> La ressaisie multiple est la norme — tout le monde le fait <span class="option-score">3 pts</span></div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="question-block">
+    <div class="question-number">Question 07 / 12</div>
+    <div class="question-text">Y a-t-il des tâches opérationnelles que vous ne faites pas — ou que vous faites trop tard — faute de temps humain disponible ?</div>
+    <div class="question-context">Relances de factures impayées, suivi post-livraison, mise à jour de la base de prospects, rédaction de comptes-rendus…</div>
+    <div class="options">
+      <div class="option"><div class="option-box"></div> Non, tout ce qui doit être fait est fait dans les délais <span class="option-score">0 pt</span></div>
+      <div class="option"><div class="option-box"></div> Quelques retards occasionnels, pas de conséquence majeure <span class="option-score">1 pt</span></div>
+      <div class="option"><div class="option-box"></div> Plusieurs tâches systématiquement reportées ou allégées <span class="option-score">2 pts</span></div>
+      <div class="option"><div class="option-box"></div> Des revenus sont probablement perdus à cause de ce manque <span class="option-score">3 pts</span></div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="question-block">
+    <div class="question-number">Question 08 / 12</div>
+    <div class="question-text">Combien de temps votre entreprise consacre-t-elle à intégrer un nouveau collaborateur avant qu'il soit autonome sur les processus internes ?</div>
+    <div class="question-context">Inclure : compréhension des outils, accès aux procédures, connaissance des clients existants, maîtrise des process non écrits.</div>
+    <div class="options">
+      <div class="option"><div class="option-box"></div> Moins de deux semaines — tout est documenté <span class="option-score">0 pt</span></div>
+      <div class="option"><div class="option-box"></div> Un mois environ, avec un accompagnement <span class="option-score">1 pt</span></div>
+      <div class="option"><div class="option-box"></div> Deux à trois mois, avec des erreurs en cours de route <span class="option-score">2 pts</span></div>
+      <div class="option"><div class="option-box"></div> Plus de trois mois, ou le résultat est aléatoire selon le manager <span class="option-score">3 pts</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page-break">
+  <!-- Q9 -->
+  <div class="question-block">
+    <div class="question-number">Question 09 / 12</div>
+    <div class="question-text">Quelle part de vos réunions d'équipe est consacrée à mettre à jour des statuts plutôt qu'à prendre des décisions ?</div>
+    <div class="question-context">"Où en est le dossier X ?" — "As-tu relancé le fournisseur Y ?" — "Qui s'occupe de Z ?" Ce sont des symptômes d'un manque de visibilité partagée.</div>
+    <div class="options">
+      <div class="option"><div class="option-box"></div> Nos réunions sont principalement décisionnelles — les statuts sont visibles ailleurs <span class="option-score">0 pt</span></div>
+      <div class="option"><div class="option-box"></div> Un tiers de la réunion en mises à jour, deux tiers en décisions <span class="option-score">1 pt</span></div>
+      <div class="option"><div class="option-box"></div> La moitié ou plus de la réunion en statuts et relances <span class="option-score">2 pts</span></div>
+      <div class="option"><div class="option-box"></div> La réunion est principalement du reporting oral — les décisions se prennent ailleurs, après <span class="option-score">3 pts</span></div>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="question-block">
+    <div class="question-number">Question 10 / 12</div>
+    <div class="question-text">Comment sont gérées vos relances commerciales et votre suivi post-vente ?</div>
+    <div class="question-context">Une opportunité non relancée dans les 48h a trois fois moins de chances de se convertir. Une relance post-livraison améliore le NPS et réduit le churn.</div>
+    <div class="options">
+      <div class="option"><div class="option-box"></div> Automatisé et systématique — rien ne se perd <span class="option-score">0 pt</span></div>
+      <div class="option"><div class="option-box"></div> Géré manuellement mais avec une certaine discipline <span class="option-score">1 pt</span></div>
+      <div class="option"><div class="option-box"></div> Irrégulier — selon la charge et la mémoire du commercial <span class="option-score">2 pts</span></div>
+      <div class="option"><div class="option-box"></div> Peu ou pas de suivi structuré après l'envoi du devis ou la livraison <span class="option-score">3 pts</span></div>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="question-block">
+    <div class="question-number">Question 11 / 12</div>
+    <div class="question-text">Quelle est votre situation actuelle sur la facturation et le suivi des impayés ?</div>
+    <div class="question-context">Les impayés à plus de 60 jours représentent en moyenne 3 à 5% du chiffre d'affaires des PME françaises. Une grande partie est récupérable avec une relance au bon moment.</div>
+    <div class="options">
+      <div class="option"><div class="option-box"></div> Relances automatiques, très peu d'impayés persistants <span class="option-score">0 pt</span></div>
+      <div class="option"><div class="option-box"></div> Relances manuelles régulières, situation maîtrisée <span class="option-score">1 pt</span></div>
+      <div class="option"><div class="option-box"></div> Des impayés qui traînent faute de relances systématiques <span class="option-score">2 pts</span></div>
+      <div class="option"><div class="option-box"></div> Le suivi des impayés est un problème récurrent et coûteux <span class="option-score">3 pts</span></div>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="question-block">
+    <div class="question-number">Question 12 / 12</div>
+    <div class="question-text">À quelle vitesse êtes-vous capable de produire un état de situation — chiffre d'affaires en cours, dossiers ouverts, satisfaction client — sans préparer la réponse à l'avance ?</div>
+    <div class="question-context">Si un investisseur ou un partenaire vous demandait un état des lieux précis dans l'heure, seriez-vous capable de le fournir ?</div>
+    <div class="options">
+      <div class="option"><div class="option-box"></div> En quelques minutes, les données sont centralisées et à jour <span class="option-score">0 pt</span></div>
+      <div class="option"><div class="option-box"></div> En quelques heures, en consolidant plusieurs sources <span class="option-score">1 pt</span></div>
+      <div class="option"><div class="option-box"></div> Demi-journée ou plus, avec des données incomplètes <span class="option-score">2 pts</span></div>
+      <div class="option"><div class="option-box"></div> Très difficile — les données sont éparpillées et partiellement disponibles <span class="option-score">3 pts</span></div>
+    </div>
+  </div>
+
+  <!-- Score grid -->
+  <div class="score-grid">
+    <div class="score-grid-title">Votre score · Interprétation</div>
+    <div class="score-row"><span class="score-range">0 – 8 pts</span><span>Organisation solide. Les gains d'automatisation existent mais ne sont pas urgents.</span></div>
+    <div class="score-row"><span class="score-range">9 – 16 pts</span><span>Des irritants significatifs. L'automatisation résoudrait des problèmes concrets à court terme.</span></div>
+    <div class="score-row"><span class="score-range">17 – 24 pts</span><span>Coût du statu quo élevé. Chaque mois sans action représente une perte mesurable.</span></div>
+    <div class="score-row"><span class="score-range">25 – 36 pts</span><span>Situation critique. L'organisation manuelle bride la croissance et fragilise la structure.</span></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 2 — 5 CAS RÉELS AVANT/APRÈS
+════════════════════════════════════════ -->
+<div class="page-break">
+  <div class="section-number">Section 02 — Cas réels</div>
+  <h1>5 situations.<br>Avant et après.</h1>
+  <p class="section-intro">
+    Ces cas sont anonymisés et composites — aucun ne correspond à une seule entreprise.
+    Ils illustrent les transformations les plus fréquentes et les plus mesurables que nous observons.
+  </p>
+
+  <!-- Cas 1 -->
+  <div class="case-block">
+    <div class="case-label">Cas 01</div>
+    <div class="case-title">Le cabinet de conseil qui perdait ses devis dans ses emails</div>
+    <div class="case-sector">Services B2B · 8 collaborateurs · 1,2 M€ CA</div>
+
+    <div class="before-after">
+      <div class="before-col">
+        <div class="ba-label">Avant</div>
+        <div class="ba-item">3 à 4h par devis, rédaction manuelle depuis un modèle Word</div>
+        <div class="ba-item">Pas de suivi systématique des devis envoyés</div>
+        <div class="ba-item">Taux de relance : moins de 40% des devis non signés</div>
+        <div class="ba-item">Perte d'historique à chaque changement de commercial</div>
+      </div>
+      <div class="after-col">
+        <div class="ba-label">Après</div>
+        <div class="ba-item">Devis généré en 20 minutes depuis une fiche client enrichie</div>
+        <div class="ba-item">Relances automatiques à J+3, J+7, J+14 si non signé</div>
+        <div class="ba-item">Taux de relance : 100% — sans intervention humaine</div>
+        <div class="ba-item">Historique client interrogeable en langage naturel</div>
+      </div>
+    </div>
+    <div class="case-impact">Impact observé : taux de conversion devis → contrat passé de 28% à 41% sur les 6 mois suivant le déploiement. L'amélioration vient principalement des relances manquées récupérées.</div>
+  </div>
+
+  <!-- Cas 2 -->
+  <div class="case-block">
+    <div class="case-label">Cas 02</div>
+    <div class="case-title">L'agence dont le téléphone décroché était une question de chance</div>
+    <div class="case-sector">Services aux entreprises · 5 personnes · TPE en croissance</div>
+
+    <div class="before-after">
+      <div class="before-col">
+        <div class="ba-label">Avant</div>
+        <div class="ba-item">30 à 40% des appels non répondus aux heures chargées</div>
+        <div class="ba-item">Pas de qualification systématique des appels entrants</div>
+        <div class="ba-item">Leads perdus par défaut de rappel dans les 24h</div>
+        <div class="ba-item">Frustration des équipes qui jonglaient entre tâches et appels</div>
+      </div>
+      <div class="after-col">
+        <div class="ba-label">Après</div>
+        <div class="ba-item">100% des appels capturés et qualifiés automatiquement</div>
+        <div class="ba-item">Résumé et niveau d'urgence transmis à l'équipe en temps réel</div>
+        <div class="ba-item">Rappels programmés automatiquement selon la priorité</div>
+        <div class="ba-item">Les équipes traitent les demandes, pas la réception des appels</div>
+      </div>
+    </div>
+    <div class="case-impact">Impact observé : élimination quasi-totale des leads perdus par défaut de contact. Estimation du dirigeant : 3 à 5 nouveaux clients mensuels qui passaient auparavant entre les mailles.</div>
+  </div>
+</div>
+
+<div class="page-break">
+  <!-- Cas 3 -->
+  <div class="case-block">
+    <div class="case-label">Cas 03</div>
+    <div class="case-title">Le distributeur dont la mémoire client partait à chaque départ</div>
+    <div class="case-sector">Commerce B2B · 12 collaborateurs · 2,8 M€ CA</div>
+
+    <div class="before-after">
+      <div class="before-col">
+        <div class="ba-label">Avant</div>
+        <div class="ba-item">Connaissance client dans les emails et les notes personnelles</div>
+        <div class="ba-item">Chaque départ = 2 à 4 mois de remontée en compétence</div>
+        <div class="ba-item">Clients relancés à contre-temps, accord spéciaux oubliés</div>
+        <div class="ba-item">3 départs en 18 mois avaient créé un trou de mémoire critique</div>
+      </div>
+      <div class="after-col">
+        <div class="ba-label">Après</div>
+        <div class="ba-item">Fiche client enrichie automatiquement depuis emails et appels</div>
+        <div class="ba-item">Nouveau commercial opérationnel en quelques jours</div>
+        <div class="ba-item">Conditions particulières, historique de litiges : accessibles en une question</div>
+        <div class="ba-item">La connaissance appartient à l'entreprise, pas aux individus</div>
+      </div>
+    </div>
+    <div class="case-impact">Impact observé : réduction du temps d'intégration et maintien du niveau de service perçu pendant les transitions. Un client grand compte avait menacé de partir — il est resté, la continuité étant assurée malgré le départ du commercial dédié.</div>
+  </div>
+
+  <!-- Cas 4 -->
+  <div class="case-block">
+    <div class="case-label">Cas 04</div>
+    <div class="case-title">Le prestataire de santé dont les rapports prenaient une matinée</div>
+    <div class="case-sector">Services réglementés · 6 personnes · activité croissante</div>
+
+    <div class="before-after">
+      <div class="before-col">
+        <div class="ba-label">Avant</div>
+        <div class="ba-item">Rapport de visite : 2 à 3h de rédaction après chaque intervention</div>
+        <div class="ba-item">Formats incohérents selon l'intervenant</div>
+        <div class="ba-item">Retards de facturation liés aux délais de rapport</div>
+        <div class="ba-item">Archives difficilement exploitables pour les suivis longitudinaux</div>
+      </div>
+      <div class="after-col">
+        <div class="ba-label">Après</div>
+        <div class="ba-item">Rapport généré depuis une note vocale de 3 minutes post-intervention</div>
+        <div class="ba-item">Format standardisé, conforme aux exigences du secteur</div>
+        <div class="ba-item">Facturation déclenchée automatiquement à la validation du rapport</div>
+        <div class="ba-item">Historique patient interrogeable pour les visites de suivi</div>
+      </div>
+    </div>
+    <div class="case-impact">Impact observé : 14h par semaine libérées pour l'équipe de 4 intervenants. Réalloués à 3 interventions supplémentaires hebdomadaires. Impact direct sur le chiffre d'affaires sans recrutement supplémentaire.</div>
+  </div>
+
+  <!-- Cas 5 -->
+  <div class="case-block">
+    <div class="case-label">Cas 05</div>
+    <div class="case-title">L'artisan dont les impayés s'accumulaient faute de relances</div>
+    <div class="case-sector">Artisanat / Construction · indépendant + 2 salariés</div>
+
+    <div class="before-after">
+      <div class="before-col">
+        <div class="ba-label">Avant</div>
+        <div class="ba-item">Relances d'impayés : quand le temps le permettait, soit rarement</div>
+        <div class="ba-item">8 à 12% du CA annuel en retard de paiement à tout moment</div>
+        <div class="ba-item">Conversations difficiles à cause du délai entre livraison et relance</div>
+        <div class="ba-item">Pas de visibilité sur le prévisionnel de trésorerie à 30 jours</div>
+      </div>
+      <div class="after-col">
+        <div class="ba-label">Après</div>
+        <div class="ba-item">Relances automatiques à J+5, J+15, J+30 avec escalade de ton</div>
+        <div class="ba-item">Taux d'impayés à 30 jours ramené à moins de 2% du CA</div>
+        <div class="ba-item">Les relances partent tôt — les conversations sont plus simples</div>
+        <div class="ba-item">Dashboard de trésorerie prévisionnelle mis à jour en temps réel</div>
+      </div>
+    </div>
+    <div class="case-impact">Impact observé : récupération de 18 000€ d'impayés dans les 90 jours suivant le déploiement. Amélioration de la trésorerie sans financement supplémentaire ni relance manuelle.</div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 3 — GRILLE DE CALCUL
+════════════════════════════════════════ -->
+<div class="page-break">
+  <div class="section-number">Section 03 — La grille</div>
+  <h1>Le coût réel<br>du statu quo.</h1>
+  <p class="section-intro">
+    Remplissez chaque ligne avec vos chiffres. L'objectif n'est pas la précision absolue —
+    c'est de rendre visible ce qui reste invisible tant qu'on ne le calcule pas.
+  </p>
+
+  <h2>Poste 1 — Temps passé sur des tâches automatisables</h2>
+  <table class="cost-table">
+    <tr>
+      <th>Tâche</th>
+      <th>Heures/semaine</th>
+      <th>Coût horaire moyen (€)</th>
+      <th>Coût/mois estimé (€)</th>
+    </tr>
+    <tr>
+      <td>Saisies manuelles et ressaisies</td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+    <tr>
+      <td>Relances clients / prospects</td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+    <tr>
+      <td>Rédaction de documents récurrents</td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+    <tr>
+      <td>Recherche d'informations internes</td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+    <tr>
+      <td>Réunions de statut / reporting oral</td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+    <tr class="total-row">
+      <td colspan="3">Total mensuel — temps automatisable</td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+  </table>
+
+  <h2>Poste 2 — Coût des opportunités manquées</h2>
+  <table class="cost-table">
+    <tr>
+      <th>Situation</th>
+      <th>Fréquence/mois</th>
+      <th>Valeur moyenne (€)</th>
+      <th>Perte estimée/mois (€)</th>
+    </tr>
+    <tr>
+      <td>Devis non relancés et perdus</td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+    <tr>
+      <td>Appels non répondus / non rappelés</td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+    <tr>
+      <td>Clients perdus après un départ (estimation)</td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+    <tr>
+      <td>Impayés non relancés dans les délais</td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+    <tr class="total-row">
+      <td colspan="3">Total mensuel — opportunités manquées</td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+  </table>
+
+  <h2>Poste 3 — Coût des erreurs et de la friction interne</h2>
+  <table class="cost-table">
+    <tr>
+      <th>Situation</th>
+      <th>Fréquence/mois</th>
+      <th>Coût de correction (€)</th>
+      <th>Coût mensuel estimé (€)</th>
+    </tr>
+    <tr>
+      <td>Erreurs de saisie et corrections</td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+    <tr>
+      <td>Informations envoyées au mauvais destinataire</td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+    <tr>
+      <td>Litiges clients dus à une information manquante</td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+    <tr class="total-row">
+      <td colspan="3">Total mensuel — friction et erreurs</td>
+      <td><div class="input-cell"></div></td>
+    </tr>
+  </table>
+
+  <div class="score-grid" style="margin-top: 32px;">
+    <div class="score-grid-title">Coût total mensuel du statu quo (somme des 3 postes)</div>
+    <div class="score-row">
+      <span>Total Poste 1 + Poste 2 + Poste 3</span>
+      <span class="score-range" style="min-width: 100px; text-align: right;">_______ €/mois</span>
+    </div>
+    <div class="score-row">
+      <span>Coût annuel projeté</span>
+      <span class="score-range" style="min-width: 100px; text-align: right;">_______ €/an</span>
+    </div>
+    <div class="score-row" style="background: #f1f5f9;">
+      <span style="font-size: 12px; color: #64748b; font-style: italic;">
+        Si ce chiffre dépasse 3 000 €/mois, un système d'automatisation se finance seul dans l'année.
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     SECTION 4 — 3 QUESTIONS POUR DÉCIDER
+════════════════════════════════════════ -->
+<div class="page-break">
+  <div class="section-number">Section 04 — La décision</div>
+  <h1>3 questions.<br>10 minutes.<br>Une réponse.</h1>
+  <p class="section-intro">
+    Si vous avez rempli les sections précédentes, vous avez maintenant les chiffres.
+    Ces trois questions transforment les chiffres en décision.
+  </p>
+
+  <div class="decision-block">
+    <div class="decision-number">Question 01</div>
+    <div class="decision-question">
+      Le coût mensuel de mon statu quo est-il supérieur au coût mensuel d'un système automatisé ?
+    </div>
+    <div class="decision-note">
+      Un déploiement Digicorpex se situe entre 300 et 500€/mois en maintenance, pour un investissement initial unique.
+      Si votre coût du statu quo calculé à la section 3 dépasse ce seuil — et il le dépasse presque toujours —,
+      l'automatisation est rentable dès le premier mois opérationnel.
+      <br><br>
+      <strong>Si votre réponse est oui :</strong> la question n'est plus "est-ce rentable" mais "dans combien de temps".
+    </div>
+    <div class="yes-no">
+      <label><input type="radio" name="q1"> Oui</label>
+      <label><input type="radio" name="q1"> Non</label>
+      <label><input type="radio" name="q1"> Je ne sais pas encore</label>
+    </div>
+  </div>
+
+  <div class="decision-block">
+    <div class="decision-number">Question 02</div>
+    <div class="decision-question">
+      Est-ce que le problème s'aggrave — plus de clients, plus de volume, plus de pression sur les équipes ?
+    </div>
+    <div class="decision-note">
+      Un process manuel qui fonctionne à 5 personnes s'effondre à 10. Un suivi client qui tient debout
+      avec 50 dossiers actifs ne tient plus à 200. La croissance amplifie les dysfonctionnements existants.
+      <br><br>
+      <strong>Si votre réponse est oui :</strong> chaque mois d'attente augmente le coût de la transition future —
+      parce que les habitudes sont plus profondes et les volumes à migrer plus importants.
+    </div>
+    <div class="yes-no">
+      <label><input type="radio" name="q2"> Oui</label>
+      <label><input type="radio" name="q2"> Non, la situation est stable</label>
+      <label><input type="radio" name="q2"> Incertain</label>
+    </div>
+  </div>
+
+  <div class="decision-block">
+    <div class="decision-number">Question 03</div>
+    <div class="decision-question">
+      Y a-t-il quelqu'un dans l'équipe pour piloter la transition — même une heure par semaine ?
+    </div>
+    <div class="decision-note">
+      L'automatisation ne s'installe pas dans le vide. Elle s'installe dans vos processus.
+      Cela demande qu'une personne dans l'entreprise comprenne ce que vous faites, valide ce que le système fait,
+      et remonte les problèmes. Une heure par semaine suffit.
+      <br><br>
+      <strong>Si votre réponse est oui :</strong> les conditions sont réunies. Le reste, c'est notre travail.
+    </div>
+    <div class="yes-no">
+      <label><input type="radio" name="q3"> Oui</label>
+      <label><input type="radio" name="q3"> Non, pas de ressource disponible</label>
+      <label><input type="radio" name="q3"> À définir</label>
+    </div>
+  </div>
+
+  <div class="score-grid" style="margin-top: 8px;">
+    <div class="score-grid-title">Lecture du résultat</div>
+    <div class="score-row"><span class="score-range">3 oui</span><span>Vous avez toutes les conditions réunies. La prochaine étape est une conversation de 30 minutes.</span></div>
+    <div class="score-row"><span class="score-range">2 oui</span><span>Le projet est viable. Un point sur le blocage restant suffit souvent à le lever.</span></div>
+    <div class="score-row"><span class="score-range">1 oui ou moins</span><span>Le timing n'est peut-être pas optimal. Revenez à ce document dans 3 mois.</span></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PAGE DE CLÔTURE
+════════════════════════════════════════ -->
+<div class="page-break">
+  <div class="closing">
+    <div style="font-size: 13px; color: #0f172a; font-weight: 300; letter-spacing: 0.05em; margin-bottom: 8px;">digicorpex</div>
+    <div class="closing-line"></div>
+
+    <p style="font-size: 15px; font-weight: 300; color: #0f172a; line-height: 1.6; max-width: 480px; margin: 0 auto 24px;">
+      Si vous êtes arrivé à cette page avec trois oui,<br>vous savez où nous trouver.
+    </p>
+
+    <p style="font-size: 13px; color: #64748b; font-weight: 300; line-height: 1.7; max-width: 440px; margin: 0 auto 40px;">
+      Une conversation de 30 minutes. Pas de présentation commerciale, pas de jargon.
+      Juste un regard honnête sur votre situation et ce qui vaut la peine d'être automatisé — ou pas.
+    </p>
+
+    <div class="closing-line"></div>
+
+    <div class="closing-contact">
+      contact@digicorpex.com &nbsp;·&nbsp; digicorpex.com &nbsp;·&nbsp; +33 6 74 05 86 57
+    </div>
+
+    <div style="margin-top: 80px; font-size: 10px; color: #cbd5e1; text-transform: uppercase; letter-spacing: 0.15em;">
+      confidentiel — digicorpex.com — avril 2026
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
