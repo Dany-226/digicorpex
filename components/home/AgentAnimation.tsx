@@ -48,7 +48,7 @@ export default function AgentAnimation() {
 
       <span className="inline-flex items-center gap-2 self-end text-xs text-green-400 animate-pulse">
         <span className="w-1.5 h-1.5 rounded-full bg-green-400" />
-        agent actif — traitement en cours
+        agent actif - traitement en cours
       </span>
     </div>
   )

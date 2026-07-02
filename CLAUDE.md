@@ -5,6 +5,12 @@
 
 ---
 
+## 0. Règle absolue — Typographie
+
+TYPOGRAPHIE : ne jamais utiliser de cadratins (—). Tiret simple (-) uniquement, ou reformulation.
+
+---
+
 ## 1. Projet
 
 **Digicorpex** est une agence web & digital dont le site a deux fonctions :

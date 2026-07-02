@@ -59,7 +59,7 @@ async function handleDiagnostic(email: string): Promise<NextResponse> {
           <p style="font-size:15px;font-weight:300;color:#475569;line-height:1.7;margin-bottom:32px;">
             Si vous arrivez à la page 12 avec trois oui, vous savez où nous trouver.
           </p>
-          <p style="font-size:14px;color:#64748b;line-height:1.6;">— L'équipe Digicorpex</p>
+          <p style="font-size:14px;color:#64748b;line-height:1.6;">- L'équipe Digicorpex</p>
           <hr style="border:none;border-top:1px solid #e2e8f0;margin:32px 0;">
           <p style="font-size:11px;color:#94a3b8;">contact@digicorpex.com · digicorpex.com</p>
         </div>

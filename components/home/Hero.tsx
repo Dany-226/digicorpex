@@ -17,7 +17,7 @@ export default function Hero() {
             {/* Expertise Badge */}
             <div>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-tertiary-container text-on-tertiary-container text-xs font-label uppercase tracking-widest rounded-full">
-                Automatisation IA — Bordeaux
+                Automatisation IA - Bordeaux
               </span>
             </div>
 
@@ -31,7 +31,7 @@ export default function Hero() {
             {/* Subtitle */}
             <p className="text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed font-body">
               Nous déployons des agents IA qui traitent vos appels, génèrent vos devis et
-              organisent votre mémoire d'entreprise — pendant que vous vous concentrez sur ce
+              organisent votre mémoire d'entreprise - pendant que vous vous concentrez sur ce
               qui compte.
             </p>
 

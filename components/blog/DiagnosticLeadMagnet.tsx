@@ -69,7 +69,7 @@ export default function DiagnosticLeadMagnet() {
               </p>
             </div>
 
-            {/* Colonne droite — formulaire */}
+            {/* Colonne droite - formulaire */}
             <div>
               {status === 'done' ? (
                 <div className="flex flex-col items-center justify-center h-full py-12 text-center">
