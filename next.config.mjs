@@ -9,6 +9,11 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  async redirects() {
+    return [
+      { source: '/services/automatisation', destination: '/agents', permanent: true },
+    ]
+  },
 }
 
 const withMDX = createMDX({

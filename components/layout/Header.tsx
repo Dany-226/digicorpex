@@ -7,7 +7,7 @@ import { Menu, X, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
-  { href: '/services/automatisation', label: 'Automatisation IA', emphasis: true },
+  { href: '/agents', label: 'Automatisation IA', emphasis: true },
   { href: '/services', label: 'Services' },
   { href: '/blog', label: 'Blog' },
   { href: '/about', label: 'À propos' },

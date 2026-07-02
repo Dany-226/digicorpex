@@ -45,7 +45,7 @@ export default function Hero() {
                 <ChevronsRight size={16} />
               </Link>
               <Link
-                href="/services"
+                href="/agents"
                 className="inline-flex items-center gap-2 bg-surface-container-high text-on-surface px-8 py-4 rounded-sm font-headline font-bold text-sm hover:bg-surface-container transition-all duration-150 active:scale-95"
               >
                 Voir notre expertise
