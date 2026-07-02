@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Mail, Phone } from 'lucide-react'
 
 const navLinks = [
+  { href: '/agents', label: 'Agents IA' },
   { href: '/', label: 'Accueil' },
   { href: '/services', label: 'Services' },
   { href: '/blog', label: 'Blog' },
@@ -32,8 +33,8 @@ export default function Footer() {
               digicorpex
             </Link>
             <p className="text-sm text-inverse-on-surface leading-relaxed max-w-xs">
-              Agence web & digital spécialisée en développement, design UX/UI et stratégie SEO.
-              Bordeaux.
+              Agents IA pour PME et TPE. Automatisation des opérations, mémoire d&apos;entreprise,
+              pilotage autonome. Bordeaux.
             </p>
           </div>
 
