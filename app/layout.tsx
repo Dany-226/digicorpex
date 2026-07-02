@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Manrope, Inter } from 'next/font/google'
+import { Manrope, Inter, DM_Sans } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
@@ -12,6 +12,12 @@ const manrope = Manrope({
 
 const inter = Inter({
   variable: '--font-inter',
+  subsets: ['latin'],
+  display: 'swap',
+})
+
+const dmSans = DM_Sans({
+  variable: '--font-dm-sans',
   subsets: ['latin'],
   display: 'swap',
 })
@@ -63,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr" className={`${manrope.variable} ${inter.variable}`}>
+    <html lang="fr" className={`${manrope.variable} ${inter.variable} ${dmSans.variable}`}>
       <head>
         <script
           type="application/ld+json"

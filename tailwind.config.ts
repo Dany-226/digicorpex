@@ -50,6 +50,7 @@ const config: Config = {
         headline: ['var(--font-manrope)', 'sans-serif'],
         body: ['var(--font-inter)', 'sans-serif'],
         label: ['var(--font-inter)', 'sans-serif'],
+        display: ['var(--font-dm-sans)', 'sans-serif'],
       },
       borderRadius: {
         DEFAULT: '0.125rem',

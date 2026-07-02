@@ -7,9 +7,9 @@ import { Menu, X, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
-  { href: '/blog', label: 'Blog' },
+  { href: '/services/automatisation', label: 'Automatisation IA', emphasis: true },
   { href: '/services', label: 'Services' },
-  { href: '/services/automatisation', label: 'Automatisation IA' },
+  { href: '/blog', label: 'Blog' },
   { href: '/about', label: 'À propos' },
 ]
 
@@ -35,15 +35,17 @@ export default function Header() {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map(({ href, label }) => (
+            {navLinks.map(({ href, label, emphasis }) => (
               <Link
                 key={href}
                 href={href}
                 className={cn(
-                  'text-sm font-label transition-colors duration-200',
+                  "text-sm font-label transition-colors duration-200 after:content-[''] after:block after:w-0 after:h-px after:bg-on-surface after:transition-all after:duration-200 hover:after:w-full",
                   isActive(href)
                     ? 'text-on-surface border-b-2 border-on-surface pb-1'
-                    : 'text-on-surface-variant hover:text-on-surface'
+                    : emphasis
+                      ? 'text-slate-900 font-medium hover:text-on-surface'
+                      : 'font-light text-on-surface-variant hover:text-on-surface'
                 )}
               >
                 {label}
@@ -55,7 +57,7 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <Link
               href="/contact"
-              className="hidden md:inline-flex items-center gap-2 bg-secondary text-on-secondary px-6 py-2.5 rounded-sm font-headline font-bold text-sm hover:bg-secondary-dim transition-all duration-300"
+              className="hidden md:inline-flex items-center gap-2 bg-secondary text-on-secondary px-6 py-2.5 rounded-sm font-headline font-bold text-sm hover:bg-secondary-dim transition-all duration-150 active:scale-95"
             >
               Obtenir un devis
             </Link>
@@ -76,7 +78,7 @@ export default function Header() {
       {isOpen && (
         <div className="md:hidden glass-nav" style={{ borderTop: '1px solid rgba(164, 180, 190, 0.15)' }}>
           <nav className="max-w-7xl mx-auto px-8 py-6 flex flex-col gap-4">
-            {navLinks.map(({ href, label }) => (
+            {navLinks.map(({ href, label, emphasis }) => (
               <Link
                 key={href}
                 href={href}
@@ -85,7 +87,9 @@ export default function Header() {
                   'text-base font-label py-1 transition-colors duration-200',
                   isActive(href)
                     ? 'text-on-surface font-semibold'
-                    : 'text-on-surface-variant hover:text-on-surface'
+                    : emphasis
+                      ? 'text-slate-900 font-medium'
+                      : 'font-light text-on-surface-variant hover:text-on-surface'
                 )}
               >
                 {label}
@@ -95,7 +99,7 @@ export default function Header() {
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
-              className="inline-flex items-center gap-2 bg-secondary text-on-secondary px-6 py-2.5 rounded-sm font-headline font-bold text-sm hover:bg-secondary-dim transition-all duration-300 w-fit mt-2"
+              className="inline-flex items-center gap-2 bg-secondary text-on-secondary px-6 py-2.5 rounded-sm font-headline font-bold text-sm hover:bg-secondary-dim transition-all duration-150 active:scale-95 w-fit mt-2"
             >
               Obtenir un devis
               <ArrowRight size={14} />

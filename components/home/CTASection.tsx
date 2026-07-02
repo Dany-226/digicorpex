@@ -19,7 +19,7 @@ export default function CTASection() {
 
         <Link
           href="/contact"
-          className="inline-flex items-center gap-3 bg-surface-container-lowest text-on-surface px-10 py-5 rounded-sm font-headline font-bold text-lg shadow-2xl hover:bg-surface transition-colors duration-300"
+          className="inline-flex items-center gap-3 bg-surface-container-lowest text-on-surface px-10 py-5 rounded-sm font-headline font-bold text-lg shadow-2xl hover:bg-surface transition-all duration-150 active:scale-95"
         >
           Démarrer votre projet
           <ChevronsRight size={20} />

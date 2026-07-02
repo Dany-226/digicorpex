@@ -46,7 +46,7 @@ export default function ServicesGrid() {
           {services.map(({ icon: Icon, title, description }) => (
             <div
               key={title}
-              className="group bg-surface-container-lowest p-12 border-r border-b border-outline-variant/20 hover:bg-secondary transition-colors duration-500 cursor-default"
+              className="group bg-surface-container-lowest p-12 border-r border-b border-outline-variant/20 hover:bg-secondary hover:-translate-y-1 hover:shadow-sm transition-all duration-200 cursor-default"
             >
               <Icon
                 size={40}
