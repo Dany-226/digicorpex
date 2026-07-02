@@ -14,7 +14,7 @@
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 
-  /* shadcn/ui CSS variables — mapped to our design system */
+  /* shadcn/ui CSS variables - mapped to our design system */
   --background: 210 50% 97%;
   --foreground: 207 22% 19%;
   --card: 0 0% 100%;
