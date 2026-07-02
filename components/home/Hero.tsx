@@ -17,21 +17,22 @@ export default function Hero() {
             {/* Expertise Badge */}
             <div>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-tertiary-container text-on-tertiary-container text-xs font-label uppercase tracking-widest rounded-full">
-                Première Agence Digitale
+                Automatisation IA — Bordeaux
               </span>
             </div>
 
             {/* H1 */}
             <h1 className="font-display text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1] text-on-surface">
-              Architecturez votre
+              Vos opérations,
               <br />
-              <span className="text-secondary">Présence Digitale.</span>
+              <span className="text-secondary">automatisées.</span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed font-body">
-              Nous concevons des sites web à haute performance et des stratégies digitales
-              qui transforment votre visibilité en croissance mesurable.
+              Nous déployons des agents IA qui traitent vos appels, génèrent vos devis et
+              organisent votre mémoire d'entreprise — pendant que vous vous concentrez sur ce
+              qui compte.
             </p>
 
             {/* CTAs */}
@@ -56,16 +57,6 @@ export default function Hero() {
           {/* ── Right column -visual ────────────────── */}
           <div className="lg:col-span-5 relative">
             <AgentAnimation />
-
-            {/* Float stat card */}
-            <div className="absolute -bottom-6 -left-6 bg-surface-container-lowest p-8 editorial-shadow transition-all duration-200 hover:-translate-y-1 hover:shadow-sm">
-              <span className="block font-headline text-5xl font-extrabold text-on-surface leading-none">
-                98%
-              </span>
-              <p className="text-sm text-on-surface-variant mt-2 font-label uppercase tracking-widest">
-                Satisfaction client
-              </p>
-            </div>
           </div>
 
         </div>
