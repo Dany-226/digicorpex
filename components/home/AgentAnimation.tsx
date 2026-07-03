@@ -3,25 +3,31 @@
 import { useEffect, useState } from 'react'
 
 const SEQUENCE = [
-  { text: 'Analyse des appels entrants...', delay: 500 },
-  { text: '3 prospects qualifiés détectés', delay: 1200 },
-  { text: 'Création fiches CRM...', delay: 2000 },
-  { text: 'Devis générés : 3/3', delay: 2800 },
-  { text: 'Notification envoyée au commercial', delay: 3500 },
-  { text: '✓ Temps total : 47 secondes', delay: 4200 },
+  { text: 'Analyse des appels entrants...' },
+  { text: '3 prospects qualifiés détectés' },
+  { text: 'Création fiches CRM...', delay: 300 },
+  { text: 'Devis générés : 3/3', delay: 600 },
+  { text: 'Notification envoyée au commercial', delay: 900 },
+  { text: '✓ Temps total : 47 secondes', delay: 1200 },
 ]
 
+// The first 2 lines are visible from mount and cycle restart (instead of
+// building from 0) so the fixed-height terminal reads as active rather than
+// empty during the fill-in - the box height doesn't track content, only the
+// fill speed changed.
+const INITIAL_VISIBLE = 2
 const CYCLE_DURATION = 8000
 
 export default function AgentAnimation() {
-  const [visibleCount, setVisibleCount] = useState(0)
+  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE)
 
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = []
 
     const runCycle = () => {
-      setVisibleCount(0)
-      SEQUENCE.forEach((step, index) => {
+      setVisibleCount(INITIAL_VISIBLE)
+      SEQUENCE.slice(INITIAL_VISIBLE).forEach((step, i) => {
+        const index = INITIAL_VISIBLE + i
         timers.push(setTimeout(() => setVisibleCount(index + 1), step.delay))
       })
     }
