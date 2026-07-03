@@ -359,3 +359,24 @@ npx serve out
 - Ne jamais créer de styles inline — tout passe par les classes Tailwind avec les tokens
 - Les composants sont en TypeScript (`.tsx`)
 - Nommage : PascalCase pour les composants, kebab-case pour les fichiers MDX
+
+---
+
+## 13. Journal - État réel (juillet 2026)
+
+> Suivi des tâches confirmées et en attente. Mis à jour à chaque session significative.
+
+### Fait
+
+- **Email de contact remplacé** : `contact@digicorpex.com` -> `danielrollin@digicorpex.com` partout (Schema.org dans `app/layout.tsx` et `app/about/page.tsx`, route Brevo `app/api/contact/route.ts`, Footer, page `/contact`, `diagnostic.html`, docs projet). Choix assumé : adresse nominative en façade, pas d'alias générique.
+- **Script de régénération PDF** : `scripts/generate-diagnostic-pdf.mjs` (commande `npm run generate:diagnostic-pdf`) régénère `public/downloads/diagnostic-automatisation.pdf` depuis `diagnostic.html` via Puppeteer. Point d'attention documenté : ne pas ajouter de `footerTemplate` Puppeteer si le CSS source a déjà `@page { @bottom-center }` - certains builds Chromium honorent les deux et dupliquent le footer visuellement.
+- **Page `/agents` créée** avec `AgentWorkflow.tsx`, animation SVG signature (5 nœuds qui s'allument séquentiellement toutes les 800ms, connecteurs en `stroke-dashoffset`, cycle de 6s). Décision de design actée : une seule animation narrative forte plutôt que plusieurs effets dispersés. Redirection 301 `/services/automatisation` -> `/agents` gérée via `public/_redirects` (les `redirects` de `next.config.mjs` sont ignorés en mode `output: export`, donc non fonctionnels sur le build Cloudflare Pages réel).
+
+### Vérifié cette session
+
+- **Footer** : description à jour ("Agents IA pour PME et TPE...", l'ancienne version "Agence web & digital..." n'est plus présente) et lien "Agents IA" présent en première position de la nav, vers `/agents`. Confirmé.
+
+### À faire
+
+- **`/mentions-legales`** : lien mort dans le Footer, route jamais créée.
+- **Espace blanc sous le Hero (Home)** : constaté, non corrigé. Le terminal `AgentAnimation` (`min-h-[480px]`) est nettement plus haut que la colonne de texte à gauche ; en début de cycle d'animation (peu de lignes affichées), une zone vide importante se crée en bas de la section avant "Notre expertise". À traiter (hauteur adaptative, réalignement, ou réduction du `min-h`).
