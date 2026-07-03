@@ -281,7 +281,7 @@ Créer les fichiers MDX depuis le contenu du brouillon :
 - `app/api/contact/route.ts` POST
 - Validation → `Resend.send()` → JSON response
 - `RESEND_API_KEY` en variable d'environnement
-- Email vers `contact@digicorpex.com`
+- Email vers `danielrollin@digicorpex.com`
 
 **Livrable phase 5 :** Formulaire fonctionnel, emails reçus
 

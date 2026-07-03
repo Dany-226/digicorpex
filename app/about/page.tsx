@@ -23,7 +23,7 @@ const organizationSchema = {
   '@type': 'LocalBusiness',
   name: 'Digicorpex',
   url: 'https://digicorpex.com',
-  email: 'contact@digicorpex.com',
+  email: 'danielrollin@digicorpex.com',
   telephone: '+33674058657',
   address: {
     '@type': 'PostalAddress',

@@ -84,11 +84,11 @@ export default function Footer() {
             <ul className="space-y-4">
               <li>
                 <a
-                  href="mailto:contact@digicorpex.com"
+                  href="mailto:danielrollin@digicorpex.com"
                   className="flex items-start gap-2.5 text-sm text-inverse-on-surface hover:text-surface transition-colors duration-200"
                 >
                   <Mail size={14} className="mt-0.5 shrink-0" />
-                  contact@digicorpex.com
+                  danielrollin@digicorpex.com
                 </a>
               </li>
               <li>

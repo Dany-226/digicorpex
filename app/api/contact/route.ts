@@ -46,7 +46,7 @@ async function handleDiagnostic(email: string): Promise<NextResponse> {
     body: JSON.stringify({
       sender: { name: 'Digicorpex', email: 'noreply@digicorpex.com' },
       to: [{ email }],
-      replyTo: { email: 'contact@digicorpex.com' },
+      replyTo: { email: 'danielrollin@digicorpex.com' },
       subject: 'Votre diagnostic - Ce que vos journées vous coûtent vraiment',
       htmlContent: `
         <div style="font-family:system-ui,sans-serif;color:#475569;max-width:520px;margin:0 auto;padding:32px 0;">
@@ -61,7 +61,7 @@ async function handleDiagnostic(email: string): Promise<NextResponse> {
           </p>
           <p style="font-size:14px;color:#64748b;line-height:1.6;">- L'équipe Digicorpex</p>
           <hr style="border:none;border-top:1px solid #e2e8f0;margin:32px 0;">
-          <p style="font-size:11px;color:#94a3b8;">contact@digicorpex.com · digicorpex.com</p>
+          <p style="font-size:11px;color:#94a3b8;">danielrollin@digicorpex.com · digicorpex.com</p>
         </div>
       `,
       attachment: [
@@ -132,7 +132,7 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         sender: { name: 'Digicorpex', email: 'noreply@digicorpex.com' },
-        to: [{ email: 'contact@digicorpex.com' }],
+        to: [{ email: 'danielrollin@digicorpex.com' }],
         replyTo: { email: body.email },
         subject: `Nouvelle demande - ${body.objectif} - ${body.nom}`,
         htmlContent: `

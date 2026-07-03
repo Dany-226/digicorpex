@@ -331,7 +331,7 @@ Les réalisations à afficher dans le carousel :
 - **Guide-Aidant** — Ressources pour aidants familiaux — `https://guide-aidant.fr/`
 
 Contact réel :
-- Email : `contact@digicorpex.com`
+- Email : `danielrollin@digicorpex.com`
 - Tél : `+33 6 74 05 86 57`
 
 ---

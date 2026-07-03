@@ -58,10 +58,10 @@ export default function ContactPage() {
                   France
                 </p>
                 <a
-                  href="mailto:contact@digicorpex.com"
+                  href="mailto:danielrollin@digicorpex.com"
                   className="text-sm text-secondary hover:text-secondary-dim transition-colors mt-1 block"
                 >
-                  contact@digicorpex.com
+                  danielrollin@digicorpex.com
                 </a>
               </div>
             </div>
@@ -76,7 +76,7 @@ export default function ContactPage() {
                 30 minutes pour présenter votre projet.
               </p>
               <Link
-                href="mailto:contact@digicorpex.com"
+                href="mailto:danielrollin@digicorpex.com"
                 className="group inline-flex items-center gap-2 text-sm font-headline font-bold text-secondary hover:text-secondary-dim transition-colors"
               >
                 Prendre rendez-vous
