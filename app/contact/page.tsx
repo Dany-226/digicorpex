@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     'Décrivez votre projet en 5 minutes. Digicorpex vous répond avec une proposition personnalisée sous 48h. Bordeaux.',
   alternates: {
-    canonical: 'https://digicorpex.com/contact',
+    canonical: 'https://www.digicorpex.com/contact',
   },
   openGraph: {
     title: 'Contact Digicorpex -Initier un Partenariat',
     description:
       'Décrivez votre projet en 5 minutes. Réponse personnalisée sous 48h.',
-    url: 'https://digicorpex.com/contact',
+    url: 'https://www.digicorpex.com/contact',
   },
 }
 

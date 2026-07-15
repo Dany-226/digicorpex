@@ -76,7 +76,7 @@ export async function generateMetadata({
   const result = getArticleBySlug(params.slug)
   if (!result) return {}
   const { meta } = result
-  const canonicalUrl = `https://digicorpex.com/blog/${meta.slug}`
+  const canonicalUrl = `https://www.digicorpex.com/blog/${meta.slug}`
   return {
     title: meta.title,
     description: meta.description,
@@ -118,26 +118,26 @@ export default function ArticlePage({
     author: {
       '@type': 'Organization',
       name: 'Digicorpex',
-      url: 'https://digicorpex.com',
+      url: 'https://www.digicorpex.com',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Digicorpex',
     },
-    url: `https://digicorpex.com/blog/${meta.slug}`,
+    url: `https://www.digicorpex.com/blog/${meta.slug}`,
   }
 
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://digicorpex.com' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://digicorpex.com/blog' },
+      { '@type': 'ListItem', position: 1, name: 'Accueil', item: 'https://www.digicorpex.com' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.digicorpex.com/blog' },
       {
         '@type': 'ListItem',
         position: 3,
         name: meta.title,
-        item: `https://digicorpex.com/blog/${meta.slug}`,
+        item: `https://www.digicorpex.com/blog/${meta.slug}`,
       },
     ],
   }
@@ -363,7 +363,7 @@ export default function ArticlePage({
                   LinkedIn
                 </a>
                 <a
-                  href="https://digicorpex.com"
+                  href="https://www.digicorpex.com"
                   className="text-xs font-label uppercase tracking-widest text-secondary hover:text-secondary-dim transition-colors"
                 >
                   Portfolio

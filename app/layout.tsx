@@ -43,14 +43,14 @@ export const metadata: Metadata = {
     description:
       'Digicorpex est une agence web & digital spécialisée en développement web, design UX/UI et stratégie SEO.',
   },
-  metadataBase: new URL('https://digicorpex.com'),
+  metadataBase: new URL('https://www.digicorpex.com'),
 }
 
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Digicorpex',
-  url: 'https://digicorpex.com',
+  url: 'https://www.digicorpex.com',
   email: 'danielrollin@digicorpex.com',
   telephone: '+33674058657',
   address: {

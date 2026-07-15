@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getAllArticles } from '@/lib/mdx'
 
-const BASE_URL = 'https://digicorpex.com'
+const BASE_URL = 'https://www.digicorpex.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const articles = getAllArticles()

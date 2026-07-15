@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     "Digicorpex déploie des agents IA dans les PME et TPE : réception d'appels, génération de devis, rapprochement comptable, wiki interne. Bordeaux.",
   alternates: {
-    canonical: 'https://digicorpex.com/agents',
+    canonical: 'https://www.digicorpex.com/agents',
   },
   openGraph: {
     title: 'Agents IA pour PME - Digicorpex',
     description:
       "Digicorpex déploie des agents IA dans les PME et TPE : réception d'appels, génération de devis, rapprochement comptable, wiki interne.",
-    url: 'https://digicorpex.com/agents',
+    url: 'https://www.digicorpex.com/agents',
   },
 }
 

@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   description:
     'Digicorpex conçoit des sites web performants et des stratégies digitales qui transforment votre visibilité en croissance. Bordeaux.',
   alternates: {
-    canonical: 'https://digicorpex.com',
+    canonical: 'https://www.digicorpex.com',
   },
   openGraph: {
     title: 'Digicorpex - Agence Web & Digital à Bordeaux',
     description:
       'Digicorpex conçoit des sites web performants et des stratégies digitales qui transforment votre visibilité en croissance.',
-    url: 'https://digicorpex.com',
+    url: 'https://www.digicorpex.com',
   },
 }
 

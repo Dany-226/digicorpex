@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   description:
     'Articles sur le développement web, le design UX/UI et la stratégie SEO. Ressources éditoriales par Digicorpex, Bordeaux.',
   alternates: {
-    canonical: 'https://digicorpex.com/blog',
+    canonical: 'https://www.digicorpex.com/blog',
   },
   openGraph: {
     title: 'Blog Digicorpex -Insights & Stratégie Digitale',
     description:
       'Articles sur le développement web, le design UX/UI et la stratégie SEO.',
-    url: 'https://digicorpex.com/blog',
+    url: 'https://www.digicorpex.com/blog',
   },
 }
 

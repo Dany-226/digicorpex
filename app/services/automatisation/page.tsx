@@ -12,13 +12,13 @@ export const metadata: Metadata = {
   description:
     'Digicorpex déploie des systèmes d\'automatisation IA pour les PME : traitement des appels, génération de documents, base de connaissance. Diagnostic gratuit 30 min.',
   alternates: {
-    canonical: 'https://digicorpex.com/services/automatisation',
+    canonical: 'https://www.digicorpex.com/services/automatisation',
   },
   openGraph: {
     title: 'Automatisation IA pour PME - Digicorpex',
     description:
       'Des systèmes intelligents qui travaillent quand vous dormez. Diagnostic gratuit 30 min.',
-    url: 'https://digicorpex.com/services/automatisation',
+    url: 'https://www.digicorpex.com/services/automatisation',
   },
 }
 

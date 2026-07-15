@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     'Digicorpex est une agence web & digital fondée à Bordeaux. Nous concevons des présences digitales qui génèrent une croissance mesurable.',
   alternates: {
-    canonical: 'https://digicorpex.com/about',
+    canonical: 'https://www.digicorpex.com/about',
   },
   openGraph: {
     title: 'À propos - Digicorpex, agence web Bordeaux',
     description:
       'Digicorpex est une agence web & digital fondée à Bordeaux. Développement web, design UX/UI et stratégie SEO.',
-    url: 'https://digicorpex.com/about',
+    url: 'https://www.digicorpex.com/about',
   },
 }
 
@@ -22,7 +22,7 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Digicorpex',
-  url: 'https://digicorpex.com',
+  url: 'https://www.digicorpex.com',
   email: 'danielrollin@digicorpex.com',
   telephone: '+33674058657',
   address: {
