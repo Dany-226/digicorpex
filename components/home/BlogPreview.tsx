@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import type { ArticleMeta } from '@/lib/mdx'
+import ScrollReveal from '@/components/shared/ScrollReveal'
 
 interface BlogPreviewProps {
   articles: ArticleMeta[]
@@ -18,7 +19,7 @@ export default function BlogPreview({ articles }: BlogPreviewProps) {
       <div className="max-w-7xl mx-auto">
 
         {/* Section header */}
-        <div className="flex items-end justify-between mb-16">
+        <ScrollReveal className="flex items-end justify-between mb-16">
           <div>
             <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-4">
               Insights & Stratégie
@@ -32,48 +33,50 @@ export default function BlogPreview({ articles }: BlogPreviewProps) {
             Tous les articles
             <ArrowRight size={12} />
           </Link>
-        </div>
+        </ScrollReveal>
 
         {/* Asymmetric grid 8/4 */}
         <div className="grid lg:grid-cols-12 gap-16">
 
           {/* Featured article -col-span-8 */}
-          <article className="lg:col-span-8">
-            <Link href={`/blog/${featured.slug}`} className="block group">
-              {/* Image */}
-              <div className="relative aspect-[16/9] overflow-hidden rounded-sm mb-8">
-                <img src="/images/graphs.jpg" alt="Data & performance" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-slate-700/30 to-blue-900/10" />
-              </div>
+          <ScrollReveal className="lg:col-span-8">
+            <article>
+              <Link href={`/blog/${featured.slug}`} className="block group">
+                {/* Image */}
+                <div className="relative aspect-[16/9] overflow-hidden rounded-sm mb-8">
+                  <img src="/images/graphs.jpg" alt="Data & performance" className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-slate-700/30 to-blue-900/10" />
+                </div>
 
-              {/* Meta */}
-              <span className="text-[11px] font-label uppercase tracking-widest text-secondary">
-                {featured.category}
-              </span>
+                {/* Meta */}
+                <span className="text-[11px] font-label uppercase tracking-widest text-secondary">
+                  {featured.category}
+                </span>
 
-              {/* Title */}
-              <h3 className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-on-surface mt-3 mb-4 group-hover:text-secondary transition-colors duration-300">
-                {featured.title}
-              </h3>
+                {/* Title */}
+                <h3 className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-on-surface mt-3 mb-4 group-hover:text-secondary transition-colors duration-300">
+                  {featured.title}
+                </h3>
 
-              {/* Excerpt */}
-              <p className="text-lg text-on-surface-variant leading-relaxed mb-6 max-w-2xl">
-                {featured.description}
-              </p>
+                {/* Excerpt */}
+                <p className="text-lg text-on-surface-variant leading-relaxed mb-6 max-w-2xl">
+                  {featured.description}
+                </p>
 
-              {/* Read link */}
-              <span className="inline-flex items-center gap-2 text-sm font-label font-semibold text-secondary uppercase tracking-widest group-hover:gap-3 transition-all duration-300">
-                Lire l'article
-                <ArrowRight size={14} />
-              </span>
-            </Link>
-          </article>
+                {/* Read link */}
+                <span className="inline-flex items-center gap-2 text-sm font-label font-semibold text-secondary uppercase tracking-widest group-hover:gap-3 transition-all duration-300">
+                  Lire l'article
+                  <ArrowRight size={14} />
+                </span>
+              </Link>
+            </article>
+          </ScrollReveal>
 
           {/* Sidebar -col-span-4 */}
           <aside className="lg:col-span-4">
             <div className="flex flex-col">
               {sideArticles.map((article, i) => (
-                <div key={article.slug}>
+                <ScrollReveal key={article.slug} delay={(i + 1) * 0.1}>
                   <Link href={`/blog/${article.slug}`} className="group block py-6">
                     <span className="text-[11px] font-label uppercase tracking-widest text-secondary block mb-2">
                       {article.category}
@@ -85,7 +88,7 @@ export default function BlogPreview({ articles }: BlogPreviewProps) {
                   {i < sideArticles.length - 1 && (
                     <div className="h-px bg-outline-variant/30" />
                   )}
-                </div>
+                </ScrollReveal>
               ))}
             </div>
 

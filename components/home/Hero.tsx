@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight, ChevronsRight } from 'lucide-react'
 import AgentAnimation from './AgentAnimation'
+import ScrollReveal from '@/components/shared/ScrollReveal'
 
 export default function Hero() {
   return (
@@ -12,7 +13,7 @@ export default function Hero() {
         <div className="grid lg:grid-cols-12 gap-16 lg:gap-8 items-center">
 
           {/* ── Left column -text ──────────────────── */}
-          <div className="lg:col-span-7 flex flex-col gap-8">
+          <ScrollReveal className="lg:col-span-7 flex flex-col gap-8">
 
             {/* Expertise Badge */}
             <div>
@@ -52,7 +53,7 @@ export default function Hero() {
                 <ArrowRight size={16} />
               </Link>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* ── Right column -visual ────────────────── */}
           <div className="lg:col-span-5 relative">

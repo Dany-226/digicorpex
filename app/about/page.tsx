@@ -4,16 +4,16 @@ import Image from 'next/image'
 import { ArrowRight, Target, Zap, Eye, Users } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'À propos - Digicorpex',
+  title: 'À propos - Digicorpex | Agents IA & Automatisation Bordeaux',
   description:
-    'Digicorpex est une agence web & digital fondée à Bordeaux. Nous concevons des présences digitales qui génèrent une croissance mesurable.',
+    "Digicorpex conçoit des agents IA et des systèmes d'automatisation pour les PME et TPE : appels, devis, wiki IA / mémoire d'entreprise. Fondée à Bordeaux.",
   alternates: {
     canonical: 'https://www.digicorpex.com/about',
   },
   openGraph: {
-    title: 'À propos - Digicorpex, agence web Bordeaux',
+    title: 'À propos - Digicorpex, agents IA pour PME',
     description:
-      'Digicorpex est une agence web & digital fondée à Bordeaux. Développement web, design UX/UI et stratégie SEO.',
+      "Digicorpex conçoit des agents IA et des systèmes d'automatisation pour les PME et TPE. Fondée à Bordeaux.",
     url: 'https://www.digicorpex.com/about',
   },
 }
@@ -33,7 +33,7 @@ const organizationSchema = {
     addressCountry: 'FR',
   },
   description:
-    'Agence web & digital spécialisée en développement web, design UX/UI et stratégie SEO. Bordeaux.',
+    "Agents IA et automatisation pour PME et TPE : réception d'appels, génération de devis, wiki IA / mémoire d'entreprise. Bordeaux.",
 }
 
 const values = [
@@ -41,25 +41,25 @@ const values = [
     icon: Target,
     title: 'Précision architecturale',
     description:
-      'Chaque décision technique et créative est motivée par un objectif business précis. Nous ne construisons pas pour construire - nous construisons pour performer.',
+      "Chaque agent répond à une tâche précise, jamais à un besoin vague. Nous ne déployons pas un agent de plus - nous en déployons un qui prend réellement en charge un problème du quotidien.",
   },
   {
     icon: Eye,
     title: 'Transparence radicale',
     description:
-      "Pas de jargon inutile, pas de promesses vagues. Vous savez exactement ce que nous faisons, pourquoi, et comment le mesurer.",
+      "Pas de jargon inutile, pas de promesses vagues. Vous savez exactement ce que fait l'agent, pourquoi, et ce qu'il change concrètement dans votre quotidien.",
   },
   {
     icon: Zap,
     title: 'Impact mesurable',
     description:
-      "La qualité d'un site se juge dans les données - trafic organique, taux de conversion, temps de chargement. Nous définissons les indicateurs avant de commencer.",
+      "La valeur d'un agent se juge dans ce qu'il libère au quotidien : une tâche qui ne demande plus d'attention, un temps mort qui disparaît. C'est ce changement concret que nous visons, pas la démonstration.",
   },
   {
     icon: Users,
     title: 'Partenariat long terme',
     description:
-      "Nous refusons les projets one-shot. Notre modèle est celui de l'architecte - nous construisons avec vous, pas pour vous, sur la durée.",
+      "Nous refusons les agents livrés puis abandonnés. Notre modèle reste celui de l'architecte - nous restons dans la durée, à mesure que vos besoins et votre mémoire d'entreprise évoluent.",
   },
 ]
 
@@ -81,15 +81,16 @@ export default function AboutPage() {
             </span>
 
             <h1 className="font-headline text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05] text-on-surface mb-6">
-              Bâtir des
+              Des agents conçus
               <br />
-              <span className="text-secondary">Marques Digitales.</span>
+              <span className="text-secondary">pour rester.</span>
             </h1>
 
             <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed font-body">
-              Fondée à Bordeaux, Digicorpex réunit des experts du développement
-              web, du design et du référencement autour d'une conviction commune :
-              le digital doit produire des résultats tangibles.
+              Fondée à Bordeaux, Digicorpex conçoit des agents IA et des
+              systèmes d'automatisation pour les PME et TPE, autour d'une
+              conviction commune : chaque tâche répétitive mérite d'être
+              déléguée à un agent plutôt qu'à un outil de plus.
             </p>
           </div>
         </div>
@@ -106,7 +107,7 @@ export default function AboutPage() {
                 <div className="relative w-full h-full grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden rounded-sm">
                   <Image
                     src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-                    alt="Équipe Digicorpex - agence web Bordeaux"
+                    alt="Équipe Digicorpex - agents IA Bordeaux"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 42vw"
@@ -124,24 +125,27 @@ export default function AboutPage() {
 
               <div className="space-y-5 text-on-surface-variant leading-relaxed font-body">
                 <p>
-                  Digicorpex est née d'un constat simple : trop de projets web
-                  échouent non pas à cause d'un manque de talent technique, mais
-                  à cause d'un manque d'alignement stratégique. Des équipes brillantes
-                  qui construisent la mauvaise chose, dans le mauvais ordre, pour
-                  les mauvaises raisons.
+                  Digicorpex est née d'un constat simple : dans la plupart des
+                  PME et TPE, les tâches les plus chronophages restent gérées à
+                  la main - appels, devis, informations dispersées entre
+                  plusieurs outils - alors qu'un agent bien conçu peut les
+                  prendre en charge.
                 </p>
                 <p>
-                  Nous sommes basés à Bordeaux et nous travaillons avec des entreprises
-                  qui veulent faire de leur présence digitale un avantage
-                  concurrentiel réel - pas une case à cocher. E-commerce, SaaS,
-                  cabinets de conseil, professionnels de santé : nos clients ont
-                  des secteurs différents, mais un besoin commun.
+                  Nous sommes basés à Bordeaux et travaillons avec des PME et
+                  TPE qui veulent déléguer leurs tâches répétitives à des
+                  agents plutôt que d'empiler de nouveaux outils. E-commerce,
+                  SaaS, cabinets de conseil, professionnels de santé : nos
+                  clients viennent de secteurs différents, mais partagent le
+                  même besoin de retrouver du temps.
                 </p>
                 <p>
-                  Notre approche est celle de l'architecte numérique : comprendre
-                  l'existant, définir les fondations, puis construire avec rigueur.
-                  Chaque projet démarre par un audit, chaque livraison est
-                  accompagnée de métriques de référence.
+                  Notre approche reste celle de l'architecte : comprendre les
+                  process existants, identifier la tâche la plus coûteuse en
+                  temps, puis déployer l'agent qui la prend en charge. Chaque
+                  projet démarre par un diagnostic, et chaque agent déployé
+                  vient nourrir la mémoire d'entreprise plutôt que rester
+                  isolé.
                 </p>
               </div>
 

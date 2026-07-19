@@ -4,11 +4,11 @@ import { useEffect, useState } from 'react'
 
 const SEQUENCE = [
   { text: 'Analyse des appels entrants...' },
-  { text: '3 prospects qualifiés détectés' },
-  { text: 'Création fiches CRM...', delay: 300 },
-  { text: 'Devis générés : 3/3', delay: 600 },
+  { text: 'Prospects qualifiés détectés' },
+  { text: 'Création des fiches CRM...', delay: 300 },
+  { text: 'Devis générés automatiquement', delay: 600 },
   { text: 'Notification envoyée au commercial', delay: 900 },
-  { text: '✓ Temps total : 47 secondes', delay: 1200 },
+  { text: '✓ Traitement terminé', delay: 1200 },
 ]
 
 // The first 2 lines are visible from mount and cycle restart (instead of

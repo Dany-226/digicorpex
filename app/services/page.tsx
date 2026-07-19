@@ -5,16 +5,16 @@ import { CheckCircle2, ArrowRight, ChevronsRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Services - Développement Web, Design UX/UI & SEO',
+  title: 'Création de Site Web à Bordeaux | Digicorpex - Agents IA',
   description:
-    'Développement web sur-mesure, design UX/UI et stratégie SEO. Digicorpex architekte votre présence digitale de A à Z. Bordeaux.',
+    "Digicorpex est avant tout spécialisé en agents IA et automatisation pour PME et TPE. Nous concevons aussi des sites web sur-mesure (développement, design UX/UI, SEO) à Bordeaux, la fondation technique sur laquelle vos agents s'appuient.",
   alternates: {
     canonical: 'https://www.digicorpex.com/services',
   },
   openGraph: {
-    title: 'Services - Développement Web, Design UX/UI & SEO | Digicorpex',
+    title: 'Création de Site Web à Bordeaux - Digicorpex',
     description:
-      'Développement web sur-mesure, design UX/UI et stratégie SEO. Digicorpex architekte votre présence digitale de A à Z.',
+      "Digicorpex est avant tout spécialisé en agents IA et automatisation. Développement web, design UX/UI et SEO restent une prestation à part entière, à Bordeaux.",
     url: 'https://www.digicorpex.com/services',
   },
 }
@@ -40,13 +40,13 @@ const services: Service[] = [
     number: '01',
     title: 'Développement Web',
     description:
-      "De la landing page au produit SaaS complexe, nous concevons des interfaces qui performent. Performance, accessibilité et expérience utilisateur au cœur de chaque ligne de code.",
+      "Un site rapide, accessible et facile à maintenir, construit avec des technologies modernes (Next.js, React). C'est la base technique nécessaire avant d'y connecter des agents ou des automatisations.",
     items: [
-      'Sites web haute performance (Next.js, React)',
+      'Sites web rapides et accessibles (Next.js, React)',
       'Applications web sur-mesure',
       'Intégrations API & CMS headless',
-      'Optimisation Core Web Vitals',
-      'Déploiement CI/CD & hébergement',
+      'Optimisation technique (Core Web Vitals)',
+      'Déploiement et hébergement',
     ],
     ctaLabel: 'Démarrer votre projet',
     ctaHref: '/contact',
@@ -58,11 +58,11 @@ const services: Service[] = [
     number: '02',
     title: 'Design UX/UI',
     description:
-      "Un design qui convertit est un design qui respecte l'utilisateur. Nous concevons des interfaces à la fois esthétiques et fonctionnelles, ancrées dans la réalité de vos utilisateurs.",
+      "Une interface pensée pour être comprise et utilisée sans effort, pas seulement pour plaire. Nous partons des parcours réels de vos utilisateurs plutôt que des tendances graphiques du moment.",
     items: [
       'Audit UX & cartographie des parcours',
       'Wireframing & prototypage Figma',
-      'Design systems cohérents et scalables',
+      'Design system cohérent',
       'Design responsive mobile-first',
       'Tests utilisateurs & itérations',
     ],
@@ -76,13 +76,13 @@ const services: Service[] = [
     number: '03',
     title: 'Stratégie SEO',
     description:
-      "Le SEO n'est pas une tactique, c'est une infrastructure. Nous construisons une visibilité organique durable qui continue de travailler pour vous longtemps après la livraison.",
+      "Un référencement pensé comme une infrastructure plutôt qu'une tactique ponctuelle : structure technique propre, contenu pertinent, visibilité qui se construit dans la durée plutôt qu'un pic isolé.",
     items: [
       'Audit SEO technique complet',
       'Stratégie de contenu éditoriale',
       'Optimisation on-page & sémantique',
-      'Netlinking & construction d\'autorité',
-      'Reporting mensuel & ajustements',
+      'Netlinking et construction d\'autorité',
+      'Suivi et ajustements réguliers',
     ],
     ctaLabel: 'Auditer mon site',
     ctaHref: '/contact',
@@ -106,20 +106,23 @@ export default function ServicesPage() {
 
             {/* Badge */}
             <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-tertiary-container text-on-tertiary-container text-[10px] font-label uppercase tracking-[0.2em] rounded-full mb-8">
-              Notre Expertise
+              La fondation technique
             </span>
 
             {/* H1 */}
             <h1 className="font-headline text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05] text-on-surface mb-6">
-              Architecting
+              La base sur laquelle
               <br />
-              <span className="text-secondary">Digital Excellence.</span>
+              <span className="text-secondary">vos agents s'appuient.</span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed font-body">
-              Trois disciplines maîtrisées, un seul objectif : transformer
-              votre présence digitale en avantage concurrentiel mesurable.
+              Digicorpex est avant tout spécialisé en agents IA et
+              automatisation. Mais avant d'automatiser quoi que ce soit, encore
+              faut-il un site qui tient la route : développement web, design
+              UX/UI et SEO restent une prestation à part entière, la base
+              technique sur laquelle nous construisons ensuite vos agents.
             </p>
 
           </div>
@@ -219,14 +222,14 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto text-center">
 
           <h2 className="font-headline text-5xl font-extrabold text-on-secondary tracking-tight mb-6 leading-[1.1]">
-            Votre projet mérite
+            Un site solide,
             <br />
-            une expertise à sa hauteur.
+            avant tout le reste.
           </h2>
 
           <p className="text-on-secondary/80 text-lg max-w-lg mx-auto leading-relaxed mb-12 font-body">
-            Décrivez-nous votre contexte en 5 minutes. Nous vous répondons
-            avec une proposition personnalisée sous 48h.
+            Refonte, nouveau site ou passerelle vers vos futurs agents : un
+            premier échange suffit pour cadrer le projet.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

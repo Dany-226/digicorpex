@@ -1,15 +1,16 @@
 import Link from 'next/link'
 import { ChevronsRight } from 'lucide-react'
+import ScrollReveal from '@/components/shared/ScrollReveal'
 
 export default function CTASection() {
   return (
     <section className="bg-secondary text-on-secondary py-32 px-8">
-      <div className="max-w-7xl mx-auto text-center">
+      <ScrollReveal className="max-w-7xl mx-auto text-center">
 
         <h2 className="font-headline text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] mb-6">
-          Prêt à transformer
+          Vos opérations,
           <br />
-          votre présence digitale ?
+          bientôt automatisées.
         </h2>
 
         <p className="text-lg md:text-xl opacity-80 max-w-xl mx-auto leading-relaxed font-body mb-12">
@@ -25,7 +26,7 @@ export default function CTASection() {
           <ChevronsRight size={20} />
         </Link>
 
-      </div>
+      </ScrollReveal>
     </section>
   )
 }
