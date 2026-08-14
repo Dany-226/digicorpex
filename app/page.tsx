@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { getAllArticles } from '@/lib/mdx'
 import Hero from '@/components/home/Hero'
+import UseCasesSection from '@/components/home/UseCasesSection'
 import ServicesGrid from '@/components/home/ServicesGrid'
 import ContrastSection from '@/components/home/ContrastSection'
 import IntegrationsSection from '@/components/home/IntegrationsSection'
@@ -28,6 +29,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <UseCasesSection />
       <ServicesGrid />
       <ContrastSection />
       <IntegrationsSection />
