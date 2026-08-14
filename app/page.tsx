@@ -3,6 +3,7 @@ import { getAllArticles } from '@/lib/mdx'
 import Hero from '@/components/home/Hero'
 import ServicesGrid from '@/components/home/ServicesGrid'
 import ContrastSection from '@/components/home/ContrastSection'
+import IntegrationsSection from '@/components/home/IntegrationsSection'
 import BlogPreview from '@/components/home/BlogPreview'
 import CTASection from '@/components/home/CTASection'
 
@@ -29,6 +30,7 @@ export default function Home() {
       <Hero />
       <ServicesGrid />
       <ContrastSection />
+      <IntegrationsSection />
       <BlogPreview articles={articles} />
       <CTASection />
     </>
