@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Building2, ArrowRight, MapPin } from 'lucide-react'
+import { Building2, ArrowRight } from 'lucide-react'
 import ContactForm from '@/components/shared/ContactForm'
 
 export const metadata: Metadata = {
@@ -86,46 +86,6 @@ export default function ContactPage() {
                   className="group-hover:translate-x-1 transition-transform duration-300"
                 />
               </Link>
-            </div>
-
-            {/* Map section */}
-            <div>
-              <div className="h-[300px] overflow-hidden rounded-sm grayscale hover:grayscale-0 transition-all duration-700 bg-surface-container relative">
-                {/* Map placeholder */}
-                <div
-                  className="w-full h-full"
-                  style={{
-                    background:
-                      'linear-gradient(160deg, #eef4fa 0%, #ddeaf3 30%, #cadde9 60%, #a4b4be 100%)',
-                  }}
-                />
-                {/* Grid overlay for map feel */}
-                <div
-                  className="absolute inset-0 opacity-10"
-                  style={{
-                    backgroundImage:
-                      'linear-gradient(#6e7d86 1px, transparent 1px), linear-gradient(90deg, #6e7d86 1px, transparent 1px)',
-                    backgroundSize: '40px 40px',
-                  }}
-                />
-                {/* Animated pin */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-1">
-                  <div className="relative">
-                    <div className="w-4 h-4 rounded-full bg-secondary animate-pulse" />
-                    <div className="absolute inset-0 w-4 h-4 rounded-full bg-secondary/30 animate-ping" />
-                  </div>
-                  <div className="w-px h-4 bg-secondary/60" />
-                </div>
-                {/* Label */}
-                <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
-                  <div className="bg-surface-container-lowest px-3 py-1.5 rounded-sm flex items-center gap-1.5">
-                    <MapPin size={12} className="text-secondary" />
-                    <span className="text-xs font-label font-bold text-on-surface">
-                      Bordeaux
-                    </span>
-                  </div>
-                </div>
-              </div>
             </div>
 
           </div>
