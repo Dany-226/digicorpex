@@ -211,7 +211,7 @@ function UseCaseCard({ useCase, index }: { useCase: UseCase; index: number }) {
             {useCase.description}
           </p>
           <Link
-            href="/agents"
+            href="/contact"
             className="group/link inline-flex items-center gap-1.5 text-sm font-bold text-secondary hover:text-secondary-dim transition-colors duration-200 mt-2 w-fit"
           >
             En savoir plus

@@ -5,10 +5,13 @@ import path from 'path'
 const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email'
 
 interface ContactBody {
+  besoin: string
   nom: string
   email: string
-  objectif: string
-  brief: string
+  entreprise?: string
+  secteur?: string
+  outils?: string
+  timing?: string
   gdpr: boolean
 }
 
@@ -104,15 +107,9 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       )
     }
-    if (!body.objectif?.trim()) {
+    if (!body.besoin?.trim() || body.besoin.trim().length < 10) {
       return NextResponse.json(
-        { error: 'Objectif manquant.' },
-        { status: 400 }
-      )
-    }
-    if (!body.brief?.trim() || body.brief.trim().length < 10) {
-      return NextResponse.json(
-        { error: 'Brief trop court.' },
+        { error: 'Besoin trop court.' },
         { status: 400 }
       )
     }
@@ -122,6 +119,21 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       )
     }
+
+    /* ── Contexte optionnel -uniquement les champs renseignés ── */
+    const contextFields: [string, string | undefined][] = [
+      ['Entreprise', body.entreprise],
+      ['Secteur', body.secteur],
+      ['Outils déjà utilisés', body.outils],
+      ['Timing', body.timing],
+    ]
+    const contextRows = contextFields
+      .filter(([, value]) => value?.trim())
+      .map(([label, value]) => `<tr><td><strong>${label}</strong></td><td>${value}</td></tr>`)
+      .join('')
+    const contextSection = contextRows
+      ? `<h3>Contexte additionnel</h3><table>${contextRows}</table>`
+      : ''
 
     /* ── Send via Brevo Transactional Email API ── */
     const res = await fetch(BREVO_API_URL, {
@@ -134,16 +146,16 @@ export async function POST(req: NextRequest) {
         sender: { name: 'Digicorpex', email: 'noreply@digicorpex.com' },
         to: [{ email: 'danielrollin@digicorpex.com' }],
         replyTo: { email: body.email },
-        subject: `Nouvelle demande - ${body.objectif} - ${body.nom}`,
+        subject: `Nouvelle demande - ${body.nom}`,
         htmlContent: `
           <h2>Nouvelle demande de contact</h2>
           <table>
             <tr><td><strong>Nom</strong></td><td>${body.nom}</td></tr>
             <tr><td><strong>Email</strong></td><td>${body.email}</td></tr>
-            <tr><td><strong>Objectif</strong></td><td>${body.objectif}</td></tr>
           </table>
-          <h3>Brief projet</h3>
-          <p>${body.brief.replace(/\n/g, '<br>')}</p>
+          <h3>Besoin décrit</h3>
+          <p>${body.besoin.replace(/\n/g, '<br>')}</p>
+          ${contextSection}
           <hr>
           <p style="color:#999;font-size:12px">Envoyé via digicorpex.com - RGPD accepté</p>
         `,
