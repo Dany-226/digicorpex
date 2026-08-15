@@ -69,14 +69,15 @@ export default function ContactPage() {
             {/* Bloc consultation expédiée */}
             <div className="bg-surface-container-low p-8 border-l-4 border-secondary">
               <p className="font-headline font-bold text-on-surface mb-2">
-                Consultation expédiée
+                Besoin d&apos;en parler de vive voix ?
               </p>
               <p className="text-sm text-on-surface-variant leading-relaxed mb-4">
-                Vous préférez un échange direct ? Réservez un créneau de
-                30 minutes pour présenter votre projet.
+                Réservez un créneau de 30 minutes pour présenter votre projet.
               </p>
               <Link
-                href="mailto:danielrollin@digicorpex.com"
+                href="https://calendar.app.google/dazfTvR3EVEvZknQA"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-2 text-sm font-headline font-bold text-secondary hover:text-secondary-dim transition-colors"
               >
                 Prendre rendez-vous
