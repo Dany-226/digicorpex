@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Link from 'next/link'
 import { ChevronDown, ChevronsRight, Lock, CheckCircle2, Loader2 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -198,8 +199,14 @@ export default function ContactForm() {
           </div>
           <span className="text-xs text-on-surface-variant leading-relaxed">
             J&apos;accepte que ces informations soient utilisées pour traiter
-            ma demande, conformément à la politique de confidentialité de
-            Digicorpex.
+            ma demande, conformément à la{' '}
+            <Link
+              href="/confidentialite"
+              className="text-secondary hover:text-secondary-dim underline underline-offset-2 transition-colors duration-200"
+            >
+              politique de confidentialité
+            </Link>{' '}
+            de Digicorpex.
           </span>
         </label>
 
