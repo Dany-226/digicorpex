@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Mail, Phone } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Mentions légales | Digicorpex',
+  title: 'Mentions légales',
   description:
     "Mentions légales du site Digicorpex : éditeur, directeur de la publication, hébergement, propriété intellectuelle et données personnelles.",
   alternates: {

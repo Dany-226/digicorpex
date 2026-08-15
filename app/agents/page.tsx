@@ -6,7 +6,7 @@ import TarifAuto from '@/components/automatisation/TarifAuto'
 import AgentsCTA from '@/components/agents/AgentsCTA'
 
 export const metadata: Metadata = {
-  title: 'Agents IA pour PME - Digicorpex | Bordeaux',
+  title: 'Agents IA pour PME | Bordeaux',
   description:
     "Digicorpex déploie des agents IA dans les PME et TPE : réception d'appels, génération de devis, rapprochement comptable, wiki interne. Bordeaux.",
   alternates: {

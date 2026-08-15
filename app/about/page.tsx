@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { ArrowRight, Target, Zap, Eye, Users } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'À propos - Digicorpex | Agents IA & Automatisation Bordeaux',
+  title: 'À propos | Agents IA & Automatisation Bordeaux',
   description:
     "Digicorpex conçoit des agents IA et des systèmes d'automatisation pour les PME et TPE : appels, devis, wiki IA / mémoire d'entreprise. Fondée à Bordeaux.",
   alternates: {

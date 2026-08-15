@@ -8,7 +8,7 @@ import TarifAuto from '@/components/automatisation/TarifAuto'
 import CTAFinalAuto from '@/components/automatisation/CTAFinalAuto'
 
 export const metadata: Metadata = {
-  title: 'Automatisation IA - Systèmes intelligents pour PME | Digicorpex',
+  title: 'Automatisation IA - Systèmes intelligents pour PME',
   description:
     'Digicorpex déploie des systèmes d\'automatisation IA pour les PME : traitement des appels, génération de documents, base de connaissance. Diagnostic gratuit 30 min.',
   alternates: {

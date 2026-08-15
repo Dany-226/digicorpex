@@ -5,7 +5,7 @@ import { CheckCircle2, ArrowRight, ChevronsRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
-  title: 'Création de Site Web à Bordeaux | Digicorpex - Agents IA',
+  title: 'Création de Site Web à Bordeaux | Agents IA',
   description:
     "Digicorpex est avant tout spécialisé en agents IA et automatisation pour PME et TPE. Nous concevons aussi des sites web sur-mesure (développement, design UX/UI, SEO) à Bordeaux, la fondation technique sur laquelle vos agents s'appuient.",
   alternates: {
