@@ -23,6 +23,28 @@ const logos: BrandLogo[] = [
   { name: 'Salesforce', hex: '#00A1E0', path: 'M10.006 5.415a4.195 4.195 0 013.045-1.306c1.56 0 2.954.9 3.69 2.205.63-.3 1.35-.45 2.1-.45 2.85 0 5.159 2.34 5.159 5.22s-2.31 5.22-5.176 5.22c-.345 0-.69-.044-1.02-.104a3.75 3.75 0 01-3.3 1.95c-.6 0-1.155-.15-1.65-.375A4.314 4.314 0 018.88 20.4a4.302 4.302 0 01-4.05-2.82c-.27.062-.54.076-.825.076-2.204 0-4.005-1.8-4.005-4.05 0-1.5.811-2.805 2.01-3.51-.255-.57-.39-1.2-.39-1.846 0-2.58 2.1-4.65 4.65-4.65 1.53 0 2.85.705 3.72 1.8' },
 ]
 
+// Pinned release (not @latest) so the CDN asset never changes under us.
+// Slugs verified against the installed package's icons/ directory before use.
+const LOBEHUB_VERSION = '1.94.0'
+const lobehubIconUrl = (slug: string) =>
+  `https://unpkg.com/@lobehub/icons-static-svg@${LOBEHUB_VERSION}/icons/${slug}.svg`
+
+interface ModelLogo {
+  name: string
+  slug: string
+}
+
+const models: ModelLogo[] = [
+  { name: 'Claude (Anthropic)', slug: 'claude-color' },
+  { name: 'OpenAI', slug: 'openai' },
+  { name: 'Gemini (Google)', slug: 'gemini-color' },
+  { name: 'Perplexity', slug: 'perplexity-color' },
+  { name: 'DeepSeek', slug: 'deepseek-color' },
+  { name: 'Mistral AI', slug: 'mistral-color' },
+  { name: 'NousResearch (Hermes)', slug: 'nousresearch' },
+  { name: 'OpenClaw', slug: 'openclaw-color' },
+]
+
 const extras: { icon: LucideIcon; title: string; description: string }[] = [
   {
     icon: Plug2,
@@ -70,6 +92,23 @@ export default function IntegrationsSection() {
                 <svg viewBox="0 0 24 24" role="img" aria-label={logo.name} className="w-8 h-8">
                   <path d={logo.path} fill={logo.hex} />
                 </svg>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
+
+        {/* Models row */}
+        <p className="text-center text-xs font-label uppercase tracking-widest text-on-surface-variant mt-10 mb-6">
+          Modèles et fournisseurs IA compatibles
+        </p>
+        <div className="flex flex-wrap justify-center gap-4 md:gap-5">
+          {models.map((model, i) => (
+            <ScrollReveal key={model.name} delay={i * 0.04}>
+              <div
+                title={model.name}
+                className="group w-16 h-16 flex items-center justify-center bg-surface-container-lowest border border-[#ececec] rounded-sm transition-all duration-[250ms] ease-out hover:-translate-y-1 hover:shadow-editorial"
+              >
+                <img src={lobehubIconUrl(model.slug)} alt={model.name} width={32} height={32} className="w-8 h-8" />
               </div>
             </ScrollReveal>
           ))}
