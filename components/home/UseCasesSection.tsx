@@ -1,10 +1,11 @@
+import type { ReactNode } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Clock, Search, ClipboardList, FileCheck } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { ArrowRight, Search, FileText, CheckCircle } from 'lucide-react'
 import ScrollReveal from '@/components/shared/ScrollReveal'
 import UseCaseLogPanel from './UseCaseLogPanel'
 
 const MINT = '#5eca8a'
+const MINT_BG = 'rgba(94, 202, 138, 0.14)'
 
 interface LargeUseCase {
   size: 'large'
@@ -12,13 +13,17 @@ interface LargeUseCase {
   description: string
   processLines: string[]
   resultLine: string
+  lineStagger?: number
+  initialDelay?: number
 }
+
+type MockupVariant = 'reminder' | 'search' | 'checklist' | 'document'
 
 interface SmallUseCase {
   size: 'small'
   title: string
   description: string
-  icon: LucideIcon
+  variant: MockupVariant
 }
 
 type UseCase = LargeUseCase | SmallUseCase
@@ -44,52 +49,135 @@ const useCases: UseCase[] = [
       'Notes, messages ou données brutes sont mis en forme selon vos gabarits. Votre équipe relit et valide avant tout envoi.',
     processLines: [
       'Notes et messages reçus...',
+      'Photos jointes analysées...',
       'Mise en forme selon vos gabarits...',
       'Relecture requise...',
     ],
     resultLine: '✓ Brouillon prêt',
+    lineStagger: 260,
+    initialDelay: 1800,
   },
   {
     size: 'small',
     title: 'Relancer au bon moment',
     description:
       'Il repère ce qui attend une réponse, applique vos règles et prépare la relance adaptée.',
-    icon: Clock,
+    variant: 'reminder',
   },
   {
     size: 'small',
     title: 'Retrouver l\'information dans vos outils',
     description:
       'Il interroge uniquement les sources autorisées et indique les documents utilisés dans sa réponse.',
-    icon: Search,
+    variant: 'search',
   },
   {
     size: 'small',
     title: 'Tenir le suivi à jour',
     description:
       'Il synthétise les échanges, complète la fiche et prépare l\'étape suivante.',
-    icon: ClipboardList,
+    variant: 'checklist',
   },
   {
     size: 'small',
     title: 'Documenter la livraison',
     description:
       "Chaque automatisation livrée est accompagnée d'une documentation claire, pour garder la maîtrise de vos outils.",
-    icon: FileCheck,
+    variant: 'document',
   },
 ]
 
-function MockupPanel({ icon: Icon }: { icon: LucideIcon }) {
+function MintBadge({ children }: { children: ReactNode }) {
   return (
-    <div className="h-40 bg-surface-container-high px-6 flex flex-col justify-center gap-3">
-      <div className="flex items-center gap-2.5">
-        <div className="w-8 h-8 rounded-md bg-surface-container-lowest flex items-center justify-center shrink-0">
-          <Icon size={16} className="text-on-surface-variant" strokeWidth={1.75} />
-        </div>
-        <span className="w-2 h-2 rounded-full ml-auto shrink-0" style={{ backgroundColor: MINT }} />
+    <span
+      className="text-[10px] font-bold px-2 py-1 rounded-sm w-fit"
+      style={{ backgroundColor: MINT_BG, color: MINT }}
+    >
+      {children}
+    </span>
+  )
+}
+
+function ReminderMockup() {
+  return (
+    <div className="flex flex-col gap-2.5">
+      <span className="text-[10px] text-on-surface-variant/50 line-through decoration-on-surface-variant/40 truncate">
+        Devis #204 - envoyé le 12/08
+      </span>
+      <div className="flex items-center justify-between gap-2">
+        <MintBadge>Relance prête</MintBadge>
+        <ArrowRight size={13} style={{ color: MINT }} className="shrink-0" />
       </div>
-      <div className="h-2 bg-surface-container-highest rounded-sm w-full" />
-      <div className="h-2 bg-surface-container-highest rounded-sm w-3/5" />
+    </div>
+  )
+}
+
+function SearchMockup() {
+  return (
+    <div className="flex flex-col gap-2.5">
+      <div className="flex items-center gap-1.5 bg-surface-container-high rounded-sm px-2 py-1.5">
+        <Search size={11} className="text-on-surface-variant/60 shrink-0" />
+        <span className="text-[10px] text-on-surface-variant/50 truncate">facture client...</span>
+      </div>
+      <div className="flex items-center gap-1.5">
+        <FileText size={13} className="text-on-surface-variant shrink-0" />
+        <MintBadge>Trouvé dans Drive</MintBadge>
+      </div>
+    </div>
+  )
+}
+
+function ChecklistMockup() {
+  return (
+    <div className="flex flex-col gap-1.5">
+      <div className="flex items-center gap-1.5">
+        <CheckCircle size={12} style={{ color: MINT }} className="shrink-0" />
+        <span className="text-[10px] text-on-surface-variant/60 line-through decoration-on-surface-variant/40 truncate">
+          Appel de suivi effectué
+        </span>
+      </div>
+      <div className="flex items-center gap-1.5">
+        <CheckCircle size={12} style={{ color: MINT }} className="shrink-0" />
+        <span className="text-[10px] text-on-surface-variant/60 line-through decoration-on-surface-variant/40 truncate">
+          Fiche mise à jour
+        </span>
+      </div>
+      <div className="flex items-center gap-1.5">
+        <span className="w-2 h-2 rounded-full shrink-0 animate-pulse" style={{ backgroundColor: MINT }} />
+        <span className="text-[10px] text-on-surface-variant truncate">
+          Prochaine étape planifiée
+        </span>
+      </div>
+    </div>
+  )
+}
+
+function DocumentMockup() {
+  return (
+    <div className="flex flex-col gap-2.5">
+      <div className="flex items-center gap-1.5">
+        <FileText size={13} className="text-on-surface-variant shrink-0" />
+        <span className="text-[10px] text-on-surface-variant/70 truncate">Documentation.pdf</span>
+      </div>
+      <MintBadge>Prêt à partager</MintBadge>
+    </div>
+  )
+}
+
+const mockupsByVariant: Record<MockupVariant, () => ReactNode> = {
+  reminder: ReminderMockup,
+  search: SearchMockup,
+  checklist: ChecklistMockup,
+  document: DocumentMockup,
+}
+
+function MockupPanel({ variant }: { variant: MockupVariant }) {
+  const Mockup = mockupsByVariant[variant]
+  return (
+    <div className="h-40 bg-surface-container-high px-6 flex items-center justify-center">
+      <div className="w-full max-w-[220px] bg-surface-container-lowest rounded-sm editorial-shadow p-3.5">
+        <Mockup />
+      </div>
     </div>
   )
 }
@@ -105,9 +193,14 @@ function UseCaseCard({ useCase, index }: { useCase: UseCase; index: number }) {
     >
       <div className="group h-full flex flex-col bg-surface-container-lowest rounded-sm overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-editorial">
         {useCase.size === 'large' ? (
-          <UseCaseLogPanel processLines={useCase.processLines} resultLine={useCase.resultLine} />
+          <UseCaseLogPanel
+            processLines={useCase.processLines}
+            resultLine={useCase.resultLine}
+            lineStagger={useCase.lineStagger}
+            initialDelay={useCase.initialDelay}
+          />
         ) : (
-          <MockupPanel icon={useCase.icon} />
+          <MockupPanel variant={useCase.variant} />
         )}
 
         <div className="p-6 flex flex-col gap-2 flex-1">

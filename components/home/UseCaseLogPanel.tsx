@@ -5,38 +5,51 @@ import { useEffect, useState } from 'react'
 const NAVY = '#141a2e'
 const MINT = '#5eca8a'
 const CYCLE_DURATION = 6000
-const LINE_STAGGER = 200
 
 interface UseCaseLogPanelProps {
   processLines: string[]
   resultLine: string
+  lineStagger?: number
+  initialDelay?: number
 }
 
-export default function UseCaseLogPanel({ processLines, resultLine }: UseCaseLogPanelProps) {
+export default function UseCaseLogPanel({
+  processLines,
+  resultLine,
+  lineStagger = 200,
+  initialDelay = 0,
+}: UseCaseLogPanelProps) {
   const [visibleCount, setVisibleCount] = useState(0)
   const [showResult, setShowResult] = useState(false)
 
   useEffect(() => {
     const timers: ReturnType<typeof setTimeout>[] = []
+    let interval: ReturnType<typeof setInterval> | undefined
 
     const runCycle = () => {
       setVisibleCount(0)
       processLines.forEach((_, i) => {
-        timers.push(setTimeout(() => setVisibleCount(i + 1), (i + 1) * LINE_STAGGER))
+        timers.push(setTimeout(() => setVisibleCount(i + 1), (i + 1) * lineStagger))
       })
       timers.push(
-        setTimeout(() => setShowResult(true), (processLines.length + 1) * LINE_STAGGER)
+        setTimeout(() => setShowResult(true), (processLines.length + 1) * lineStagger)
       )
     }
 
-    runCycle()
-    const interval = setInterval(runCycle, CYCLE_DURATION)
+    // The initial delay only offsets the first cycle - once started, the loop
+    // keeps its normal cadence, so this panel's cascade never re-syncs with
+    // panels that started at t=0.
+    const startTimer = setTimeout(() => {
+      runCycle()
+      interval = setInterval(runCycle, CYCLE_DURATION)
+    }, initialDelay)
 
     return () => {
+      clearTimeout(startTimer)
       timers.forEach(clearTimeout)
-      clearInterval(interval)
+      if (interval) clearInterval(interval)
     }
-  }, [processLines])
+  }, [processLines, lineStagger, initialDelay])
 
   return (
     <div
