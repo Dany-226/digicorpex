@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { Mail, Phone } from 'lucide-react'
 
 const navLinks = [
@@ -26,11 +27,14 @@ export default function Footer() {
 
           {/* Brand + tagline */}
           <div>
-            <Link
-              href="/"
-              className="font-headline font-bold tracking-tighter text-xl text-surface-container-lowest block mb-4"
-            >
-              digicorpex
+            <Link href="/" className="inline-flex items-center mb-4">
+              <Image
+                src="/logo-light.svg"
+                alt="Digicorpex"
+                width={454}
+                height={76}
+                className="h-8 w-auto"
+              />
             </Link>
             <p className="text-sm text-inverse-on-surface leading-relaxed max-w-xs">
               Agents IA pour PME et TPE. Automatisation des opérations, mémoire d&apos;entreprise,

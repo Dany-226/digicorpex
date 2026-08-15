@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -25,11 +26,15 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link
-            href="/"
-            className="font-headline font-bold tracking-tighter text-xl text-on-surface"
-          >
-            digicorpex
+          <Link href="/" className="flex items-center shrink-0">
+            <Image
+              src="/logo-tagline.svg"
+              alt="Digicorpex - Vos Opérations, Automatisées"
+              width={753}
+              height={80}
+              priority
+              className="h-8 w-auto"
+            />
           </Link>
 
           {/* Desktop nav */}
