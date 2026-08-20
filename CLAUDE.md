@@ -350,6 +350,25 @@ npm run build
 npx serve out
 ```
 
+### Tester les Cloudflare Pages Functions (formulaire de contact et tout ce qui suivra)
+
+`npm run dev` (`next dev` seul) n'exécute PAS les fichiers sous `functions/` - ce sont des
+Cloudflare Pages Functions (routes serveur qui tournent sur le runtime Workers), un mécanisme
+totalement séparé de Next.js. En dev classique, un appel `fetch('/api/contact', ...)` retombe
+sur la route Next.js `app/api/contact/route.ts` si elle existe encore, ou sur un 404 sinon - dans
+les deux cas ça n'a rien à voir avec ce qui tourne réellement en production.
+
+Pour tester une Pages Function en conditions réelles :
+
+```bash
+npm run build:static          # génère /out
+npx wrangler pages dev out --compatibility-date=2026-01-01
+```
+
+Sans passer par `wrangler pages dev`, une Pages Function semblera cassée (erreur 400/404) alors
+qu'elle ne l'est pas - c'est juste que `next dev` n'a jamais eu accès au code qui la gère. Ne pas
+déboguer `functions/*` via `next dev`, dans cette session ou une future.
+
 ---
 
 ## 12. Convention de travail avec Claude Code
@@ -375,12 +394,15 @@ npx serve out
 
 - **`/mentions-legales` créée** : page statique (`app/mentions-legales/page.tsx`) - éditeur, directeur de publication, contact, hébergement (Cloudflare), propriété intellectuelle, données personnelles (renvoi vers `/confidentialite`). Existait déjà en local non commitée depuis une session précédente (19/07) ; vérifiée (aucun cadratin, design system respecté, `tsc --noEmit` propre) puis commitée. Le Footer pointait déjà vers cette route, rien à modifier côté intégration.
 - **Point d'attention - assets de marque multi-variantes** : Avant d'intégrer un nouvel asset de marque livré en plusieurs variantes (avec/sans tagline, clair/sombre), vérifier la cohérence de taille du wordmark entre les fichiers, pas seulement le padding/viewBox de chaque fichier pris isolément. Un écart de taille de police entre variantes ne se voit qu'en comparaison côte à côte à hauteur de rendu égale.
+- **`/confidentialite` créée** (session précédente) : la route existe désormais, plus un lien mort.
+- **Formulaire de contact migré vers Resend (Cloudflare Pages Function)** : `app/api/contact/route.ts` (Next.js Route Handler) ne s'exécutait en réalité jamais en production. Confirmé par deux vérifications indépendantes : build statique local (`STATIC_EXPORT=1 next build` liste la route en `ƒ Dynamic`, absente du dossier `/out` généré - aucun fichier `api/` nulle part dedans) et test live (`curl -I` sur `/api/contact` en prod renvoie 405 sur POST et 404 sur HEAD, signature exacte d'un hébergement 100% statique sans Pages Functions). Le formulaire échouait donc silencieusement pour tout visiteur depuis le passage en export statique, indépendamment du fournisseur d'emailing utilisé. Corrigé en créant `functions/api/contact.ts` (Cloudflare Pages Function, runtime Workers) qui intercepte `/api/contact` en production - l'URL appelée par `ContactForm.tsx` ne change pas. Brevo abandonné pour ce flux (conflit DKIM/SPF avec le MX Zoho existant à la racine du domaine, jamais résolu) au profit de Resend, domaine `digicorpex.com` vérifié (DKIM, SPF, DMARC). Testé de bout en bout via `wrangler pages dev` (voir section 11) : envoi réel accepté par l'API Resend (200), réception confirmée sur `danielrollin@digicorpex.com` le 20/08/2026.
 
 ### Vérifié cette session
 
 - **Footer** : description à jour ("Agents IA pour PME et TPE...", l'ancienne version "Agence web & digital..." n'est plus présente) et lien "Agents IA" présent en première position de la nav, vers `/agents`. Confirmé.
+- **Aucun autre appelant de `/api/contact`** : recherche exhaustive (`.ts`, `.tsx`, `.mjs`, `.js`, hors `node_modules`) - seuls `ContactForm.tsx` (formulaire de contact, migré) et `DiagnosticLeadMagnet.tsx` (`subject: 'Diagnostic automatisation'`, non affecté) postent vers cette route.
 
 ### À faire
 
-- **`/confidentialite`** : lien mort dans le Footer et référencé depuis `/mentions-legales`, route jamais créée.
 - **`/cgv`** : lien mort dans le Footer, route jamais créée.
+- **Diagnostic PDF (`handleDiagnostic` dans `app/api/contact/route.ts`) toujours cassé en prod, même cause structurelle** : reste sur Brevo, hors scope de la migration Resend de cette session. Dépend encore de `fs.readFileSync` pour lire le PDF (incompatible avec le runtime Workers d'une Pages Function - il faudra un autre mécanisme, ex. asset binding Cloudflare) et de la création/validation de `contact@digicorpex.com` côté expéditeur avant d'être testable. À traiter dans une session séparée.

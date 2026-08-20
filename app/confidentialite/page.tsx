@@ -72,9 +72,11 @@ export default function ConfidentialitePage() {
               </li>
               <li>Zoho Corporation : réception des emails de contact.</li>
               <li>
+                Resend : envoi des emails liés au formulaire de contact.
+              </li>
+              <li>
                 Brevo (Sendinblue SAS, 7 rue de Madrid, 75008 Paris) : envoi
-                du diagnostic PDF et gestion des emails liés au formulaire de
-                contact.
+                du diagnostic PDF.
               </li>
               <li>
                 Google LLC : gestion des rendez-vous (Google Agenda) et

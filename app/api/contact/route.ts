@@ -2,18 +2,12 @@ import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
+// Le formulaire de contact est géré par functions/api/contact.ts (Cloudflare
+// Pages Function, Resend) - cette route ne sert plus que le diagnostic PDF.
+// TODO(session séparée) : ce flux dépend encore de fs.readFileSync, incompatible
+// avec le runtime Workers, et de la création/validation de contact@digicorpex.com
+// côté expéditeur. Non migré, non testable pour l'instant.
 const BREVO_API_URL = 'https://api.brevo.com/v3/smtp/email'
-
-interface ContactBody {
-  besoin: string
-  nom: string
-  email: string
-  entreprise?: string
-  secteur?: string
-  outils?: string
-  timing?: string
-  gdpr: boolean
-}
 
 interface DiagnosticBody {
   email: string
@@ -87,91 +81,13 @@ async function handleDiagnostic(email: string): Promise<NextResponse> {
 
 export async function POST(req: NextRequest) {
   try {
-    const body = (await req.json()) as Partial<ContactBody> & Partial<DiagnosticBody>
+    const body = (await req.json()) as Partial<DiagnosticBody>
 
-    /* ── Diagnostic automatisation branch ── */
-    if (body.subject === 'Diagnostic automatisation') {
-      return handleDiagnostic(body.email ?? '')
+    if (body.subject !== 'Diagnostic automatisation') {
+      return NextResponse.json({ error: 'Requête non supportée.' }, { status: 400 })
     }
 
-    /* ── Validation ── */
-    if (!body.nom?.trim() || body.nom.trim().length < 2) {
-      return NextResponse.json(
-        { error: 'Nom invalide.' },
-        { status: 400 }
-      )
-    }
-    if (!body.email || !isValidEmail(body.email)) {
-      return NextResponse.json(
-        { error: 'Adresse email invalide.' },
-        { status: 400 }
-      )
-    }
-    if (!body.besoin?.trim() || body.besoin.trim().length < 10) {
-      return NextResponse.json(
-        { error: 'Besoin trop court.' },
-        { status: 400 }
-      )
-    }
-    if (!body.gdpr) {
-      return NextResponse.json(
-        { error: 'Consentement RGPD requis.' },
-        { status: 400 }
-      )
-    }
-
-    /* ── Contexte optionnel -uniquement les champs renseignés ── */
-    const contextFields: [string, string | undefined][] = [
-      ['Entreprise', body.entreprise],
-      ['Secteur', body.secteur],
-      ['Outils déjà utilisés', body.outils],
-      ['Timing', body.timing],
-    ]
-    const contextRows = contextFields
-      .filter(([, value]) => value?.trim())
-      .map(([label, value]) => `<tr><td><strong>${label}</strong></td><td>${value}</td></tr>`)
-      .join('')
-    const contextSection = contextRows
-      ? `<h3>Contexte additionnel</h3><table>${contextRows}</table>`
-      : ''
-
-    /* ── Send via Brevo Transactional Email API ── */
-    const res = await fetch(BREVO_API_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': process.env.BREVO_API_KEY ?? '',
-      },
-      body: JSON.stringify({
-        sender: { name: 'Digicorpex', email: 'noreply@digicorpex.com' },
-        to: [{ email: 'danielrollin@digicorpex.com' }],
-        replyTo: { email: body.email },
-        subject: `Nouvelle demande - ${body.nom}`,
-        htmlContent: `
-          <h2>Nouvelle demande de contact</h2>
-          <table>
-            <tr><td><strong>Nom</strong></td><td>${body.nom}</td></tr>
-            <tr><td><strong>Email</strong></td><td>${body.email}</td></tr>
-          </table>
-          <h3>Besoin décrit</h3>
-          <p>${body.besoin.replace(/\n/g, '<br>')}</p>
-          ${contextSection}
-          <hr>
-          <p style="color:#999;font-size:12px">Envoyé via digicorpex.com - RGPD accepté</p>
-        `,
-      }),
-    })
-
-    if (!res.ok) {
-      const detail = await res.text()
-      console.error('[Brevo error]', res.status, detail)
-      return NextResponse.json(
-        { error: "Erreur lors de l'envoi." },
-        { status: 500 }
-      )
-    }
-
-    return NextResponse.json({ ok: true }, { status: 200 })
+    return handleDiagnostic(body.email ?? '')
   } catch (err) {
     console.error('[Contact route error]', err)
     return NextResponse.json(
