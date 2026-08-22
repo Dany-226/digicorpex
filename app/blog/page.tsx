@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { getAllArticles } from '@/lib/mdx'
-import { ArrowRight, ChevronRight, Award } from 'lucide-react'
+import { ArrowRight, Award } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Blog - Insights & Stratégie Digitale',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   const articles = getAllArticles()
-  const [featured, second, third, ...rest] = articles
+  const [featured, ...otherArticles] = articles
 
   /* Category counts */
   const categoryCounts = articles.reduce<Record<string, number>>((acc, a) => {
@@ -122,20 +122,20 @@ export default function BlogPage() {
                 </article>
               )}
 
-              {/* 2-col grid */}
-              {(second || third) && (
+              {/* 2-col grid -tous les articles restants */}
+              {otherArticles.length > 0 && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-                  {[second, third].filter(Boolean).map((article) => (
-                    <article key={article!.slug}>
+                  {otherArticles.map((article) => (
+                    <article key={article.slug}>
                       <Link
-                        href={`/blog/${article!.slug}`}
+                        href={`/blog/${article.slug}`}
                         className="group block"
                       >
                         {/* Image aspect-square */}
                         <div className="relative aspect-square overflow-hidden rounded-sm bg-surface-container mb-5 grayscale hover:grayscale-0 transition-all duration-700">
                           <Image
                             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80"
-                            alt={article!.title}
+                            alt={article.title}
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-700"
                             sizes="(max-width: 640px) 100vw, 33vw"
@@ -143,35 +143,21 @@ export default function BlogPage() {
                         </div>
 
                         <span className="text-[11px] font-label uppercase tracking-widest text-secondary block mb-2">
-                          {article!.category}
+                          {article.category}
                         </span>
 
                         <h3 className="font-headline font-bold text-on-surface group-hover:text-secondary transition-colors duration-300 mb-3 leading-snug">
-                          {article!.title}
+                          {article.title}
                         </h3>
 
                         <p className="text-sm text-on-surface-variant leading-relaxed line-clamp-3">
-                          {article!.description}
+                          {article.description}
                         </p>
                       </Link>
                     </article>
                   ))}
                 </div>
               )}
-
-              {/* Pagination */}
-              <div className="flex items-center gap-6 pt-4">
-                <div className="w-12 h-[1px] bg-secondary" />
-                <button className="text-sm font-headline font-bold text-on-surface w-8 h-8 flex items-center justify-center">
-                  1
-                </button>
-                <button className="text-sm font-headline text-on-surface-variant hover:text-on-surface transition-colors w-8 h-8 flex items-center justify-center">
-                  2
-                </button>
-                <button className="flex items-center gap-1.5 text-sm font-label text-on-surface-variant hover:text-on-surface transition-colors ml-2">
-                  Next <ChevronRight size={14} />
-                </button>
-              </div>
             </div>
 
             {/* ── Sidebar col-span-4 ──────────────── */}
