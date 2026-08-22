@@ -40,16 +40,31 @@ Le site est un **rebuild complet** depuis un brouillon Base44 (React/Vite). On n
 
 ## 3. Structure des fichiers
 
+> Vérifiée contre le repo réel le 22/08/2026 (l'ancienne version de ce bloc datait d'avant
+> plusieurs refontes et migrations - Brevo→Resend notamment - et n'avait jamais été recalée).
+
 ```
 digicorpex/
 ├── app/
 │   ├── layout.tsx              # Layout racine (font, metadata globale)
 │   ├── page.tsx                # Home
+│   ├── globals.css
+│   ├── icon.svg                # Favicon (convention Next.js App Router)
+│   ├── robots.ts
+│   ├── sitemap.ts
 │   ├── services/
-│   │   └── page.tsx
+│   │   ├── page.tsx
+│   │   └── automatisation/
+│   │       └── page.tsx        # Redirige vers /agents en prod (next.config.mjs)
 │   ├── about/
 │   │   └── page.tsx
+│   ├── agents/
+│   │   └── page.tsx
 │   ├── contact/
+│   │   └── page.tsx
+│   ├── mentions-legales/
+│   │   └── page.tsx
+│   ├── confidentialite/
 │   │   └── page.tsx
 │   ├── blog/
 │   │   ├── page.tsx            # Liste des articles
@@ -57,38 +72,49 @@ digicorpex/
 │   │       └── page.tsx        # Article individuel
 │   └── api/
 │       └── contact/
-│           └── route.ts        # Endpoint Resend
+│           └── route.ts        # Diagnostic PDF uniquement (Brevo) - PAS le formulaire de contact
+├── functions/
+│   └── api/
+│       └── contact.ts          # Cloudflare Pages Function - formulaire de contact, Resend
 ├── components/
 │   ├── ui/                     # shadcn/ui (ne pas modifier manuellement)
+│   │   ├── badge.tsx, button.tsx, card.tsx, input.tsx, textarea.tsx
 │   ├── layout/
 │   │   ├── Header.tsx
 │   │   └── Footer.tsx
 │   ├── home/
-│   │   ├── Hero.tsx
-│   │   ├── ServicesGrid.tsx
-│   │   ├── RealisationsCarousel.tsx
-│   │   └── BlogPreview.tsx
+│   │   ├── Hero.tsx, AgentAnimation.tsx
+│   │   ├── UseCasesSection.tsx, UseCaseLogPanel.tsx
+│   │   ├── ServicesGrid.tsx, ContrastSection.tsx, IntegrationsSection.tsx
+│   │   ├── BlogPreview.tsx, CTASection.tsx
+│   ├── agents/
+│   │   ├── AgentsHero.tsx, AgentsGrid.tsx, AgentWorkflow.tsx, AgentsCTA.tsx
+│   ├── automatisation/
+│   │   ├── HeroAuto.tsx, AccrocheAuto.tsx, TeasingAuto.tsx, CeQuOnChange.tsx
+│   │   ├── CommentCaPasse.tsx, TarifAuto.tsx, CTAFinalAuto.tsx
 │   ├── blog/
-│   │   ├── ArticleHeader.tsx
-│   │   ├── ArticleContent.tsx
-│   │   ├── SocialSidebar.tsx
-│   │   ├── ExpertiseBadge.tsx
-│   │   └── RelatedArticles.tsx
+│   │   ├── DiagnosticLeadMagnet.tsx, SocialSidebar.tsx, StatGrid.tsx
 │   └── shared/
-│       ├── SEO.tsx
-│       └── ContactForm.tsx
+│       ├── ContactForm.tsx
+│       └── ScrollReveal.tsx
 ├── content/
-│   └── blog/                   # Fichiers .mdx (1 fichier = 1 article)
+│   └── blog/                   # Fichiers .mdx (1 fichier = 1 article) - 5 articles actuellement
 │       ├── cahier-des-charges.mdx
 │       ├── seo-conversationnel.mdx
-│       └── ...
+│       ├── contenu-ia-seo.mdx
+│       ├── google-maps-local.mdx
+│       └── wiki-ia-memoire-entreprise.mdx
 ├── lib/
 │   ├── mdx.ts                  # Utilitaires lecture MDX
-│   └── resend.ts               # Client Resend
+│   └── utils.ts
 ├── public/
+│   ├── _redirects              # Redirections Cloudflare Pages
+│   ├── logo.svg, logo-light.svg, logo-tagline.svg
+│   ├── downloads/               # diagnostic-automatisation.pdf, diagnostic.html
 │   └── images/
 ├── tailwind.config.ts          # Tokens design system (CRITIQUE)
 ├── next.config.mjs
+├── .dev.vars                    # Secrets locaux Wrangler (gitignore, jamais commité)
 └── CLAUDE.md                   # Ce fichier
 ```
 
