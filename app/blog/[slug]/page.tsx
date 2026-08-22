@@ -217,7 +217,7 @@ export default function ArticlePage({
       <div className="px-8 mb-16 bg-surface">
         <div className="max-w-7xl mx-auto">
           {meta.coverImage ? (
-            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-sm bg-surface-container">
+            <div className="relative aspect-[21/9] w-full overflow-hidden rounded-sm bg-surface-container grayscale hover:grayscale-0 transition-all duration-700">
               <Image
                 src={meta.coverImage}
                 alt={meta.title}
