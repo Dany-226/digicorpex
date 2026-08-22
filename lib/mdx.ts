@@ -14,16 +14,25 @@ export interface ArticleMeta {
 
 const BLOG_DIR = path.join(process.cwd(), 'content/blog')
 
+// En dessous de ce seuil, un article est considéré comme un brouillon
+// placeholder (ex: "Contenu à venir.") plutôt qu'un article publié - il
+// n'apparaît ni dans les listes, ni dans le sitemap, ni dans les pages
+// statiques générées (generateStaticParams), tant qu'il n'est pas rédigé.
+const MIN_PUBLISHED_CONTENT_LENGTH = 100
+
 export function getAllArticles(): ArticleMeta[] {
   if (!fs.existsSync(BLOG_DIR)) return []
 
   const files = fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith('.mdx'))
 
-  const articles = files.map((filename) => {
-    const raw = fs.readFileSync(path.join(BLOG_DIR, filename), 'utf-8')
-    const { data } = matter(raw)
-    return data as ArticleMeta
-  })
+  const articles = files
+    .map((filename) => {
+      const raw = fs.readFileSync(path.join(BLOG_DIR, filename), 'utf-8')
+      const { data, content } = matter(raw)
+      return { meta: data as ArticleMeta, content }
+    })
+    .filter(({ content }) => content.trim().length >= MIN_PUBLISHED_CONTENT_LENGTH)
+    .map(({ meta }) => meta)
 
   return articles.sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
