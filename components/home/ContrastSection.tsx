@@ -43,7 +43,7 @@ export default function ContrastSection() {
         {/* Section header */}
         <ScrollReveal className="mb-16">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-4">
-            Deux réflexes, et l'approche qui manquait
+            Deux réflexes, et l&apos;approche qui manquait
           </h2>
           <div className="w-20 h-1.5 bg-secondary rounded-sm" />
         </ScrollReveal>

@@ -65,7 +65,7 @@ export default function BlogPreview({ articles }: BlogPreviewProps) {
 
                 {/* Read link */}
                 <span className="inline-flex items-center gap-2 text-sm font-label font-semibold text-secondary uppercase tracking-widest group-hover:gap-3 transition-all duration-300">
-                  Lire l'article
+                  Lire l&apos;article
                   <ArrowRight size={14} />
                 </span>
               </Link>

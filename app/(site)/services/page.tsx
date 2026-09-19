@@ -113,13 +113,13 @@ export default function ServicesPage() {
             <h1 className="font-headline text-6xl md:text-7xl font-extrabold tracking-tight leading-[1.05] text-on-surface mb-6">
               La base sur laquelle
               <br />
-              <span className="text-secondary">vos agents s'appuient.</span>
+              <span className="text-secondary">vos agents s&apos;appuient.</span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed font-body">
               Digicorpex est avant tout spécialisé en agents IA et
-              automatisation. Mais avant d'automatiser quoi que ce soit, encore
+              automatisation. Mais avant d&apos;automatiser quoi que ce soit, encore
               faut-il un site qui tient la route : développement web, design
               UX/UI et SEO restent une prestation à part entière, la base
               technique sur laquelle nous construisons ensuite vos agents.

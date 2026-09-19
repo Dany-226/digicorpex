@@ -1,0 +1,471 @@
+
+.refonte{--bone:#eee9df;--ink:#151512;--muted:#69655e;--hair:rgba(21,21,18,.14)}
+.refonte *{box-sizing:border-box}.refonte{scroll-behavior:smooth}.refonte{margin:0;background:var(--bone);color:var(--ink);font-family:Inter,Arial,sans-serif}
+.refonte:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:radial-gradient(#111 .42px,transparent .5px);background-size:5px 5px;z-index:20}
+.refonte .home-nav{position:absolute;z-index:10;top:0;width:100%;height:76px;padding:0 4.5vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--hair)}
+.refonte .logo{font-size:20px;font-weight:750;letter-spacing:-.04em}.refonte .logo small{font-weight:400;color:var(--muted)}.refonte .home-nav a{font-size:12px;color:inherit;text-decoration:none;margin-left:25px}.refonte .navcta{border:1px solid;padding:10px 15px}
+.refonte .hero{height:100vh;min-height:720px;position:relative;overflow:hidden;background:linear-gradient(104deg,#f0ece3 0 44%,#e5dfd4 44% 100%)}
+/* classical envelope: only contours, light and shadows */
+.refonte .room{position:absolute;inset:0}.refonte .cornice{position:absolute;left:2.5vw;right:2.5vw;top:96px;height:17px;border-top:1px solid rgba(25,22,18,.13);border-bottom:1px solid rgba(25,22,18,.08)}
+.refonte .panel{position:absolute;left:3.5vw;top:135px;width:36vw;height:67vh;border:1px solid rgba(25,22,18,.10);box-shadow:inset 0 0 0 9px rgba(255,255,255,.09)}
+.refonte .window{position:absolute;right:3.7vw;top:11vh;width:30vw;height:71vh;border:1px solid rgba(25,22,18,.13);border-radius:15vw 15vw 0 0;box-shadow:inset 25px 0 55px rgba(255,255,255,.46),-22px 30px 70px rgba(40,33,25,.06)}
+.refonte .window:before{content:"";position:absolute;left:50%;height:100%;border-left:1px solid rgba(25,22,18,.10)}.refonte .window:after{content:"";position:absolute;top:47%;width:100%;border-top:1px solid rgba(25,22,18,.10)}
+.refonte .chandelier{position:absolute;left:52%;top:0;width:1px;height:135px;background:rgba(25,22,18,.15)}
+.refonte .chandelier i{position:absolute;top:127px;left:-33px;width:67px;height:31px;border:1px solid rgba(25,22,18,.13);border-radius:50% 50% 25% 25%;filter:drop-shadow(0 22px 13px rgba(0,0,0,.08))}
+.refonte .floor{position:absolute;left:-10%;right:-10%;bottom:-8%;height:31%;transform:rotate(-4deg);background:linear-gradient(90deg,rgba(32,27,22,.035),transparent 35%,rgba(32,27,22,.08));border-top:1px solid rgba(25,22,18,.06)}
+.refonte .copy{position:absolute;left:4.5vw;top:21vh;z-index:5;width:44vw}.refonte .eyebrow{font-size:10px;letter-spacing:.21em;text-transform:uppercase;margin-bottom:24px}
+.refonte h1{font:400 clamp(58px,6.5vw,105px)/.88 Georgia,serif;letter-spacing:-.06em;margin:0 0 28px}.refonte h1 em{font-weight:400}
+.refonte .lead{max-width:500px;font-size:17px;line-height:1.55;color:#504c46}.refonte .actions{display:flex;gap:10px;margin-top:31px}.refonte .btn{font-size:12px;text-decoration:none;color:inherit;border:1px solid;padding:13px 17px}.refonte .btn.dark{background:var(--ink);color:var(--bone)}
+/* sculptural AI island */
+.refonte .installation{position:absolute;z-index:4;right:7.5vw;bottom:12vh;width:45vw;height:51vh;min-height:410px;filter:drop-shadow(0 45px 38px rgba(30,25,20,.28))}
+.refonte .island{position:absolute;inset:0;clip-path:polygon(2% 21%,16% 6%,74% 0,98% 23%,91% 84%,70% 98%,15% 92%,0 69%);
+background:linear-gradient(121deg,#bbb5aa 0 5%,#494640 7% 15%,#121211 17% 63%,#3d3a35 65% 77%,rgba(238,235,227,.72) 79% 100%);overflow:hidden}
+.refonte .island:before{content:"";position:absolute;inset:0;background:
+linear-gradient(105deg,transparent 0 24%,rgba(255,255,255,.24) 24.4%,transparent 25% 52%,rgba(255,255,255,.10) 52.4%,transparent 53%),
+linear-gradient(167deg,transparent 0 61%,rgba(255,255,255,.17) 61.5%,transparent 62%);mix-blend-mode:screen}
+.refonte .rock{position:absolute;z-index:2;left:0;bottom:2%;width:56%;height:39%;clip-path:polygon(0 19%,77% 0,100% 36%,89% 87%,24% 100%,4% 72%);
+background:linear-gradient(28deg,#171716,#45413b 47%,#201f1d 75%,#625d54);box-shadow:inset 0 0 0 1px rgba(255,255,255,.13)}
+.refonte .glass{position:absolute;z-index:2;right:2%;top:1%;width:31%;height:94%;clip-path:polygon(28% 0,100% 23%,75% 100%,0 83%);
+background:linear-gradient(100deg,rgba(255,255,255,.02),rgba(255,255,255,.27),rgba(255,255,255,.025));border-left:1px solid rgba(255,255,255,.37)}
+.refonte .glass:after{content:"";position:absolute;left:42%;height:100%;border-left:1px solid rgba(255,255,255,.18)}
+.refonte .flow{position:absolute;z-index:5;inset:0;padding:10% 13%;display:flex;flex-direction:column;justify-content:center}
+.refonte .node{font-size:13px;font-weight:650;letter-spacing:.07em;color:#fff;background:rgba(8,8,7,.76);border:1px solid rgba(255,255,255,.56);padding:11px 14px;width:max-content;max-width:82%;opacity:.55;animation:dc-pulse 13.5s infinite;backdrop-filter:blur(12px);text-shadow:0 1px 3px #000}
+.refonte .node:nth-child(2){margin:18px 0 0 15%;animation-delay:1.5s}.refonte .node:nth-child(3){margin:18px 0 0 29%;animation-delay:3s}.refonte .node:nth-child(4){margin:18px 0 0 8%;animation-delay:4.5s}.refonte .node:nth-child(5){margin:18px 0 0 24%;animation-delay:6s}.refonte .node:nth-child(6){margin:18px 0 0 12%;animation-delay:7.5s}
+.refonte .scan{position:absolute;z-index:4;left:7%;right:8%;height:1px;background:linear-gradient(90deg,transparent,#fff,transparent);box-shadow:0 0 18px rgba(255,255,255,.55);animation:dc-scan 5s ease-in-out infinite}
+@keyframes dc-pulse{0%,10%{opacity:.55}14%,27%{opacity:1;transform:translateX(7px);background:rgba(5,5,5,.92);border-color:#fff}34%,100%{opacity:.55}}
+@keyframes dc-scan{0%{top:18%;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:82%;opacity:0}}
+.refonte .sculpt-caption{position:absolute;right:2%;bottom:-34px;font:italic 13px Georgia,serif;color:var(--muted)}
+/* content */
+.refonte .section{padding:110px 4.5vw;border-top:1px solid var(--hair)}.refonte .section h2{font:400 clamp(42px,5vw,75px)/.98 Georgia,serif;letter-spacing:-.045em;max-width:930px;margin:0 0 65px}
+.refonte .cases{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--hair)}.refonte .case{min-height:390px;padding:30px;border-right:1px solid var(--hair);position:relative;overflow:hidden}.refonte .case:last-child{border:0}
+.refonte .case .n{font-size:10px;letter-spacing:.17em}.refonte .case h3{font:400 35px/1 Georgia,serif;margin:110px 0 18px}.refonte .case p{font-size:14px;line-height:1.55;color:var(--muted);max-width:330px}
+.refonte .case:before{content:"";position:absolute;right:-45px;top:25px;width:165px;height:165px;border:1px solid rgba(0,0,0,.08);transform:rotate(25deg)}
+.refonte .case:hover:before{transform:rotate(42deg) scale(1.06);transition:.7s}
+.refonte .manifesto{background:#171714;color:#ebe6dc;display:grid;grid-template-columns:1.05fr .95fr;gap:8vw}.refonte .manifesto h2{margin:0}.refonte .steps{border-top:1px solid rgba(255,255,255,.18)}.refonte .step{padding:21px 0;border-bottom:1px solid rgba(255,255,255,.18);display:grid;grid-template-columns:50px 1fr;font-size:13px}
+.refonte .home-footer{padding:90px 4.5vw;background:#dcd6cb;display:flex;justify-content:space-between;align-items:end}.refonte .footerbig{font:400 clamp(48px,6vw,90px)/.92 Georgia,serif;letter-spacing:-.05em}
+@media(max-width:900px){.refonte .hero{height:auto;min-height:1100px}.refonte .copy{position:relative;top:auto;left:auto;width:auto;padding:145px 6vw 40px}.refonte .installation{position:relative;right:auto;bottom:auto;width:88vw;height:500px;margin:20px auto 130px}.refonte .window{right:-20vw;width:80vw}.refonte .panel{width:75vw}.refonte .cases{grid-template-columns:1fr}.refonte .case{border-right:0;border-bottom:1px solid var(--hair)}.refonte .manifesto{grid-template-columns:1fr}.refonte .links{display:none}}
+
+/* V4 Premium — material, light, depth and motion enhancement */
+.refonte .hero{background:
+ radial-gradient(ellipse at 79% 22%,rgba(255,255,255,.82),transparent 24%),
+ radial-gradient(ellipse at 66% 75%,rgba(188,159,112,.13),transparent 31%),
+ linear-gradient(105deg,#f3eee5 0 42%,#ded7cb 68%,#cfc6b8 100%)}
+.refonte .hero:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.32;background:
+ repeating-linear-gradient(103deg,transparent 0 62px,rgba(80,65,48,.018) 63px,transparent 65px),
+ radial-gradient(circle at 50% 120%,rgba(63,49,34,.16),transparent 44%)}
+.refonte .room{filter:drop-shadow(0 30px 50px rgba(64,48,31,.05))}
+.refonte .panel{background:linear-gradient(110deg,rgba(255,255,255,.12),transparent 48%);box-shadow:inset 0 0 0 9px rgba(255,255,255,.10),18px 25px 60px rgba(52,42,30,.035)}
+.refonte .window{background:linear-gradient(102deg,rgba(255,255,255,.04),rgba(255,255,255,.40) 58%,rgba(255,255,255,.74));box-shadow:inset 25px 0 55px rgba(255,255,255,.50),-28px 36px 90px rgba(40,33,25,.075)}
+.refonte .floor{height:35%;background:linear-gradient(90deg,rgba(44,34,24,.045),transparent 35%,rgba(32,27,22,.11)),repeating-linear-gradient(99deg,transparent 0 76px,rgba(53,42,30,.04) 77px,transparent 79px)}
+.refonte .copy{filter:drop-shadow(0 18px 28px rgba(255,255,255,.18))}.refonte .lead{font-size:18px;line-height:1.62}
+.refonte .installation{perspective:1200px;filter:drop-shadow(0 55px 48px rgba(30,25,20,.34));animation:dc-floatIsland 8s ease-in-out infinite}
+.refonte .installation:before{content:"";position:absolute;z-index:-1;left:8%;right:1%;bottom:-7%;height:21%;border-radius:50%;background:radial-gradient(ellipse,rgba(29,23,17,.34),rgba(29,23,17,.05) 55%,transparent 72%);filter:blur(20px);transform:rotate(-3deg)}
+.refonte .island{transform:rotateY(-2deg);background:
+ linear-gradient(118deg,rgba(232,224,210,.86) 0 4%,rgba(89,82,72,.78) 6% 13%,rgba(12,12,11,.99) 16% 60%,rgba(47,43,37,.96) 64% 75%,rgba(231,223,208,.78) 81% 100%)}
+.refonte .island:after{content:"";position:absolute;inset:-20%;background:linear-gradient(112deg,transparent 34%,rgba(255,236,199,.0) 42%,rgba(255,236,199,.34) 48%,rgba(255,255,255,.10) 52%,transparent 59%);transform:translateX(-65%);animation:dc-materialGlint 7s ease-in-out infinite;mix-blend-mode:screen}
+.refonte .rock{background:radial-gradient(circle at 25% 22%,rgba(151,134,108,.18),transparent 15%),linear-gradient(31deg,#11110f,#37332d 42%,#1b1916 68%,#5b5145);box-shadow:inset -25px -18px 50px rgba(0,0,0,.42),inset 14px 10px 28px rgba(255,255,255,.06)}
+.refonte .rock:after{content:"";position:absolute;inset:0;opacity:.26;background:repeating-radial-gradient(ellipse at 35% 40%,rgba(255,255,255,.13) 0 1px,transparent 1.5px 6px);mix-blend-mode:overlay}
+.refonte .glass{background:linear-gradient(98deg,rgba(255,255,255,.01),rgba(245,232,205,.12) 22%,rgba(255,255,255,.40) 50%,rgba(167,194,198,.09) 74%,rgba(255,255,255,.03));border-left:1px solid rgba(255,250,235,.55);filter:drop-shadow(0 0 22px rgba(255,245,218,.10))}
+.refonte .glass:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,transparent 20%,rgba(255,255,255,.25) 20.5%,transparent 21.5% 56%,rgba(255,255,255,.14) 57%,transparent 58%)}
+.refonte .flow{padding:9% 12%}.refonte .node{font-size:13px;letter-spacing:.075em;background:rgba(5,5,4,.70);border-color:rgba(255,246,226,.50);box-shadow:0 9px 26px rgba(0,0,0,.16);transition:.3s}
+.refonte .scan{left:5%;right:5%;height:2px;background:linear-gradient(90deg,transparent,rgba(255,229,180,.45),#fff7e8,rgba(255,229,180,.45),transparent);box-shadow:0 0 9px #fff,0 0 28px rgba(255,213,145,.55);animation:dc-scanPremium 5.5s cubic-bezier(.45,.05,.55,.95) infinite}
+.refonte .scan:after{content:"";position:absolute;left:47%;top:-5px;width:10px;height:10px;border-radius:50%;background:#fff8e8;box-shadow:0 0 20px 7px rgba(255,221,164,.5)}
+@keyframes dc-floatIsland{0%,100%{transform:translateY(0) rotate(.1deg)}50%{transform:translateY(-7px) rotate(-.12deg)}}
+@keyframes dc-materialGlint{0%,20%{transform:translateX(-70%);opacity:0}42%{opacity:.9}70%,100%{transform:translateX(75%);opacity:0}}
+@keyframes dc-scanPremium{0%{top:14%;opacity:0}12%{opacity:.95}50%{opacity:1}88%{opacity:.95}100%{top:86%;opacity:0}}
+@keyframes dc-pulse{0%,10%{opacity:.52;transform:translateX(0) scale(1)}14%,27%{opacity:1;transform:translateX(8px) scale(1.018);background:rgba(3,3,3,.91);border-color:#fff7e8;box-shadow:0 8px 34px rgba(255,224,172,.14)}34%,100%{opacity:.52;transform:translateX(0) scale(1)}}
+@media (prefers-reduced-motion:reduce){.refonte .installation,.refonte .island:after,.refonte .scan,.refonte .node{animation:none!important}}
+
+
+/* V4.2 — matières subtiles par section : roche, cristal, marbre */
+.refonte .section, .refonte .home-footer{isolation:isolate}
+.refonte .section::before,.refonte .section::after,.refonte .manifesto::before,.refonte .manifesto::after,.refonte .home-footer::before,.refonte .home-footer::after{content:"";position:absolute;pointer-events:none;z-index:-1}
+
+/* Cas d'usage — marbre ivoire, veines très légères et lumière rasante */
+.refonte #cas{position:relative;background:
+ radial-gradient(ellipse at 82% 4%,rgba(255,255,255,.88),transparent 32%),
+ radial-gradient(ellipse at 10% 88%,rgba(182,169,147,.18),transparent 34%),
+ linear-gradient(118deg,#eee9df 0%,#e6dfd2 52%,#f4f0e8 100%);overflow:hidden}
+.refonte #cas::before{inset:-12%;opacity:.52;background:
+ repeating-linear-gradient(117deg,transparent 0 86px,rgba(99,86,70,.055) 88px,transparent 91px 176px),
+ linear-gradient(22deg,transparent 0 44%,rgba(255,255,255,.46) 45%,transparent 47% 100%);filter:blur(.25px);transform:rotate(-2deg)}
+.refonte #cas::after{width:46vw;height:46vw;right:-17vw;top:-27vw;border:1px solid rgba(255,255,255,.72);border-radius:50%;box-shadow:0 0 80px rgba(255,255,255,.35),inset 0 0 70px rgba(255,255,255,.22)}
+.refonte #cas .cases{background:rgba(247,243,235,.28);backdrop-filter:blur(3px);box-shadow:0 28px 80px rgba(54,44,33,.055)}
+.refonte #cas .case{background:linear-gradient(145deg,rgba(255,255,255,.26),rgba(255,255,255,.04))}
+
+/* Méthode — roche noire / obsidienne, sans aplat noir */
+.refonte .manifesto{position:relative;background:
+ radial-gradient(circle at 84% 18%,rgba(191,176,148,.13),transparent 24%),
+ radial-gradient(circle at 12% 92%,rgba(255,255,255,.055),transparent 31%),
+ linear-gradient(132deg,#0e0e0d,#1b1a18 46%,#10100f 100%);overflow:hidden}
+.refonte .manifesto::before{inset:-18%;opacity:.68;background:
+ linear-gradient(132deg,transparent 0 27%,rgba(255,255,255,.035) 28%,transparent 29% 52%,rgba(197,182,155,.055) 53%,transparent 55%),
+ repeating-linear-gradient(17deg,transparent 0 73px,rgba(255,255,255,.022) 74px,transparent 76px 151px);filter:blur(.35px);transform:scale(1.1)}
+.refonte .manifesto::after{width:52vw;height:22vw;right:-12vw;top:-8vw;background:radial-gradient(ellipse,rgba(225,205,169,.12),rgba(255,255,255,.025) 38%,transparent 70%);filter:blur(24px);transform:rotate(-14deg)}
+.refonte .manifesto .steps{background:rgba(255,255,255,.018);box-shadow:inset 1px 0 rgba(255,255,255,.055);backdrop-filter:blur(2px)}
+.refonte .manifesto .step{transition:background .35s ease,padding-left .35s ease}.refonte .manifesto .step:hover{background:rgba(255,255,255,.035);padding-left:10px}
+
+/* Footer / CTA — cristal fumé sur pierre claire */
+.refonte .home-footer{position:relative;background:
+ radial-gradient(ellipse at 74% 28%,rgba(255,255,255,.78),transparent 24%),
+ linear-gradient(112deg,#d9d2c6,#c9c1b4 52%,#e5dfd5);overflow:hidden}
+.refonte .home-footer::before{width:44vw;height:34vw;right:-5vw;top:-14vw;background:
+ linear-gradient(128deg,rgba(255,255,255,.05),rgba(255,255,255,.52) 31%,rgba(255,255,255,.08) 32% 54%,rgba(106,94,78,.08) 55%,rgba(255,255,255,.18));
+ clip-path:polygon(8% 9%,78% 0,100% 31%,80% 92%,25% 100%,0 61%);filter:drop-shadow(0 30px 38px rgba(44,36,28,.10))}
+.refonte .home-footer::after{left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);box-shadow:0 0 28px rgba(255,255,255,.42)}
+.refonte .home-footer .btn{position:relative;background:rgba(20,20,17,.94);box-shadow:0 16px 45px rgba(33,27,21,.13)}
+
+/* Reflets lumineux lents : présence, pas effet gadget */
+.refonte #cas .cases::after{content:"";position:absolute;inset:-80% auto -80% -30%;width:16%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.26),transparent);transform:rotate(14deg);animation:dc-sectionLight 13s ease-in-out infinite;pointer-events:none}
+@keyframes dc-sectionLight{0%,24%{left:-30%;opacity:0}34%{opacity:.6}58%{left:112%;opacity:.18}59%,100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.refonte #cas .cases::after{animation:none}}
+
+
+/* Workflow V4.1 — no frame, no separator lines */
+.refonte .manifesto .steps{
+  position:relative;
+  background:transparent!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  border:0!important;
+  padding:8px 0 8px 34px;
+}
+.refonte .manifesto .steps::before{
+  content:"";
+  position:absolute;
+  left:43px;
+  top:30px;
+  bottom:30px;
+  width:1px;
+  background:rgba(236,230,219,.13);
+}
+.refonte .manifesto .step{
+  --delay:0s;
+  position:relative;
+  min-height:82px;
+  padding:24px 0 24px 76px!important;
+  border:0!important;
+  display:block!important;
+  background:transparent!important;
+  opacity:.34;
+  color:#a9a39a;
+  transition:none!important;
+  animation:dc-workflowStep 12s linear infinite;
+}
+.refonte .manifesto .step:nth-child(1){--delay:0s}
+.refonte .manifesto .step:nth-child(2){--delay:-9.6s}
+.refonte .manifesto .step:nth-child(3){--delay:-7.2s}
+.refonte .manifesto .step:nth-child(4){--delay:-4.8s}
+.refonte .manifesto .step:nth-child(5){--delay:-2.4s}
+.refonte .manifesto .step span:first-child{
+  position:absolute;
+  left:-2px;
+  top:23px;
+  width:40px;
+  font:400 15px/1 Georgia,serif;
+  letter-spacing:.04em;
+}
+.refonte .manifesto .step span:last-child{
+  display:block;
+  font-size:17px;
+  letter-spacing:.01em;
+}
+.refonte .manifesto .step::before{
+  content:"";
+  position:absolute;
+  left:3px;
+  top:27px;
+  width:13px;height:13px;
+  border-radius:50%;
+  border:1px solid rgba(239,231,217,.42);
+  background:#171714;
+  transform:translateX(34px);
+  z-index:3;
+  animation:dc-workflowNode 12s linear infinite;
+  animation-delay:var(--delay);
+}
+.refonte .manifesto .step::after{
+  content:"";
+  position:absolute;
+  left:43px;
+  top:40px;
+  width:1px;
+  height:82px;
+  background:linear-gradient(#f5e8ce,#d2b780);
+  transform-origin:top;
+  transform:scaleY(0);
+  opacity:0;
+  box-shadow:0 0 9px rgba(238,211,161,.6);
+  animation:dc-workflowLine 12s linear infinite;
+  animation-delay:var(--delay);
+}
+.refonte .manifesto .step:last-child::after{display:none}
+.refonte .manifesto .step{
+  animation-delay:var(--delay);
+}
+@keyframes dc-workflowStep{
+  0%,8%{opacity:.34;color:#aaa39a;text-shadow:none}
+  12%,82%{opacity:1;color:#f0ebe2;text-shadow:0 0 14px rgba(244,225,191,.18)}
+  86%,100%{opacity:.34;color:#aaa39a;text-shadow:none}
+}
+@keyframes dc-workflowNode{
+  0%,8%{background:#171714;border-color:rgba(239,231,217,.35);box-shadow:none}
+  10%,15%{background:#fff5e5;border-color:#fff;box-shadow:0 0 7px #fff,0 0 24px rgba(236,199,135,.8),0 0 44px rgba(236,199,135,.35)}
+  18%,82%{background:#ead6b1;border-color:#f5e8cf;box-shadow:0 0 9px rgba(239,208,153,.48)}
+  86%,100%{background:#171714;border-color:rgba(239,231,217,.35);box-shadow:none}
+}
+@keyframes dc-workflowLine{
+  0%,11%{transform:scaleY(0);opacity:0}
+  14%{opacity:1}
+  28%,82%{transform:scaleY(1);opacity:.78}
+  86%,100%{transform:scaleY(0);opacity:0}
+}
+@media (prefers-reduced-motion:reduce){
+ .refonte .manifesto .step,.refonte .manifesto .step::before,.refonte .manifesto .step::after{animation:none!important;opacity:1;color:#f0ebe2}
+ .refonte .manifesto .step::before{background:#ead6b1;box-shadow:0 0 8px rgba(239,208,153,.4)}
+ .refonte .manifesto .step::after{transform:scaleY(1);opacity:.65}
+}
+
+
+
+/* CONNECTORS V2 — roche brute -> matière lisse / automatisation */
+.refonte .connectors{
+  position:relative;overflow:hidden;padding:122px 4.5vw 132px;
+  color:#eee9df;background:#0c0c0b;isolation:isolate;
+}
+.refonte .connectors::before{
+  content:"";position:absolute;inset:0;z-index:-5;
+  background:
+    linear-gradient(180deg,rgba(5,5,5,.10) 0%,rgba(9,9,8,.42) 28%,rgba(230,226,218,.24) 58%,rgba(239,235,227,.94) 86%,#eee9df 100%),
+    url("/refonte/rock.webp") center 38%/cover no-repeat;
+  filter:grayscale(.22) contrast(1.15) brightness(.68);
+}
+.refonte .connectors::after{
+  content:"";position:absolute;z-index:-4;inset:42% -10% -16%;
+  background:
+    radial-gradient(ellipse at 58% 28%,rgba(255,255,255,.88),rgba(255,255,255,.18) 35%,transparent 64%),
+    linear-gradient(180deg,transparent,#f0ece4 76%);
+  filter:blur(5px);
+}
+.refonte .connectors .rock-transition{
+  position:absolute;z-index:-3;left:-5%;right:-5%;top:33%;height:48%;
+  background:
+    linear-gradient(180deg,rgba(8,8,7,.18),rgba(238,234,226,.72)),
+    url("/refonte/texture-black.webp") center 42%/cover;
+  opacity:.40;mix-blend-mode:screen;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 18%,#000 67%,transparent);
+  mask-image:linear-gradient(180deg,transparent,#000 18%,#000 67%,transparent);
+}
+.refonte .connectors .light-field{
+  position:absolute;z-index:-2;left:-18%;top:41%;width:140%;height:34%;
+  background:linear-gradient(103deg,transparent 18%,rgba(255,255,255,.05) 38%,rgba(255,255,255,.76) 49%,rgba(255,255,255,.06) 60%,transparent 77%);
+  filter:blur(16px);transform:rotate(-3deg);animation:dc-fieldLight 13s ease-in-out infinite;
+}
+@keyframes dc-fieldLight{0%,100%{transform:translateX(-13%) rotate(-3deg);opacity:.25}50%{transform:translateX(13%) rotate(-3deg);opacity:.72}}
+.refonte .connectors-head{max-width:820px;margin-bottom:50px;text-shadow:0 2px 24px rgba(0,0,0,.48)}
+.refonte .connectors h2{margin-bottom:18px;color:#f1ece3}
+.refonte .connectors-intro{max-width:680px;color:#c6c0b7;font-size:15px;line-height:1.65}
+.refonte .tool-groups{position:relative}
+.refonte .tool-label{margin:30px 0 14px;font-size:9px;letter-spacing:.20em;text-transform:uppercase;color:#c9c2b7}
+.refonte .marquee{position:relative;overflow:hidden;margin-left:-4.5vw;margin-right:-4.5vw;padding:8px 0 14px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.refonte .marquee::after{content:"";position:absolute;inset:2px 0 auto;height:72px;pointer-events:none;
+ background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,.18) 43%,rgba(255,255,255,.72) 50%,rgba(255,255,255,.16) 57%,transparent 75%);
+ filter:blur(13px);animation:dc-logoLight 7s ease-in-out infinite}
+@keyframes dc-logoLight{0%{transform:translateX(-60%);opacity:0}20%{opacity:.55}80%{opacity:.55}100%{transform:translateX(60%);opacity:0}}
+.refonte .marquee-track{display:flex;width:max-content;gap:12px;will-change:transform}
+.refonte .marquee.left .marquee-track{animation:dc-marqueeLeft 28s linear infinite}
+.refonte .marquee.right .marquee-track{animation:dc-marqueeRight 25s linear infinite}
+@keyframes dc-marqueeLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes dc-marqueeRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.refonte .brand-chip{
+  width:148px;height:72px;flex:0 0 148px;display:flex;align-items:center;justify-content:center;gap:10px;
+  background:rgba(247,244,238,.90);border:1px solid rgba(255,255,255,.45);
+  box-shadow:0 13px 38px rgba(0,0,0,.15),inset 0 1px rgba(255,255,255,.85);
+  backdrop-filter:blur(12px);color:#161613;
+}
+.refonte .brand-chip img{max-width:29px;max-height:29px;object-fit:contain}
+.refonte .brand-chip b{font-size:12px;font-weight:620;white-space:nowrap}
+.refonte .ai-marquee .brand-chip{background:rgba(17,17,15,.82);color:#f3eee5;border-color:rgba(255,255,255,.16);
+ box-shadow:0 12px 34px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.14)}
+.refonte .ai-marquee .brand-chip img{filter:none}
+.refonte .connect-methods{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:55px}
+.refonte .connect-method{
+  min-height:190px;padding:25px;position:relative;overflow:hidden;color:#f1ece3;
+  border:1px solid rgba(255,255,255,.18);box-shadow:0 18px 45px rgba(20,17,13,.15);
+  background-position:center;background-size:cover;isolation:isolate;
+}
+.refonte .connect-method:nth-child(1){background-image:linear-gradient(145deg,rgba(8,8,7,.50),rgba(8,8,7,.82)),url("/refonte/rock.webp");background-size:210%}
+.refonte .connect-method:nth-child(2){background-image:linear-gradient(145deg,rgba(8,8,7,.42),rgba(8,8,7,.80)),url("/refonte/texture-crystal.webp");background-size:180%}
+.refonte .connect-method:nth-child(3){background-image:linear-gradient(145deg,rgba(8,8,7,.45),rgba(8,8,7,.78)),url("/refonte/glass.webp");background-size:175%}
+.refonte .connect-method:nth-child(4){background-image:linear-gradient(145deg,rgba(8,8,7,.48),rgba(8,8,7,.78)),url("/refonte/texture-black.webp");background-size:185%}
+.refonte .connect-method::after{
+ content:"";position:absolute;z-index:-1;inset:-30%;
+ background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.62) 49%,rgba(255,255,255,.10) 54%,transparent 64%);
+ transform:translateX(-70%) rotate(3deg);opacity:0;animation:dc-cardGlint 9s ease-in-out infinite;
+}
+.refonte .connect-method:nth-child(2)::after{animation-delay:1.7s}.refonte .connect-method:nth-child(3)::after{animation-delay:3.4s}.refonte .connect-method:nth-child(4)::after{animation-delay:5.1s}
+@keyframes dc-cardGlint{0%,58%{transform:translateX(-70%) rotate(3deg);opacity:0}64%{opacity:.75}72%{transform:translateX(70%) rotate(3deg);opacity:.18}76%,100%{opacity:0}}
+.refonte .connect-method span{font:italic 12px Georgia,serif;color:#d7cdbd}
+.refonte .connect-method h3{font:400 21px Georgia,serif;margin:54px 0 8px}
+.refonte .connect-method p{margin:0;color:#d2cbc0;font-size:12px;line-height:1.5;max-width:230px}
+.refonte .connectors .methods-label{color:#554f47;margin-top:52px}
+@media(max-width:900px){
+ .refonte .connectors{padding:85px 6vw 100px}.refonte .connect-methods{grid-template-columns:1fr 1fr}
+ .refonte .brand-chip{width:132px;flex-basis:132px}.refonte .connectors-head{max-width:92%}
+}
+@media(max-width:560px){.refonte .connect-methods{grid-template-columns:1fr}.refonte .brand-chip{width:122px;flex-basis:122px}}
+@media(prefers-reduced-motion:reduce){
+ .refonte .marquee-track,.refonte .connect-method::after,.refonte .connectors .light-field,.refonte .marquee::after{animation:none!important}
+}
+
+
+/* CONNECTORS V4 — textures réellement visibles */
+.refonte .connectors{
+  position:relative!important;
+  background:#11110f!important;
+  color:#f2ede4!important;
+  min-height:1180px;
+}
+.refonte .connectors::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0 0 44% 0!important;
+  z-index:-8!important;
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.04) 50%,rgba(0,0,0,.42) 82%,rgba(0,0,0,.88) 100%),
+    url("/refonte/rock.webp")!important;
+  background-size:cover!important;
+  background-position:center 45%!important;
+  background-repeat:no-repeat!important;
+  filter:none!important;
+  opacity:1!important;
+}
+.refonte .connectors .rock-transition{
+  position:absolute!important;
+  inset:40% 0 0 0!important;
+  z-index:-7!important;
+  background-image:
+    linear-gradient(180deg,rgba(8,8,7,.96) 0%,rgba(8,8,7,.50) 13%,rgba(8,8,7,.08) 31%,rgba(255,255,255,.03) 70%,rgba(245,241,233,.16) 100%),
+    url("/refonte/glass.webp")!important;
+  background-size:cover!important;
+  background-position:center 58%!important;
+  background-repeat:no-repeat!important;
+  opacity:1!important;
+  filter:brightness(1.12) contrast(1.03)!important;
+  mix-blend-mode:normal!important;
+  clip-path:none!important;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.35) 9%,#000 25%,#000 100%)!important;
+  mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.35) 9%,#000 25%,#000 100%)!important;
+}
+.refonte .connectors::after{
+  content:""!important;
+  position:absolute!important;
+  inset:66% 0 0 0!important;
+  z-index:-6!important;
+  background:
+    linear-gradient(180deg,transparent 0%,rgba(255,255,255,.05) 22%,rgba(255,248,232,.20) 58%,rgba(239,234,224,.50) 100%),
+    url("/refonte/glass.webp") center 76%/cover no-repeat!important;
+  opacity:.86!important;
+  filter:brightness(1.18)!important;
+  border-radius:0!important;width:auto!important;height:auto!important;
+}
+.refonte .connectors .light-field{
+  z-index:-3!important;top:48%!important;height:52%!important;
+  background:linear-gradient(104deg,transparent 25%,rgba(255,255,255,.02) 38%,rgba(255,245,218,.72) 50%,rgba(255,255,255,.13) 58%,transparent 73%)!important;
+  filter:blur(20px)!important;
+}
+.refonte .connectors-head{background:linear-gradient(90deg,rgba(8,8,7,.34),transparent 85%);padding:22px 26px 24px 0}
+.refonte .connectors-intro{color:#d4cec4!important}
+.refonte .connectors .tool-label{color:#ded6ca!important;text-shadow:0 2px 15px rgba(0,0,0,.7)}
+.refonte .connectors .methods-label{color:#332f2a!important;text-shadow:0 1px 12px rgba(255,255,255,.75)}
+.refonte .connectors .marquee{background:rgba(8,8,7,.10);backdrop-filter:blur(2px)}
+.refonte .connectors .connect-methods{margin-top:58px}
+
+
+/* Copywriting V1 */
+.refonte .hero .lead strong{display:inline-block;margin-top:10px;color:var(--ink);font-weight:600}
+.refonte .connectors .methods-label{max-width:720px;font:italic 22px/1.3 Georgia,serif;text-transform:none;letter-spacing:0!important}
+
+
+/* Integration: isolate the prototype from Tailwind's reset and the legacy pages. */
+.refonte{position:relative;isolation:isolate;line-height:normal;font-family:var(--font-inter),Arial,sans-serif;overflow:clip}
+.refonte p{margin-top:1em;margin-bottom:1em}
+.refonte strong,.refonte b{font-weight:700}
+.refonte h1 em,.refonte h2 em{font-style:italic}
+.refonte a:focus-visible,.refonte button:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+.refonte ::selection{background:#151512;color:#eee9df}
+.refonte .home-nav .logo{font-size:20px;margin:0;letter-spacing:-.04em;font-weight:750}
+.refonte .logo small{font-size:16px}
+.refonte .home-nav .links{display:flex;align-items:center}
+.refonte .menu-toggle{display:none}
+.refonte .skip-link{position:absolute;left:20px;top:10px;z-index:50;transform:translateY(-200%);background:#151512;color:#eee9df;padding:12px}
+.refonte .skip-link:focus{transform:none}
+.refonte .motion-control{position:absolute;top:88px;right:4.5vw;z-index:12;font-size:10px;color:#504c46;padding:8px;border:1px solid rgba(21,21,18,.2);background:#eee9dfcc}
+.refonte .marquee-track{gap:0}
+.refonte .marquee-group{display:flex;gap:12px;padding:0 12px 0 0;margin:0;list-style:none}
+.refonte .marquee:hover .marquee-track{animation-play-state:paused}
+.refonte .methods-label{position:relative;display:table;max-width:760px!important;padding:20px 24px;background:rgba(12,12,10,.78);color:#f4efe5!important;backdrop-filter:blur(8px);text-shadow:none!important;border-bottom:1px solid rgba(255,242,216,.5);line-height:1.45}
+.refonte .manifesto h2 em{display:inline-block;margin-top:26px}
+.refonte .home-legal{background:#dcd6cb;padding:25px 4.5vw;display:flex;gap:24px;justify-content:space-between;border-top:1px solid var(--hair);font-size:11px;color:#504c46}
+.refonte .home-legal nav{display:flex;flex-wrap:wrap;gap:12px 20px}
+.refonte .home-legal a{text-decoration:none}
+.refonte .home-legal a:hover{text-decoration:underline}
+/* Shared 12-second method timeline: 01 -> 05, hold, reset all together. */
+.refonte .manifesto .step{animation-name:dc-method-1;animation-delay:0s;opacity:1;color:#aaa39a}
+.refonte .manifesto .step:nth-child(2){animation-name:dc-method-2}
+.refonte .manifesto .step:nth-child(3){animation-name:dc-method-3}
+.refonte .manifesto .step:nth-child(4){animation-name:dc-method-4}
+.refonte .manifesto .step:nth-child(5){animation-name:dc-method-5}
+.refonte .manifesto .step::before{animation:none;background:currentColor;box-shadow:none;opacity:.7}
+.refonte .manifesto .step::after{animation:none;transform:scaleY(1);background:currentColor;box-shadow:none;opacity:.25}
+@keyframes dc-method-1{0%,4%,96%,100%{color:#aaa39a;text-shadow:none}8%,92%{color:#f0ebe2;text-shadow:0 0 14px #f4e1bf55}}
+@keyframes dc-method-2{0%,20%,96%,100%{color:#aaa39a;text-shadow:none}24%,92%{color:#f0ebe2;text-shadow:0 0 14px #f4e1bf55}}
+@keyframes dc-method-3{0%,36%,96%,100%{color:#aaa39a;text-shadow:none}40%,92%{color:#f0ebe2;text-shadow:0 0 14px #f4e1bf55}}
+@keyframes dc-method-4{0%,52%,96%,100%{color:#aaa39a;text-shadow:none}56%,92%{color:#f0ebe2;text-shadow:0 0 14px #f4e1bf55}}
+@keyframes dc-method-5{0%,68%,96%,100%{color:#aaa39a;text-shadow:none}72%,92%{color:#f0ebe2;text-shadow:0 0 14px #f4e1bf55}}
+.refonte[data-paused=true] *, .refonte[data-paused=true] *::before,.refonte[data-paused=true] *::after,
+.refonte[data-hidden=true] *, .refonte[data-hidden=true] *::before,.refonte[data-hidden=true] *::after,
+.refonte [data-offscreen=true] *, .refonte [data-offscreen=true] *::before,.refonte [data-offscreen=true] *::after{animation-play-state:paused!important}
+@media(max-width:1100px) and (min-width:901px){.refonte .copy{width:45vw}.refonte .lead{font-size:16px}.refonte .installation{right:3vw;width:46vw}.refonte .actions{flex-wrap:wrap}}
+@media(max-width:900px){
+ .refonte .home-nav .links{display:none}
+ .refonte .home-nav .links.is-open{display:flex;position:absolute;top:76px;left:0;right:0;background:#eee9df;flex-direction:column;align-items:stretch;padding:20px;gap:20px;border-bottom:1px solid var(--hair)}
+ .refonte .menu-toggle{display:block;font:inherit;font-size:12px;border:1px solid;padding:10px;background:transparent}
+ .refonte .home-nav .logo small{display:none}
+ .refonte .home-nav .links a{margin:0;padding:8px}
+ .refonte .hero{min-height:0;height:auto}
+ .refonte .copy{padding:150px 6vw 30px}
+ .refonte .installation{height:500px;min-height:0;margin:20px auto 90px}
+ .refonte .home-footer{align-items:flex-start;flex-direction:column;gap:35px}
+ .refonte .home-legal{flex-direction:column}
+ .refonte .connectors{min-height:0}
+ .refonte .connectors::before{background-image:linear-gradient(180deg,#00000014 0%,#0000000a 50%,#0000006b 82%,#000000e0 100%),url('/refonte/rock-mobile.webp')!important}
+ .refonte .connectors .rock-transition{background-image:linear-gradient(180deg,#080807f5 0%,#08080780 13%,#08080714 31%,#ffffff08 70%,#f5f1e929 100%),url('/refonte/glass-mobile.webp')!important}
+ .refonte .connectors::after{background-image:linear-gradient(180deg,transparent 0%,#ffffff0d 22%,#fff8e833 58%,#efeae080 100%),url('/refonte/glass-mobile.webp')!important}
+}
+@media(max-width:560px){
+ .refonte .actions{flex-wrap:wrap}.refonte h1{font-size:clamp(46px,12vw,66px)}
+ .refonte .installation{width:94vw;height:440px}.refonte .flow{padding:8%}
+ .refonte .node{font-size:10px;padding:10px;max-width:90%}
+ .refonte .sculpt-caption{right:5%;font-size:12px}
+ .refonte .section{padding:75px 6vw}.refonte .section h2{font-size:42px;margin-bottom:40px}
+ .refonte .case{min-height:320px}.refonte .case h3{margin-top:80px}
+ .refonte .manifesto{gap:35px}.refonte .manifesto .steps{padding-left:15px}
+ .refonte .manifesto .step{padding-left:55px!important}.refonte .manifesto .steps::before{left:24px}
+ .refonte .manifesto .step span:last-child{font-size:16px}
+ .refonte .methods-label{padding:18px!important}.refonte .home-footer{padding:70px 6vw}
+}
+@media(prefers-reduced-motion:reduce){
+ .refonte *,.refonte *::before,.refonte *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+ .refonte .node,.refonte .manifesto .step{opacity:1;color:#f0ebe2}
+ .refonte .scan{display:none}.refonte .motion-control{display:none}
+ .refonte .marquee{mask-image:none;-webkit-mask-image:none;margin:0;overflow:visible}
+ .refonte .marquee-track{width:auto;transform:none}.refonte .marquee-group{flex-wrap:wrap;justify-content:center;padding:0}
+ .refonte .marquee-group[aria-hidden=true]{display:none}
+}
+/* Preserve the browser defaults used by the approved standalone prototype. */
+.refonte .connectors h2{font-size:24px;font-weight:700;line-height:normal;margin-top:.83em}
+.refonte .connectors h2 em{font-style:italic}
+.refonte .home-footer .btn{white-space:nowrap}

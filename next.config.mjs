@@ -9,11 +9,14 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  async redirects() {
-    return [
-      { source: '/services/automatisation', destination: '/agents', permanent: true },
-    ]
-  },
+  // Pages uses public/_redirects; this mirror is only for next dev.
+  ...(process.env.STATIC_EXPORT === '1' ? {} : {
+    async redirects() {
+      return [
+        { source: '/services/automatisation', destination: '/agents', permanent: true },
+      ]
+    },
+  }),
 }
 
 const withMDX = createMDX({

@@ -119,7 +119,7 @@ export default function MentionsLegalesPage() {
               Propriété intellectuelle
             </h2>
             <p className="text-on-surface-variant leading-relaxed">
-              L'ensemble des contenus présents sur ce site (textes, images,
+              L&apos;ensemble des contenus présents sur ce site (textes, images,
               logos, structure) est la propriété exclusive de DIGICORPEX, sauf
               mention contraire. Toute reproduction, représentation ou
               diffusion, totale ou partielle, sans autorisation préalable est

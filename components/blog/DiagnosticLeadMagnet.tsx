@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { CheckCircle2 } from 'lucide-react'
 
 const items = [
@@ -11,28 +11,31 @@ const items = [
 ]
 
 export default function DiagnosticLeadMagnet() {
+  const busy = useRef(false)
+  const requestId = useRef('')
+  const [consent, setConsent] = useState(false)
   const [email, setEmail] = useState('')
-  const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error' | 'test'>('idle')
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!email) return
+    if (!email || !consent || busy.current) return
+    busy.current = true
+    requestId.current ||= crypto.randomUUID()
     setStatus('loading')
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch('/api/diagnostic', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Idempotency-Key': requestId.current },
         body: JSON.stringify({
-          name: '',
-          email,
-          message: 'Demande de diagnostic automatisation',
-          subject: 'Diagnostic automatisation',
+          email, gdpr: consent,
         }),
       })
-      setStatus(res.ok ? 'done' : 'error')
+      const result = await res.json()
+      setStatus(res.ok && result.ok ? result.test ? 'test' : 'done' : 'error')
     } catch {
       setStatus('error')
-    }
+    } finally { busy.current = false }
   }
 
   return (
@@ -84,19 +87,21 @@ export default function DiagnosticLeadMagnet() {
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                   <div>
-                    <label className="block text-xs font-label uppercase tracking-widest text-slate-400 mb-2">
+                    <label htmlFor="diagnostic-email" className="block text-xs font-label uppercase tracking-widest text-slate-400 mb-2">
                       Adresse email
                     </label>
                     <input
-                      type="email"
+                      id="diagnostic-email" name="email" maxLength={254} type="email"
                       required
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => { setEmail(e.target.value); requestId.current = '' }}
                       placeholder="votre@email.com"
                       className="w-full bg-transparent border-0 border-b border-slate-600 focus:border-slate-400 rounded-none px-0 py-3 text-white outline-none transition-colors text-sm placeholder:text-slate-600"
                     />
                   </div>
 
+                  <label className="flex gap-3 text-xs text-slate-300"><input type="checkbox" required checked={consent} onChange={event => setConsent(event.target.checked)} />J’accepte l’utilisation de mon adresse pour recevoir ce PDF, conformément à la <a href="/confidentialite" className="underline">politique de confidentialité</a>.</label>
+                  {status === 'test' && <p role="status" className="text-sm text-white">Test réussi : aucun e-mail envoyé.</p>}
                   <button
                     type="submit"
                     disabled={status === 'loading'}
@@ -106,7 +111,7 @@ export default function DiagnosticLeadMagnet() {
                   </button>
 
                   {status === 'error' && (
-                    <p className="text-xs text-red-400 text-center">
+                    <p role="alert" className="text-xs text-red-400 text-center">
                       Une erreur est survenue. Réessayez ou écrivez-nous directement.
                     </p>
                   )}

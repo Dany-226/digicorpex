@@ -63,7 +63,7 @@ export default function Header() {
               href="/contact"
               className="hidden md:inline-flex items-center gap-2 bg-secondary text-on-secondary px-6 py-2.5 rounded-sm font-headline font-bold text-sm hover:bg-secondary-dim transition-all duration-150 active:scale-95"
             >
-              Obtenir un devis
+              Demander un diagnostic IA
             </Link>
 
             <button
@@ -105,7 +105,7 @@ export default function Header() {
               onClick={() => setIsOpen(false)}
               className="inline-flex items-center gap-2 bg-secondary text-on-secondary px-6 py-2.5 rounded-sm font-headline font-bold text-sm hover:bg-secondary-dim transition-all duration-150 active:scale-95 w-fit mt-2"
             >
-              Obtenir un devis
+              Demander un diagnostic IA
               <ArrowRight size={14} />
             </Link>
           </nav>

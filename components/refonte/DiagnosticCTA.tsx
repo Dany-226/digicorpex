@@ -1,0 +1,1 @@
+export default function DiagnosticCTA() { return (<section className="home-footer" aria-label="Demander un diagnostic" id="contact"><div><div className="eyebrow">Digicorpex / France</div><div className="footerbig">Votre processus.<br />Notre prochain agent.</div></div><a className="btn dark" href="/contact">Diagnostic IA →</a></section>) }

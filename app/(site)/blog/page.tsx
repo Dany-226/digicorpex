@@ -223,7 +223,7 @@ export default function BlogPage() {
                 </h4>
                 <p className="text-sm text-on-tertiary-container/80 leading-relaxed">
                   Nos stratégies sont construites sur des données réelles et
-                  des retours d'expérience terrain - pas des frameworks théoriques.
+                  des retours d&apos;expérience terrain - pas des frameworks théoriques.
                 </p>
               </div>
 

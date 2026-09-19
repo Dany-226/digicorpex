@@ -8,7 +8,10 @@
     "build:static": "STATIC_EXPORT=1 next build",
     "start": "next start",
     "lint": "next lint",
-    "generate:diagnostic-pdf": "node scripts/generate-diagnostic-pdf.mjs"
+    "generate:diagnostic-pdf": "node scripts/generate-diagnostic-pdf.mjs",
+    "typecheck": "tsc --noEmit --incremental false",
+    "test": "node --test tests/*.test.cjs",
+    "test:export": "node scripts/check-export.cjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.0",

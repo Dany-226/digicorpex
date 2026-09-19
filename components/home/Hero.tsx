@@ -32,7 +32,7 @@ export default function Hero() {
             {/* Subtitle */}
             <p className="text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed font-body">
               Nous déployons des agents IA qui traitent vos appels, génèrent vos devis et
-              organisent votre mémoire d'entreprise - pendant que vous vous concentrez sur ce
+              organisent votre mémoire d&apos;entreprise - pendant que vous vous concentrez sur ce
               qui compte.
             </p>
 

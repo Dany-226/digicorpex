@@ -68,7 +68,7 @@ export default function AboutPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema).replace(/</g, '\\u003c') }}
       />
 
       {/* ── Hero ────────────────────────────────── */}
@@ -88,9 +88,9 @@ export default function AboutPage() {
 
             <p className="text-lg text-on-surface-variant max-w-xl leading-relaxed font-body">
               Fondée à Bordeaux, Digicorpex conçoit des agents IA et des
-              systèmes d'automatisation pour les PME et TPE, autour d'une
-              conviction commune : chaque tâche répétitive mérite d'être
-              déléguée à un agent plutôt qu'à un outil de plus.
+              systèmes d&apos;automatisation pour les PME et TPE, autour d&apos;une
+              conviction commune : chaque tâche répétitive mérite d&apos;être
+              déléguée à un agent plutôt qu&apos;à un outil de plus.
             </p>
           </div>
         </div>
@@ -125,26 +125,26 @@ export default function AboutPage() {
 
               <div className="space-y-5 text-on-surface-variant leading-relaxed font-body">
                 <p>
-                  Digicorpex est née d'un constat simple : dans la plupart des
+                  Digicorpex est née d&apos;un constat simple : dans la plupart des
                   PME et TPE, les tâches les plus chronophages restent gérées à
                   la main - appels, devis, informations dispersées entre
-                  plusieurs outils - alors qu'un agent bien conçu peut les
+                  plusieurs outils - alors qu&apos;un agent bien conçu peut les
                   prendre en charge.
                 </p>
                 <p>
                   Nous sommes basés à Bordeaux et travaillons avec des PME et
                   TPE qui veulent déléguer leurs tâches répétitives à des
-                  agents plutôt que d'empiler de nouveaux outils. E-commerce,
+                  agents plutôt que d&apos;empiler de nouveaux outils. E-commerce,
                   SaaS, cabinets de conseil, professionnels de santé : nos
                   clients viennent de secteurs différents, mais partagent le
                   même besoin de retrouver du temps.
                 </p>
                 <p>
-                  Notre approche reste celle de l'architecte : comprendre les
+                  Notre approche reste celle de l&apos;architecte : comprendre les
                   process existants, identifier la tâche la plus coûteuse en
-                  temps, puis déployer l'agent qui la prend en charge. Chaque
+                  temps, puis déployer l&apos;agent qui la prend en charge. Chaque
                   projet démarre par un diagnostic, et chaque agent déployé
-                  vient nourrir la mémoire d'entreprise plutôt que rester
+                  vient nourrir la mémoire d&apos;entreprise plutôt que rester
                   isolé.
                 </p>
               </div>

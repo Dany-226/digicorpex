@@ -1,0 +1,520 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Digicorpex — Intelligence opérationnelle</title>
+<style>
+:root{--bone:#eee9df;--ink:#151512;--muted:#69655e;--hair:rgba(21,21,18,.14)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bone);color:var(--ink);font-family:Inter,Arial,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:radial-gradient(#111 .42px,transparent .5px);background-size:5px 5px;z-index:20}
+nav{position:absolute;z-index:10;top:0;width:100%;height:76px;padding:0 4.5vw;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--hair)}
+.logo{font-size:20px;font-weight:750;letter-spacing:-.04em}.logo small{font-weight:400;color:var(--muted)}nav a{font-size:12px;color:inherit;text-decoration:none;margin-left:25px}.navcta{border:1px solid;padding:10px 15px}
+.hero{height:100vh;min-height:720px;position:relative;overflow:hidden;background:linear-gradient(104deg,#f0ece3 0 44%,#e5dfd4 44% 100%)}
+/* classical envelope: only contours, light and shadows */
+.room{position:absolute;inset:0}.cornice{position:absolute;left:2.5vw;right:2.5vw;top:96px;height:17px;border-top:1px solid rgba(25,22,18,.13);border-bottom:1px solid rgba(25,22,18,.08)}
+.panel{position:absolute;left:3.5vw;top:135px;width:36vw;height:67vh;border:1px solid rgba(25,22,18,.10);box-shadow:inset 0 0 0 9px rgba(255,255,255,.09)}
+.window{position:absolute;right:3.7vw;top:11vh;width:30vw;height:71vh;border:1px solid rgba(25,22,18,.13);border-radius:15vw 15vw 0 0;box-shadow:inset 25px 0 55px rgba(255,255,255,.46),-22px 30px 70px rgba(40,33,25,.06)}
+.window:before{content:"";position:absolute;left:50%;height:100%;border-left:1px solid rgba(25,22,18,.10)}.window:after{content:"";position:absolute;top:47%;width:100%;border-top:1px solid rgba(25,22,18,.10)}
+.chandelier{position:absolute;left:52%;top:0;width:1px;height:135px;background:rgba(25,22,18,.15)}
+.chandelier i{position:absolute;top:127px;left:-33px;width:67px;height:31px;border:1px solid rgba(25,22,18,.13);border-radius:50% 50% 25% 25%;filter:drop-shadow(0 22px 13px rgba(0,0,0,.08))}
+.floor{position:absolute;left:-10%;right:-10%;bottom:-8%;height:31%;transform:rotate(-4deg);background:linear-gradient(90deg,rgba(32,27,22,.035),transparent 35%,rgba(32,27,22,.08));border-top:1px solid rgba(25,22,18,.06)}
+.copy{position:absolute;left:4.5vw;top:21vh;z-index:5;width:44vw}.eyebrow{font-size:10px;letter-spacing:.21em;text-transform:uppercase;margin-bottom:24px}
+h1{font:400 clamp(58px,6.5vw,105px)/.88 Georgia,serif;letter-spacing:-.06em;margin:0 0 28px}h1 em{font-weight:400}
+.lead{max-width:500px;font-size:17px;line-height:1.55;color:#504c46}.actions{display:flex;gap:10px;margin-top:31px}.btn{font-size:12px;text-decoration:none;color:inherit;border:1px solid;padding:13px 17px}.btn.dark{background:var(--ink);color:var(--bone)}
+/* sculptural AI island */
+.installation{position:absolute;z-index:4;right:7.5vw;bottom:12vh;width:45vw;height:51vh;min-height:410px;filter:drop-shadow(0 45px 38px rgba(30,25,20,.28))}
+.island{position:absolute;inset:0;clip-path:polygon(2% 21%,16% 6%,74% 0,98% 23%,91% 84%,70% 98%,15% 92%,0 69%);
+background:linear-gradient(121deg,#bbb5aa 0 5%,#494640 7% 15%,#121211 17% 63%,#3d3a35 65% 77%,rgba(238,235,227,.72) 79% 100%);overflow:hidden}
+.island:before{content:"";position:absolute;inset:0;background:
+linear-gradient(105deg,transparent 0 24%,rgba(255,255,255,.24) 24.4%,transparent 25% 52%,rgba(255,255,255,.10) 52.4%,transparent 53%),
+linear-gradient(167deg,transparent 0 61%,rgba(255,255,255,.17) 61.5%,transparent 62%);mix-blend-mode:screen}
+.rock{position:absolute;z-index:2;left:0;bottom:2%;width:56%;height:39%;clip-path:polygon(0 19%,77% 0,100% 36%,89% 87%,24% 100%,4% 72%);
+background:linear-gradient(28deg,#171716,#45413b 47%,#201f1d 75%,#625d54);box-shadow:inset 0 0 0 1px rgba(255,255,255,.13)}
+.glass{position:absolute;z-index:2;right:2%;top:1%;width:31%;height:94%;clip-path:polygon(28% 0,100% 23%,75% 100%,0 83%);
+background:linear-gradient(100deg,rgba(255,255,255,.02),rgba(255,255,255,.27),rgba(255,255,255,.025));border-left:1px solid rgba(255,255,255,.37)}
+.glass:after{content:"";position:absolute;left:42%;height:100%;border-left:1px solid rgba(255,255,255,.18)}
+.flow{position:absolute;z-index:5;inset:0;padding:10% 13%;display:flex;flex-direction:column;justify-content:center}
+.node{font-size:13px;font-weight:650;letter-spacing:.07em;color:#fff;background:rgba(8,8,7,.76);border:1px solid rgba(255,255,255,.56);padding:11px 14px;width:max-content;max-width:82%;opacity:.55;animation:pulse 13.5s infinite;backdrop-filter:blur(12px);text-shadow:0 1px 3px #000}
+.node:nth-child(2){margin:18px 0 0 15%;animation-delay:1.5s}.node:nth-child(3){margin:18px 0 0 29%;animation-delay:3s}.node:nth-child(4){margin:18px 0 0 8%;animation-delay:4.5s}.node:nth-child(5){margin:18px 0 0 24%;animation-delay:6s}.node:nth-child(6){margin:18px 0 0 12%;animation-delay:7.5s}
+.scan{position:absolute;z-index:4;left:7%;right:8%;height:1px;background:linear-gradient(90deg,transparent,#fff,transparent);box-shadow:0 0 18px rgba(255,255,255,.55);animation:scan 5s ease-in-out infinite}
+@keyframes pulse{0%,10%{opacity:.55}14%,27%{opacity:1;transform:translateX(7px);background:rgba(5,5,5,.92);border-color:#fff}34%,100%{opacity:.55}}
+@keyframes scan{0%{top:18%;opacity:0}15%{opacity:1}85%{opacity:1}100%{top:82%;opacity:0}}
+.sculpt-caption{position:absolute;right:2%;bottom:-34px;font:italic 13px Georgia,serif;color:var(--muted)}
+/* content */
+.section{padding:110px 4.5vw;border-top:1px solid var(--hair)}.section h2{font:400 clamp(42px,5vw,75px)/.98 Georgia,serif;letter-spacing:-.045em;max-width:930px;margin:0 0 65px}
+.cases{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--hair)}.case{min-height:390px;padding:30px;border-right:1px solid var(--hair);position:relative;overflow:hidden}.case:last-child{border:0}
+.case .n{font-size:10px;letter-spacing:.17em}.case h3{font:400 35px/1 Georgia,serif;margin:110px 0 18px}.case p{font-size:14px;line-height:1.55;color:var(--muted);max-width:330px}
+.case:before{content:"";position:absolute;right:-45px;top:25px;width:165px;height:165px;border:1px solid rgba(0,0,0,.08);transform:rotate(25deg)}
+.case:hover:before{transform:rotate(42deg) scale(1.06);transition:.7s}
+.manifesto{background:#171714;color:#ebe6dc;display:grid;grid-template-columns:1.05fr .95fr;gap:8vw}.manifesto h2{margin:0}.steps{border-top:1px solid rgba(255,255,255,.18)}.step{padding:21px 0;border-bottom:1px solid rgba(255,255,255,.18);display:grid;grid-template-columns:50px 1fr;font-size:13px}
+footer{padding:90px 4.5vw;background:#dcd6cb;display:flex;justify-content:space-between;align-items:end}.footerbig{font:400 clamp(48px,6vw,90px)/.92 Georgia,serif;letter-spacing:-.05em}
+@media(max-width:900px){.hero{height:auto;min-height:1100px}.copy{position:relative;top:auto;left:auto;width:auto;padding:145px 6vw 40px}.installation{position:relative;right:auto;bottom:auto;width:88vw;height:500px;margin:20px auto 130px}.window{right:-20vw;width:80vw}.panel{width:75vw}.cases{grid-template-columns:1fr}.case{border-right:0;border-bottom:1px solid var(--hair)}.manifesto{grid-template-columns:1fr}.links{display:none}}
+
+/* V4 Premium — material, light, depth and motion enhancement */
+.hero{background:
+ radial-gradient(ellipse at 79% 22%,rgba(255,255,255,.82),transparent 24%),
+ radial-gradient(ellipse at 66% 75%,rgba(188,159,112,.13),transparent 31%),
+ linear-gradient(105deg,#f3eee5 0 42%,#ded7cb 68%,#cfc6b8 100%)}
+.hero:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.32;background:
+ repeating-linear-gradient(103deg,transparent 0 62px,rgba(80,65,48,.018) 63px,transparent 65px),
+ radial-gradient(circle at 50% 120%,rgba(63,49,34,.16),transparent 44%)}
+.room{filter:drop-shadow(0 30px 50px rgba(64,48,31,.05))}
+.panel{background:linear-gradient(110deg,rgba(255,255,255,.12),transparent 48%);box-shadow:inset 0 0 0 9px rgba(255,255,255,.10),18px 25px 60px rgba(52,42,30,.035)}
+.window{background:linear-gradient(102deg,rgba(255,255,255,.04),rgba(255,255,255,.40) 58%,rgba(255,255,255,.74));box-shadow:inset 25px 0 55px rgba(255,255,255,.50),-28px 36px 90px rgba(40,33,25,.075)}
+.floor{height:35%;background:linear-gradient(90deg,rgba(44,34,24,.045),transparent 35%,rgba(32,27,22,.11)),repeating-linear-gradient(99deg,transparent 0 76px,rgba(53,42,30,.04) 77px,transparent 79px)}
+.copy{filter:drop-shadow(0 18px 28px rgba(255,255,255,.18))}.lead{font-size:18px;line-height:1.62}
+.installation{perspective:1200px;filter:drop-shadow(0 55px 48px rgba(30,25,20,.34));animation:floatIsland 8s ease-in-out infinite}
+.installation:before{content:"";position:absolute;z-index:-1;left:8%;right:1%;bottom:-7%;height:21%;border-radius:50%;background:radial-gradient(ellipse,rgba(29,23,17,.34),rgba(29,23,17,.05) 55%,transparent 72%);filter:blur(20px);transform:rotate(-3deg)}
+.island{transform:rotateY(-2deg);background:
+ linear-gradient(118deg,rgba(232,224,210,.86) 0 4%,rgba(89,82,72,.78) 6% 13%,rgba(12,12,11,.99) 16% 60%,rgba(47,43,37,.96) 64% 75%,rgba(231,223,208,.78) 81% 100%)}
+.island:after{content:"";position:absolute;inset:-20%;background:linear-gradient(112deg,transparent 34%,rgba(255,236,199,.0) 42%,rgba(255,236,199,.34) 48%,rgba(255,255,255,.10) 52%,transparent 59%);transform:translateX(-65%);animation:materialGlint 7s ease-in-out infinite;mix-blend-mode:screen}
+.rock{background:radial-gradient(circle at 25% 22%,rgba(151,134,108,.18),transparent 15%),linear-gradient(31deg,#11110f,#37332d 42%,#1b1916 68%,#5b5145);box-shadow:inset -25px -18px 50px rgba(0,0,0,.42),inset 14px 10px 28px rgba(255,255,255,.06)}
+.rock:after{content:"";position:absolute;inset:0;opacity:.26;background:repeating-radial-gradient(ellipse at 35% 40%,rgba(255,255,255,.13) 0 1px,transparent 1.5px 6px);mix-blend-mode:overlay}
+.glass{background:linear-gradient(98deg,rgba(255,255,255,.01),rgba(245,232,205,.12) 22%,rgba(255,255,255,.40) 50%,rgba(167,194,198,.09) 74%,rgba(255,255,255,.03));border-left:1px solid rgba(255,250,235,.55);filter:drop-shadow(0 0 22px rgba(255,245,218,.10))}
+.glass:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,transparent 20%,rgba(255,255,255,.25) 20.5%,transparent 21.5% 56%,rgba(255,255,255,.14) 57%,transparent 58%)}
+.flow{padding:9% 12%}.node{font-size:13px;letter-spacing:.075em;background:rgba(5,5,4,.70);border-color:rgba(255,246,226,.50);box-shadow:0 9px 26px rgba(0,0,0,.16);transition:.3s}
+.scan{left:5%;right:5%;height:2px;background:linear-gradient(90deg,transparent,rgba(255,229,180,.45),#fff7e8,rgba(255,229,180,.45),transparent);box-shadow:0 0 9px #fff,0 0 28px rgba(255,213,145,.55);animation:scanPremium 5.5s cubic-bezier(.45,.05,.55,.95) infinite}
+.scan:after{content:"";position:absolute;left:47%;top:-5px;width:10px;height:10px;border-radius:50%;background:#fff8e8;box-shadow:0 0 20px 7px rgba(255,221,164,.5)}
+@keyframes floatIsland{0%,100%{transform:translateY(0) rotate(.1deg)}50%{transform:translateY(-7px) rotate(-.12deg)}}
+@keyframes materialGlint{0%,20%{transform:translateX(-70%);opacity:0}42%{opacity:.9}70%,100%{transform:translateX(75%);opacity:0}}
+@keyframes scanPremium{0%{top:14%;opacity:0}12%{opacity:.95}50%{opacity:1}88%{opacity:.95}100%{top:86%;opacity:0}}
+@keyframes pulse{0%,10%{opacity:.52;transform:translateX(0) scale(1)}14%,27%{opacity:1;transform:translateX(8px) scale(1.018);background:rgba(3,3,3,.91);border-color:#fff7e8;box-shadow:0 8px 34px rgba(255,224,172,.14)}34%,100%{opacity:.52;transform:translateX(0) scale(1)}}
+@media (prefers-reduced-motion:reduce){.installation,.island:after,.scan,.node{animation:none!important}}
+
+
+/* V4.2 — matières subtiles par section : roche, cristal, marbre */
+.section, footer{isolation:isolate}
+.section::before,.section::after,.manifesto::before,.manifesto::after,footer::before,footer::after{content:"";position:absolute;pointer-events:none;z-index:-1}
+
+/* Cas d'usage — marbre ivoire, veines très légères et lumière rasante */
+#cas{position:relative;background:
+ radial-gradient(ellipse at 82% 4%,rgba(255,255,255,.88),transparent 32%),
+ radial-gradient(ellipse at 10% 88%,rgba(182,169,147,.18),transparent 34%),
+ linear-gradient(118deg,#eee9df 0%,#e6dfd2 52%,#f4f0e8 100%);overflow:hidden}
+#cas::before{inset:-12%;opacity:.52;background:
+ repeating-linear-gradient(117deg,transparent 0 86px,rgba(99,86,70,.055) 88px,transparent 91px 176px),
+ linear-gradient(22deg,transparent 0 44%,rgba(255,255,255,.46) 45%,transparent 47% 100%);filter:blur(.25px);transform:rotate(-2deg)}
+#cas::after{width:46vw;height:46vw;right:-17vw;top:-27vw;border:1px solid rgba(255,255,255,.72);border-radius:50%;box-shadow:0 0 80px rgba(255,255,255,.35),inset 0 0 70px rgba(255,255,255,.22)}
+#cas .cases{background:rgba(247,243,235,.28);backdrop-filter:blur(3px);box-shadow:0 28px 80px rgba(54,44,33,.055)}
+#cas .case{background:linear-gradient(145deg,rgba(255,255,255,.26),rgba(255,255,255,.04))}
+
+/* Méthode — roche noire / obsidienne, sans aplat noir */
+.manifesto{position:relative;background:
+ radial-gradient(circle at 84% 18%,rgba(191,176,148,.13),transparent 24%),
+ radial-gradient(circle at 12% 92%,rgba(255,255,255,.055),transparent 31%),
+ linear-gradient(132deg,#0e0e0d,#1b1a18 46%,#10100f 100%);overflow:hidden}
+.manifesto::before{inset:-18%;opacity:.68;background:
+ linear-gradient(132deg,transparent 0 27%,rgba(255,255,255,.035) 28%,transparent 29% 52%,rgba(197,182,155,.055) 53%,transparent 55%),
+ repeating-linear-gradient(17deg,transparent 0 73px,rgba(255,255,255,.022) 74px,transparent 76px 151px);filter:blur(.35px);transform:scale(1.1)}
+.manifesto::after{width:52vw;height:22vw;right:-12vw;top:-8vw;background:radial-gradient(ellipse,rgba(225,205,169,.12),rgba(255,255,255,.025) 38%,transparent 70%);filter:blur(24px);transform:rotate(-14deg)}
+.manifesto .steps{background:rgba(255,255,255,.018);box-shadow:inset 1px 0 rgba(255,255,255,.055);backdrop-filter:blur(2px)}
+.manifesto .step{transition:background .35s ease,padding-left .35s ease}.manifesto .step:hover{background:rgba(255,255,255,.035);padding-left:10px}
+
+/* Footer / CTA — cristal fumé sur pierre claire */
+footer{position:relative;background:
+ radial-gradient(ellipse at 74% 28%,rgba(255,255,255,.78),transparent 24%),
+ linear-gradient(112deg,#d9d2c6,#c9c1b4 52%,#e5dfd5);overflow:hidden}
+footer::before{width:44vw;height:34vw;right:-5vw;top:-14vw;background:
+ linear-gradient(128deg,rgba(255,255,255,.05),rgba(255,255,255,.52) 31%,rgba(255,255,255,.08) 32% 54%,rgba(106,94,78,.08) 55%,rgba(255,255,255,.18));
+ clip-path:polygon(8% 9%,78% 0,100% 31%,80% 92%,25% 100%,0 61%);filter:drop-shadow(0 30px 38px rgba(44,36,28,.10))}
+footer::after{left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.9),transparent);box-shadow:0 0 28px rgba(255,255,255,.42)}
+footer .btn{position:relative;background:rgba(20,20,17,.94);box-shadow:0 16px 45px rgba(33,27,21,.13)}
+
+/* Reflets lumineux lents : présence, pas effet gadget */
+#cas .cases::after{content:"";position:absolute;inset:-80% auto -80% -30%;width:16%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.26),transparent);transform:rotate(14deg);animation:sectionLight 13s ease-in-out infinite;pointer-events:none}
+@keyframes sectionLight{0%,24%{left:-30%;opacity:0}34%{opacity:.6}58%{left:112%;opacity:.18}59%,100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){#cas .cases::after{animation:none}}
+
+
+/* Workflow V4.1 — no frame, no separator lines */
+.manifesto .steps{
+  position:relative;
+  background:transparent!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  border:0!important;
+  padding:8px 0 8px 34px;
+}
+.manifesto .steps::before{
+  content:"";
+  position:absolute;
+  left:43px;
+  top:30px;
+  bottom:30px;
+  width:1px;
+  background:rgba(236,230,219,.13);
+}
+.manifesto .step{
+  --delay:0s;
+  position:relative;
+  min-height:82px;
+  padding:24px 0 24px 76px!important;
+  border:0!important;
+  display:block!important;
+  background:transparent!important;
+  opacity:.34;
+  color:#a9a39a;
+  transition:none!important;
+  animation:workflowStep 12s linear infinite;
+}
+.manifesto .step:nth-child(1){--delay:0s}
+.manifesto .step:nth-child(2){--delay:-9.6s}
+.manifesto .step:nth-child(3){--delay:-7.2s}
+.manifesto .step:nth-child(4){--delay:-4.8s}
+.manifesto .step:nth-child(5){--delay:-2.4s}
+.manifesto .step span:first-child{
+  position:absolute;
+  left:-2px;
+  top:23px;
+  width:40px;
+  font:400 15px/1 Georgia,serif;
+  letter-spacing:.04em;
+}
+.manifesto .step span:last-child{
+  display:block;
+  font-size:17px;
+  letter-spacing:.01em;
+}
+.manifesto .step::before{
+  content:"";
+  position:absolute;
+  left:3px;
+  top:27px;
+  width:13px;height:13px;
+  border-radius:50%;
+  border:1px solid rgba(239,231,217,.42);
+  background:#171714;
+  transform:translateX(34px);
+  z-index:3;
+  animation:workflowNode 12s linear infinite;
+  animation-delay:var(--delay);
+}
+.manifesto .step::after{
+  content:"";
+  position:absolute;
+  left:43px;
+  top:40px;
+  width:1px;
+  height:82px;
+  background:linear-gradient(#f5e8ce,#d2b780);
+  transform-origin:top;
+  transform:scaleY(0);
+  opacity:0;
+  box-shadow:0 0 9px rgba(238,211,161,.6);
+  animation:workflowLine 12s linear infinite;
+  animation-delay:var(--delay);
+}
+.manifesto .step:last-child::after{display:none}
+.manifesto .step{
+  animation-delay:var(--delay);
+}
+@keyframes workflowStep{
+  0%,8%{opacity:.34;color:#aaa39a;text-shadow:none}
+  12%,82%{opacity:1;color:#f0ebe2;text-shadow:0 0 14px rgba(244,225,191,.18)}
+  86%,100%{opacity:.34;color:#aaa39a;text-shadow:none}
+}
+@keyframes workflowNode{
+  0%,8%{background:#171714;border-color:rgba(239,231,217,.35);box-shadow:none}
+  10%,15%{background:#fff5e5;border-color:#fff;box-shadow:0 0 7px #fff,0 0 24px rgba(236,199,135,.8),0 0 44px rgba(236,199,135,.35)}
+  18%,82%{background:#ead6b1;border-color:#f5e8cf;box-shadow:0 0 9px rgba(239,208,153,.48)}
+  86%,100%{background:#171714;border-color:rgba(239,231,217,.35);box-shadow:none}
+}
+@keyframes workflowLine{
+  0%,11%{transform:scaleY(0);opacity:0}
+  14%{opacity:1}
+  28%,82%{transform:scaleY(1);opacity:.78}
+  86%,100%{transform:scaleY(0);opacity:0}
+}
+@media (prefers-reduced-motion:reduce){
+ .manifesto .step,.manifesto .step::before,.manifesto .step::after{animation:none!important;opacity:1;color:#f0ebe2}
+ .manifesto .step::before{background:#ead6b1;box-shadow:0 0 8px rgba(239,208,153,.4)}
+ .manifesto .step::after{transform:scaleY(1);opacity:.65}
+}
+
+
+
+/* CONNECTORS V2 — roche brute -> matière lisse / automatisation */
+.connectors{
+  position:relative;overflow:hidden;padding:122px 4.5vw 132px;
+  color:#eee9df;background:#0c0c0b;isolation:isolate;
+}
+.connectors::before{
+  content:"";position:absolute;inset:0;z-index:-5;
+  background:
+    linear-gradient(180deg,rgba(5,5,5,.10) 0%,rgba(9,9,8,.42) 28%,rgba(230,226,218,.24) 58%,rgba(239,235,227,.94) 86%,#eee9df 100%),
+    url("texture-rock.jpg") center 38%/cover no-repeat;
+  filter:grayscale(.22) contrast(1.15) brightness(.68);
+}
+.connectors::after{
+  content:"";position:absolute;z-index:-4;inset:42% -10% -16%;
+  background:
+    radial-gradient(ellipse at 58% 28%,rgba(255,255,255,.88),rgba(255,255,255,.18) 35%,transparent 64%),
+    linear-gradient(180deg,transparent,#f0ece4 76%);
+  filter:blur(5px);
+}
+.connectors .rock-transition{
+  position:absolute;z-index:-3;left:-5%;right:-5%;top:33%;height:48%;
+  background:
+    linear-gradient(180deg,rgba(8,8,7,.18),rgba(238,234,226,.72)),
+    url("texture-black.png") center 42%/cover;
+  opacity:.40;mix-blend-mode:screen;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 18%,#000 67%,transparent);
+  mask-image:linear-gradient(180deg,transparent,#000 18%,#000 67%,transparent);
+}
+.connectors .light-field{
+  position:absolute;z-index:-2;left:-18%;top:41%;width:140%;height:34%;
+  background:linear-gradient(103deg,transparent 18%,rgba(255,255,255,.05) 38%,rgba(255,255,255,.76) 49%,rgba(255,255,255,.06) 60%,transparent 77%);
+  filter:blur(16px);transform:rotate(-3deg);animation:fieldLight 13s ease-in-out infinite;
+}
+@keyframes fieldLight{0%,100%{transform:translateX(-13%) rotate(-3deg);opacity:.25}50%{transform:translateX(13%) rotate(-3deg);opacity:.72}}
+.connectors-head{max-width:820px;margin-bottom:50px;text-shadow:0 2px 24px rgba(0,0,0,.48)}
+.connectors h2{margin-bottom:18px;color:#f1ece3}
+.connectors-intro{max-width:680px;color:#c6c0b7;font-size:15px;line-height:1.65}
+.tool-groups{position:relative}
+.tool-label{margin:30px 0 14px;font-size:9px;letter-spacing:.20em;text-transform:uppercase;color:#c9c2b7}
+.marquee{position:relative;overflow:hidden;margin-left:-4.5vw;margin-right:-4.5vw;padding:8px 0 14px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee::after{content:"";position:absolute;inset:2px 0 auto;height:72px;pointer-events:none;
+ background:linear-gradient(100deg,transparent 25%,rgba(255,255,255,.18) 43%,rgba(255,255,255,.72) 50%,rgba(255,255,255,.16) 57%,transparent 75%);
+ filter:blur(13px);animation:logoLight 7s ease-in-out infinite}
+@keyframes logoLight{0%{transform:translateX(-60%);opacity:0}20%{opacity:.55}80%{opacity:.55}100%{transform:translateX(60%);opacity:0}}
+.marquee-track{display:flex;width:max-content;gap:12px;will-change:transform}
+.marquee.left .marquee-track{animation:marqueeLeft 28s linear infinite}
+.marquee.right .marquee-track{animation:marqueeRight 25s linear infinite}
+@keyframes marqueeLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marqueeRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+.brand-chip{
+  width:148px;height:72px;flex:0 0 148px;display:flex;align-items:center;justify-content:center;gap:10px;
+  background:rgba(247,244,238,.90);border:1px solid rgba(255,255,255,.45);
+  box-shadow:0 13px 38px rgba(0,0,0,.15),inset 0 1px rgba(255,255,255,.85);
+  backdrop-filter:blur(12px);color:#161613;
+}
+.brand-chip img{max-width:29px;max-height:29px;object-fit:contain}
+.brand-chip b{font-size:12px;font-weight:620;white-space:nowrap}
+.ai-marquee .brand-chip{background:rgba(17,17,15,.82);color:#f3eee5;border-color:rgba(255,255,255,.16);
+ box-shadow:0 12px 34px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.14)}
+.ai-marquee .brand-chip img{filter:none}
+.connect-methods{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:55px}
+.connect-method{
+  min-height:190px;padding:25px;position:relative;overflow:hidden;color:#f1ece3;
+  border:1px solid rgba(255,255,255,.18);box-shadow:0 18px 45px rgba(20,17,13,.15);
+  background-position:center;background-size:cover;isolation:isolate;
+}
+.connect-method:nth-child(1){background-image:linear-gradient(145deg,rgba(8,8,7,.50),rgba(8,8,7,.82)),url("texture-rock.jpg");background-size:210%}
+.connect-method:nth-child(2){background-image:linear-gradient(145deg,rgba(8,8,7,.42),rgba(8,8,7,.80)),url("texture-crystal.jpg");background-size:180%}
+.connect-method:nth-child(3){background-image:linear-gradient(145deg,rgba(8,8,7,.45),rgba(8,8,7,.78)),url("texture-glass.jpg");background-size:175%}
+.connect-method:nth-child(4){background-image:linear-gradient(145deg,rgba(8,8,7,.48),rgba(8,8,7,.78)),url("texture-black.png");background-size:185%}
+.connect-method::after{
+ content:"";position:absolute;z-index:-1;inset:-30%;
+ background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.62) 49%,rgba(255,255,255,.10) 54%,transparent 64%);
+ transform:translateX(-70%) rotate(3deg);opacity:0;animation:cardGlint 9s ease-in-out infinite;
+}
+.connect-method:nth-child(2)::after{animation-delay:1.7s}.connect-method:nth-child(3)::after{animation-delay:3.4s}.connect-method:nth-child(4)::after{animation-delay:5.1s}
+@keyframes cardGlint{0%,58%{transform:translateX(-70%) rotate(3deg);opacity:0}64%{opacity:.75}72%{transform:translateX(70%) rotate(3deg);opacity:.18}76%,100%{opacity:0}}
+.connect-method span{font:italic 12px Georgia,serif;color:#d7cdbd}
+.connect-method h3{font:400 21px Georgia,serif;margin:54px 0 8px}
+.connect-method p{margin:0;color:#d2cbc0;font-size:12px;line-height:1.5;max-width:230px}
+.connectors .methods-label{color:#554f47;margin-top:52px}
+@media(max-width:900px){
+ .connectors{padding:85px 6vw 100px}.connect-methods{grid-template-columns:1fr 1fr}
+ .brand-chip{width:132px;flex-basis:132px}.connectors-head{max-width:92%}
+}
+@media(max-width:560px){.connect-methods{grid-template-columns:1fr}.brand-chip{width:122px;flex-basis:122px}}
+@media(prefers-reduced-motion:reduce){
+ .marquee-track,.connect-method::after,.connectors .light-field,.marquee::after{animation:none!important}
+}
+
+
+/* CONNECTORS V3 — transition photographique roche brute -> verre lumineux */
+.connectors{
+  background:#0a0a09!important;
+}
+.connectors::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  z-index:-6!important;
+  background:
+    linear-gradient(180deg,
+      rgba(4,4,4,.06) 0%,
+      rgba(4,4,4,.04) 25%,
+      rgba(4,4,4,.28) 44%,
+      rgba(4,4,4,.74) 57%,
+      rgba(4,4,4,1) 68%),
+    url("rock-top.jpg") center top/100% auto no-repeat!important;
+  filter:contrast(1.08) saturate(.72)!important;
+  opacity:1!important;
+}
+.connectors .rock-transition{
+  inset:auto!important;
+  left:0!important;right:0!important;top:39%!important;height:45%!important;
+  z-index:-5!important;
+  background:
+    linear-gradient(180deg,
+      rgba(6,6,5,1) 0%,
+      rgba(6,6,5,.90) 10%,
+      rgba(6,6,5,.54) 27%,
+      rgba(6,6,5,.16) 48%,
+      rgba(245,242,235,.08) 65%,
+      rgba(245,242,235,.32) 100%),
+    url("glass-bottom.jpg") center 58%/cover no-repeat!important;
+  opacity:1!important;
+  mix-blend-mode:normal!important;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 15%,#000 100%)!important;
+  mask-image:linear-gradient(180deg,transparent 0,#000 15%,#000 100%)!important;
+}
+.connectors::after{
+  content:""!important;
+  position:absolute!important;
+  left:0!important;right:0!important;top:58%!important;bottom:0!important;
+  z-index:-4!important;
+  width:auto!important;height:auto!important;border-radius:0!important;
+  background:
+    linear-gradient(180deg,
+      rgba(245,242,235,0) 0%,
+      rgba(245,242,235,.10) 18%,
+      rgba(245,242,235,.42) 48%,
+      rgba(245,242,235,.82) 78%,
+      rgba(238,233,223,.98) 100%),
+    url("glass-bottom.jpg") center bottom/cover no-repeat!important;
+  filter:none!important;
+  opacity:1!important;
+}
+.connectors .light-field{
+  z-index:-2!important;
+  left:-25%!important;top:51%!important;width:150%!important;height:45%!important;
+  background:
+    linear-gradient(104deg,
+      transparent 22%,
+      rgba(255,255,255,.03) 35%,
+      rgba(255,250,238,.52) 48%,
+      rgba(255,255,255,.88) 51%,
+      rgba(255,250,238,.20) 58%,
+      transparent 74%)!important;
+  filter:blur(24px)!important;
+  mix-blend-mode:screen;
+}
+.connectors-head{position:relative;z-index:2}
+.connectors .tool-groups{position:relative;z-index:2}
+.connectors .methods-label{color:#39352f!important;text-shadow:0 1px 12px rgba(255,255,255,.45)}
+.connectors .connect-methods{position:relative}
+.connectors .connect-methods::before{
+  content:"";position:absolute;z-index:-1;left:-5%;right:-5%;top:-60px;bottom:-70px;
+  background:radial-gradient(ellipse at 50% 45%,rgba(255,255,255,.46),rgba(255,255,255,.10) 48%,transparent 75%);
+  filter:blur(25px);
+}
+
+
+/* CONNECTORS V4 — textures réellement visibles */
+.connectors{
+  position:relative!important;
+  background:#11110f!important;
+  color:#f2ede4!important;
+  min-height:1180px;
+}
+.connectors::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0 0 44% 0!important;
+  z-index:-8!important;
+  background-image:
+    linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.04) 50%,rgba(0,0,0,.42) 82%,rgba(0,0,0,.88) 100%),
+    url("rock.jpg")!important;
+  background-size:cover!important;
+  background-position:center 45%!important;
+  background-repeat:no-repeat!important;
+  filter:none!important;
+  opacity:1!important;
+}
+.connectors .rock-transition{
+  position:absolute!important;
+  inset:40% 0 0 0!important;
+  z-index:-7!important;
+  background-image:
+    linear-gradient(180deg,rgba(8,8,7,.96) 0%,rgba(8,8,7,.50) 13%,rgba(8,8,7,.08) 31%,rgba(255,255,255,.03) 70%,rgba(245,241,233,.16) 100%),
+    url("glass.jpg")!important;
+  background-size:cover!important;
+  background-position:center 58%!important;
+  background-repeat:no-repeat!important;
+  opacity:1!important;
+  filter:brightness(1.12) contrast(1.03)!important;
+  mix-blend-mode:normal!important;
+  clip-path:none!important;
+  -webkit-mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.35) 9%,#000 25%,#000 100%)!important;
+  mask-image:linear-gradient(180deg,transparent 0%,rgba(0,0,0,.35) 9%,#000 25%,#000 100%)!important;
+}
+.connectors::after{
+  content:""!important;
+  position:absolute!important;
+  inset:66% 0 0 0!important;
+  z-index:-6!important;
+  background:
+    linear-gradient(180deg,transparent 0%,rgba(255,255,255,.05) 22%,rgba(255,248,232,.20) 58%,rgba(239,234,224,.50) 100%),
+    url("glass.jpg") center 76%/cover no-repeat!important;
+  opacity:.86!important;
+  filter:brightness(1.18)!important;
+  border-radius:0!important;width:auto!important;height:auto!important;
+}
+.connectors .light-field{
+  z-index:-3!important;top:48%!important;height:52%!important;
+  background:linear-gradient(104deg,transparent 25%,rgba(255,255,255,.02) 38%,rgba(255,245,218,.72) 50%,rgba(255,255,255,.13) 58%,transparent 73%)!important;
+  filter:blur(20px)!important;
+}
+.connectors-head{background:linear-gradient(90deg,rgba(8,8,7,.34),transparent 85%);padding:22px 26px 24px 0}
+.connectors-intro{color:#d4cec4!important}
+.connectors .tool-label{color:#ded6ca!important;text-shadow:0 2px 15px rgba(0,0,0,.7)}
+.connectors .methods-label{color:#332f2a!important;text-shadow:0 1px 12px rgba(255,255,255,.75)}
+.connectors .marquee{background:rgba(8,8,7,.10);backdrop-filter:blur(2px)}
+.connectors .connect-methods{margin-top:58px}
+
+
+/* Copywriting V1 */
+.hero .lead strong{display:inline-block;margin-top:10px;color:var(--ink);font-weight:600}
+.friction-copy{background:#eee9df}
+.friction-copy h2{max-width:920px}
+.friction-copy .friction-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;max-width:900px;margin-top:44px;background:rgba(21,21,18,.12)}
+.friction-copy .friction-grid p{margin:0;padding:20px 24px;background:#eee9df;font:400 16px/1.45 Georgia,serif}
+.friction-outcome{max-width:690px;margin:34px 0 0;color:#625d55;line-height:1.7}
+.friction-outcome strong{color:#181714;font-weight:600}
+.connectors .methods-label{max-width:720px;font:italic 22px/1.3 Georgia,serif;text-transform:none;letter-spacing:0!important}
+@media(max-width:700px){.friction-copy .friction-grid{grid-template-columns:1fr}}
+
+</style></head><body>
+<nav><div class="logo">DIGICORPEX <small>/ intelligence opérationnelle</small></div><div class="links"><a href="#cas">Cas concrets</a><a href="#methode">Méthode</a><a href="#contact" class="navcta">Diagnostic IA</a></div></nav>
+<section class="hero">
+<div class="room"><div class="cornice"></div><div class="panel"></div><div class="window"></div><div class="chandelier"><i></i></div><div class="floor"></div></div>
+<div class="copy"><div class="eyebrow">Agents IA & automatisation pour PME</div><h1>Vos opérations,<br><em>automatisées.</em></h1><p class="lead">Un client appelle. La demande est comprise. Le CRM est mis à jour. Le bon commercial est informé. Le rendez-vous est proposé. Le dirigeant sait ce qui s’est passé.<br><strong>Sans ressaisie. Sans rupture. Sans changer vos outils.</strong></p><div class="actions"><a class="btn dark" href="#cas">Voir comment ça fonctionne</a><a class="btn" href="#contact">Demander un diagnostic IA</a></div></div>
+<div class="installation"><div class="island"></div><div class="rock"></div><div class="glass"></div><div class="scan"></div><div class="flow">
+<div class="node">01 — APPEL CLIENT</div><div class="node">02 — TRANSCRIPTION</div><div class="node">03 — CLIENT IDENTIFIÉ · CRM</div><div class="node">04 — BESOIN QUALIFIÉ</div><div class="node">05 — COMMERCIAL + PLANNING</div><div class="node">06 — OPÉRATION TRAITÉE ✓</div>
+</div><div class="sculpt-caption">L'intelligence circule. Votre savoir-faire reste.</div></div>
+</section>
+<section class="section" id="cas"><div class="eyebrow">Cas d'usage / le métier avant la technologie</div><h2>Des agents pour des problèmes qui existent vraiment.</h2><div class="cases">
+<article class="case"><div class="n">01 / DÉMÉNAGEUR</div><h3>Du premier appel<br>au planning.</h3><p>Collecte, données manquantes, préparation du devis, relance et organisation de la tournée.</p></article>
+<article class="case"><div class="n">02 / TRAITEUR</div><h3>Une demande<br>ne se perd plus.</h3><p>Téléphone, email ou formulaire : l'agent structure le besoin, vérifie les contraintes et prépare l'action.</p></article>
+<article class="case"><div class="n">03 / GÉRANT DE BAR</div><h3>Le planning absorbe<br>l'imprévu.</h3><p>Disponibilités, compétences, contrats et absences consolidés sous contrôle humain.</p></article>
+</div></section>
+
+
+<section class="connectors" id="integrations">
+ <div class="rock-transition"></div><div class="light-field"></div>
+ <div class="connectors-head">
+   <div class="eyebrow">Connexion / sans remplacer votre stack</div>
+   <h2>Vos outils savent déjà beaucoup de choses.<br><em>Nous les faisons travailler ensemble.</em></h2>
+   <p class="connectors-intro">Salesforce connaît vos clients. Outlook reçoit leurs demandes. Excel contient vos données. Votre agenda connaît vos disponibilités.<br><br>Le problème n'est pas nécessairement l'outil. <strong>C'est ce qui se passe entre les outils.</strong></p>
+ </div>
+ <div class="tool-groups">
+   <div class="tool-label">Nous nous connectons à votre environnement</div>
+   <div class="marquee left"><div class="marquee-track"><div class="brand-chip"><img src="https://cdn.simpleicons.org/salesforce" alt="Salesforce"><b>Salesforce</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/microsoftexcel" alt="Excel"><b>Excel</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/notion" alt="Notion"><b>Notion</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/whatsapp" alt="WhatsApp"><b>WhatsApp</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/googledrive" alt="Google Drive"><b>Google Drive</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/hubspot" alt="HubSpot"><b>HubSpot</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/make" alt="Make"><b>Make</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/zapier" alt="Zapier"><b>Zapier</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/gmail" alt="Gmail"><b>Gmail</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/telegram" alt="Telegram"><b>Telegram</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/salesforce" alt="Salesforce"><b>Salesforce</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/microsoftexcel" alt="Excel"><b>Excel</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/notion" alt="Notion"><b>Notion</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/whatsapp" alt="WhatsApp"><b>WhatsApp</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/googledrive" alt="Google Drive"><b>Google Drive</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/hubspot" alt="HubSpot"><b>HubSpot</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/make" alt="Make"><b>Make</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/zapier" alt="Zapier"><b>Zapier</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/gmail" alt="Gmail"><b>Gmail</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/telegram" alt="Telegram"><b>Telegram</b></div></div></div>
+   <div class="tool-label">Et choisissons l'intelligence adaptée à chaque tâche</div>
+   <div class="marquee right ai-marquee"><div class="marquee-track"><div class="brand-chip"><img src="https://cdn.simpleicons.org/openai" alt="ChatGPT"><b>ChatGPT</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/anthropic" alt="Claude"><b>Claude</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/googlegemini" alt="Gemini"><b>Gemini</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/mistralai" alt="Mistral"><b>Mistral</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/perplexity" alt="Perplexity"><b>Perplexity</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/deepseek" alt="DeepSeek"><b>DeepSeek</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/openai" alt="ChatGPT"><b>ChatGPT</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/anthropic" alt="Claude"><b>Claude</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/googlegemini" alt="Gemini"><b>Gemini</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/mistralai" alt="Mistral"><b>Mistral</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/perplexity" alt="Perplexity"><b>Perplexity</b></div><div class="brand-chip"><img src="https://cdn.simpleicons.org/deepseek" alt="DeepSeek"><b>DeepSeek</b></div></div></div>
+   <div class="tool-label methods-label">Votre entreprise n'a pas à s'adapter à l'IA. C'est l'IA qui doit s'adapter à votre entreprise.</div>
+   <div class="connect-methods">
+    <article class="connect-method"><span>01</span><h3>Nouveaux standards IA</h3><p>MCP — connexion structurée aux systèmes et outils compatibles.</p></article>
+    <article class="connect-method"><span>02</span><h3>Vos logiciels communiquent</h3><p>API — intégration directe avec vos applications existantes.</p></article>
+    <article class="connect-method"><span>03</span><h3>Réagir en temps réel</h3><p>Webhooks — une action déclenche immédiatement la suivante.</p></article>
+    <article class="connect-method"><span>04</span><h3>Votre outil est spécifique</h3><p>Connecteur sur mesure — nous relions aussi vos systèmes propriétaires.</p></article>
+   </div>
+ </div>
+</section>
+
+<section class="section manifesto" id="methode"><div><div class="eyebrow">Principe Digicorpex</div><h2>Ne pas remplacer votre entreprise.<br><em>La rendre fluide.</em></h2></div><div class="steps"><div class="step"><span>01</span><span>Observer le processus réel</span></div><div class="step"><span>02</span><span>Identifier les frictions</span></div><div class="step"><span>03</span><span>Connecter l'existant</span></div><div class="step"><span>04</span><span>Automatiser sous contrôle</span></div><div class="step"><span>05</span><span>Mesurer</span></div></div></section>
+<footer id="contact"><div><div class="eyebrow">Digicorpex / France</div><div class="footerbig">Votre processus.<br>Notre prochain agent.</div></div><a class="btn dark" href="#">Diagnostic IA →</a></footer>
+</body></html>
