@@ -16,7 +16,7 @@ export default function HomeNavigation() {
         {open ? 'Fermer' : 'Menu'}
       </button>
       <nav id="home-navigation" className={`links${open ? ' is-open' : ''}`} aria-label="Navigation principale" onClick={() => setOpen(false)}>
-        <a href="#cas">Cas concrets</a><a href="#methode">Méthode</a><a href="#contact" className="navcta">Diagnostic IA</a>
+        <Link href="/services">Services</Link><Link href="/blog">Blog</Link><a href="#cas">Cas concrets</a><a href="#methode">Méthode</a><a href="#contact" className="navcta">Diagnostic IA</a>
       </nav>
     </header>
   )
