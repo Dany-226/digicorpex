@@ -40,8 +40,8 @@
 
 /* Agents: tactile dark / crystal alternation, scoped to this page. */
 .interior-site .agents-material>section{position:relative;background-size:cover;background-position:center;isolation:isolate;border-bottom:1px solid #a99b7c55}
-.interior-site .agents-material>section:nth-child(odd){background-color:#171714;background-image:linear-gradient(90deg,#11110fe0,#11110f8c 65%,#11110fa8),url('/brand/agents-black.webp');color:#f4efe5}
-.interior-site .agents-material>section:nth-child(even){background-color:#eee9df;background-image:linear-gradient(100deg,#f4efe5e8,#eee9df9e),url('/brand/agents-crystal.webp');color:#24231e}
+.interior-site .agents-material>section:nth-child(odd){background-color:#171714;background-image:linear-gradient(90deg,#11110fe0,#11110f8c 65%,#11110fa8),var(--agent-dark-material);color:#f4efe5}
+.interior-site .agents-material>section:nth-child(even){background-color:#eee9df;background-image:linear-gradient(100deg,#f4efe5e8,#eee9df9e),var(--agent-light-material);color:#24231e}
 .interior-site .agents-material>section:first-child{padding-top:110px;padding-bottom:110px;background-position:center top}
 .interior-site .agents-material>section:nth-child(3){background-position:center 65%}
 .interior-site .agents-material>section:nth-child(5){background-position:center bottom}
@@ -56,3 +56,10 @@
 .interior-site .agents-material>section:nth-child(5) .text-slate-400{color:#e0d7c8}
 .interior-site .agents-material .bg-green-50{background:#e6e1cf;color:#51492e}
 @media(max-width:640px){.interior-site .agents-material>section{background-size:auto 100%;padding-left:24px;padding-right:24px}.interior-site .agents-material>section:first-child{padding-top:75px;padding-bottom:75px}}
+
+/* Five different materials, one per section. */
+.interior-site .agents-material>section:nth-child(1){--agent-dark-material:url('/brand/agents-black.webp')}
+.interior-site .agents-material>section:nth-child(2){--agent-light-material:url('/brand/agents-crystal.webp')}
+.interior-site .agents-material>section:nth-child(3){--agent-dark-material:url('/brand/agents-slate.webp')}
+.interior-site .agents-material>section:nth-child(4){--agent-light-material:url('/brand/agents-ribbed-glass.webp')}
+.interior-site .agents-material>section:nth-child(5){--agent-dark-material:url('/brand/agents-obsidian.webp')}
