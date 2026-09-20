@@ -344,19 +344,18 @@ background:linear-gradient(100deg,rgba(255,255,255,.02),rgba(255,255,255,.27),rg
 .refonte .home-legal nav{display:flex;flex-wrap:wrap;gap:12px 20px}
 .refonte .home-legal a{text-decoration:none}
 .refonte .home-legal a:hover{text-decoration:underline}
-/* Shared 12-second method timeline: 01 -> 05, hold, reset all together. */
-.refonte .manifesto .step{animation-name:dc-method-1;animation-delay:0s;opacity:1;color:#aaa39a}
-.refonte .manifesto .step:nth-child(2){animation-name:dc-method-2}
-.refonte .manifesto .step:nth-child(3){animation-name:dc-method-3}
-.refonte .manifesto .step:nth-child(4){animation-name:dc-method-4}
-.refonte .manifesto .step:nth-child(5){animation-name:dc-method-5}
-.refonte .manifesto .step::before{animation:none;background:currentColor;box-shadow:none;opacity:.7}
-.refonte .manifesto .step::after{animation:none;transform:scaleY(1);background:currentColor;box-shadow:none;opacity:.25}
-@keyframes dc-method-1{0%,4%,96%,100%{color:#aaa39a;text-shadow:none}8%,92%{color:#f0ebe2;text-shadow:0 0 14px #f4e1bf55}}
-@keyframes dc-method-2{0%,20%,96%,100%{color:#aaa39a;text-shadow:none}24%,92%{color:#f0ebe2;text-shadow:0 0 14px #f4e1bf55}}
-@keyframes dc-method-3{0%,36%,96%,100%{color:#aaa39a;text-shadow:none}40%,92%{color:#f0ebe2;text-shadow:0 0 14px #f4e1bf55}}
-@keyframes dc-method-4{0%,52%,96%,100%{color:#aaa39a;text-shadow:none}56%,92%{color:#f0ebe2;text-shadow:0 0 14px #f4e1bf55}}
-@keyframes dc-method-5{0%,68%,96%,100%{color:#aaa39a;text-shadow:none}72%,92%{color:#f0ebe2;text-shadow:0 0 14px #f4e1bf55}}
+/* Five successive 2-second pulses, sharing a seamless 10-second loop. */
+.refonte .manifesto .step{animation:dc-method-pulse 10s ease-in-out infinite;animation-delay:var(--delay);opacity:1;color:#aaa39a}
+.refonte .manifesto .step:nth-child(1){--delay:0s}
+.refonte .manifesto .step:nth-child(2){--delay:-8s}
+.refonte .manifesto .step:nth-child(3){--delay:-6s}
+.refonte .manifesto .step:nth-child(4){--delay:-4s}
+.refonte .manifesto .step:nth-child(5){--delay:-2s}
+.refonte .manifesto .step::before{animation:dc-method-dot 10s ease-in-out infinite;animation-delay:var(--delay);background:currentColor;opacity:1}
+.refonte .manifesto .step::after{animation:dc-method-link 10s ease-in-out infinite;animation-delay:var(--delay);background:linear-gradient(#fff2d5,#c5a36b);box-shadow:0 0 10px #f4d6a566}
+@keyframes dc-method-pulse{0%,20%,100%{color:#aaa39a;text-shadow:none}4%,16%{color:#fff5e3;text-shadow:0 0 18px #f4d6a580}}
+@keyframes dc-method-dot{0%,20%,100%{box-shadow:none;border-color:#a9a39a66}4%,16%{box-shadow:0 0 8px #fff2d5,0 0 25px #f4d6a599;border-color:#fff5e3}}
+@keyframes dc-method-link{0%,100%{transform:scaleY(0);opacity:0}4%{transform:scaleY(.05);opacity:.85}17%{transform:scaleY(1);opacity:.85}20%,99%{transform:scaleY(1);opacity:0}}
 .refonte[data-paused=true] *, .refonte[data-paused=true] *::before,.refonte[data-paused=true] *::after,
 .refonte[data-hidden=true] *, .refonte[data-hidden=true] *::before,.refonte[data-hidden=true] *::after,
 .refonte [data-offscreen=true] *, .refonte [data-offscreen=true] *::before,.refonte [data-offscreen=true] *::after{animation-play-state:paused!important}
