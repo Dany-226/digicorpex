@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function HomeNavigation() {
   const [open, setOpen] = useState(false)
@@ -10,7 +11,7 @@ export default function HomeNavigation() {
     <header className="home-nav" onKeyDown={(event) => {
       if (event.key === 'Escape') { setOpen(false); toggle.current?.focus() }
     }}>
-      <Link className="logo" href="/" aria-label="Digicorpex, accueil">DIGICORPEX <small>/ intelligence opérationnelle</small></Link>
+      <Link className="logo" href="/" aria-label="Digicorpex, accueil"><Image src="/brand/digicorpex-horizontal.svg" alt="Digicorpex" width={860} height={190} priority /><small>/ intelligence opérationnelle</small></Link>
       <button ref={toggle} type="button" className="menu-toggle" aria-controls="home-navigation" aria-expanded={open} onClick={() => setOpen(!open)}>
         {open ? 'Fermer' : 'Menu'}
       </button>

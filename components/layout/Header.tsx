@@ -29,9 +29,9 @@ export default function Header() {
           <Link href="/" className="flex items-center shrink-0">
             <Image
               src="/logo-tagline.svg"
-              alt="Digicorpex - Vos Opérations, Automatisées"
-              width={753}
-              height={80}
+              alt="Digicorpex"
+              width={860}
+              height={190}
               priority
               className="h-8 w-auto"
             />

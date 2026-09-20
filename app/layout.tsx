@@ -36,6 +36,7 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Digicorpex',
+  logo: 'https://www.digicorpex.com/brand/digicorpex-horizontal.svg',
   url: 'https://www.digicorpex.com',
   email: 'danielrollin@digicorpex.com',
   telephone: '+33674058657',

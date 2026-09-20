@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Digicorpex symbol">
-  <rect width="240" height="240" rx="44" fill="#f4efe5"/><g fill="#151512">
+  <g fill="#151512">
     <!-- Open D -->
     <path d="M58 38H124C174 38 204 72 204 120C204 168 174 202 124 202H58V169H122C151 169 170 151 170 120C170 89 151 71 122 71H58Z"/>
     <!-- Inner horizontal stroke -->

@@ -30,8 +30,8 @@ export default function Footer() {
               <Image
                 src="/logo-light.svg"
                 alt="Digicorpex"
-                width={454}
-                height={76}
+                width={860}
+                height={190}
                 className="h-8 w-auto"
               />
             </Link>
