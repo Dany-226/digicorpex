@@ -3,7 +3,6 @@ import LogoMarquee from "./LogoMarquee"
 export default function Integrations() {
   return (
 <section className="connectors" id="integrations" data-motion-section>
- <div className="rock-transition"></div><div className="light-field"></div>
  <div className="connectors-head">
    <div className="eyebrow">Connexion / sans remplacer votre stack</div>
    <h2>Vos outils savent déjà beaucoup de choses.<br /><em>Nous les faisons travailler ensemble.</em></h2>
