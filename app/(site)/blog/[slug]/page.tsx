@@ -181,7 +181,7 @@ export default function ArticlePage({
             <div className="flex items-center gap-4">
               <div className="relative w-12 h-12 rounded-full bg-surface-container-high overflow-hidden shrink-0">
                 <Image
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=100&q=80"
+                  src="/brand/digicorpex-symbol.svg"
                   alt="Équipe Digicorpex"
                   fill
                   className="object-cover"
@@ -331,7 +331,7 @@ export default function ArticlePage({
             <div className="shrink-0">
               <div className="relative w-32 h-32 rounded-sm overflow-hidden grayscale hover:grayscale-0 transition-all duration-500 bg-surface-container-high">
                 <Image
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=256&q=80"
+                  src="/brand/digicorpex-symbol.svg"
                   alt="Équipe Digicorpex"
                   fill
                   className="object-cover"

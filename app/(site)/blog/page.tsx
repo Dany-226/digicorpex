@@ -82,7 +82,7 @@ export default function BlogPage() {
                     {/* Image */}
                     <div className="relative aspect-[16/9] overflow-hidden rounded-sm bg-surface-container mb-8 grayscale hover:grayscale-0 transition-all duration-700">
                       <Image
-                        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80"
+                        src="/brand/composition-0.svg"
                         alt={featured.title}
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
@@ -134,7 +134,7 @@ export default function BlogPage() {
                         {/* Image aspect-square */}
                         <div className="relative aspect-square overflow-hidden rounded-sm bg-surface-container mb-5 grayscale hover:grayscale-0 transition-all duration-700">
                           <Image
-                            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80"
+                            src="/brand/composition-1.svg"
                             alt={article.title}
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-700"

@@ -51,8 +51,8 @@ const services: Service[] = [
     ctaLabel: 'Démarrer votre projet',
     ctaHref: '/contact',
     reversed: false,
-    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Développement web Next.js et React - MacBook avec code',
+    image: '/brand/composition-0.svg',
+    imageAlt: 'Composition abstraite Digicorpex',
   },
   {
     number: '02',
@@ -69,8 +69,8 @@ const services: Service[] = [
     ctaLabel: 'Voir notre approche design',
     ctaHref: '/contact',
     reversed: true,
-    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Design UX/UI et prototypage - interface numérique',
+    image: '/brand/composition-1.svg',
+    imageAlt: 'Composition abstraite Digicorpex',
   },
   {
     number: '03',
@@ -87,8 +87,8 @@ const services: Service[] = [
     ctaLabel: 'Auditer mon site',
     ctaHref: '/contact',
     reversed: false,
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80',
-    imageAlt: 'Stratégie SEO et analytics - tableau de bord de données',
+    image: '/brand/composition-2.svg',
+    imageAlt: 'Composition abstraite Digicorpex',
   },
 ]
 

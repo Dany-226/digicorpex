@@ -106,8 +106,8 @@ export default function AboutPage() {
               <div className="aspect-square bg-surface-container-low p-2">
                 <div className="relative w-full h-full grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden rounded-sm">
                   <Image
-                    src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-                    alt="Équipe Digicorpex - agents IA Bordeaux"
+                    src="/brand/composition-1.svg"
+                    alt="Composition minérale Digicorpex"
                     fill
                     className="object-cover"
                     sizes="(max-width: 1024px) 100vw, 42vw"

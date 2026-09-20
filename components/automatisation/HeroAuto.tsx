@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function HeroAuto() {
   return (
-    <section className="relative py-32 px-8 overflow-hidden" style={{ background: 'linear-gradient(135deg, #1e293b 0%, #334155 60%, #1e293b 100%)' }}>
+    <section className="relative py-32 px-8 overflow-hidden" style={{ background: 'linear-gradient(135deg, #171714 0%, #454033 60%, #171714 100%)' }}>
       <div className="max-w-4xl mx-auto">
 
         <span className="inline-block text-[10px] font-label uppercase tracking-[0.25em] text-slate-300 border border-slate-500 px-3 py-1 rounded-sm mb-10">
