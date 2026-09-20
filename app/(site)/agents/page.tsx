@@ -22,12 +22,12 @@ export const metadata: Metadata = {
 
 export default function AgentsPage() {
   return (
-    <>
+    <div className="agents-material">
       <AgentsHero />
       <AgentsGrid />
       <CommentCaPasse />
       <TarifAuto />
       <AgentsCTA />
-    </>
+    </div>
   )
 }
