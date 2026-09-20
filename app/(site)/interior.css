@@ -63,3 +63,26 @@
 .interior-site .agents-material>section:nth-child(3){--agent-dark-material:url('/brand/agents-slate.webp')}
 .interior-site .agents-material>section:nth-child(4){--agent-light-material:url('/brand/agents-ribbed-glass.webp')}
 .interior-site .agents-material>section:nth-child(5){--agent-dark-material:url('/brand/agents-obsidian.webp')}
+
+/* Soft material joins and slow, alternating light passages. */
+.interior-site .agents-material{background:#eee9df}
+.interior-site .agents-material>section{border-bottom:0;overflow:hidden}
+.interior-site .agents-material>section:not(:last-child){margin-bottom:-64px;padding-bottom:160px;mask-image:linear-gradient(to bottom,#000 calc(100% - 64px),transparent);-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 64px),transparent);z-index:1}
+.interior-site .agents-material>section+section{padding-top:150px}
+.interior-site .agents-material>section::before{content:"";position:absolute;inset:-25%;z-index:-1;pointer-events:none;background:linear-gradient(110deg,transparent 37%,#ffe9b908 43%,#fff4d83b 49%,#ffffff16 52%,transparent 60%);transform:translateX(-75%);animation:agents-light-east 19s ease-in-out infinite;filter:blur(15px);mix-blend-mode:screen}
+.interior-site .agents-material>section:nth-child(2)::before{background:radial-gradient(ellipse at center,#fffef4a6,transparent 58%);animation:agents-light-rise 23s ease-in-out -6s infinite;inset:0 -20%;filter:blur(24px)}
+.interior-site .agents-material>section:nth-child(3)::before{animation:agents-light-west 21s ease-in-out -7s infinite}
+.interior-site .agents-material>section:nth-child(4)::before{animation:agents-light-west 25s ease-in-out -13s infinite;background:linear-gradient(105deg,transparent 38%,#ffffff80 49%,transparent 61%)}
+.interior-site .agents-material>section:nth-child(5)::before{animation:agents-light-rise 22s ease-in-out -9s infinite;background:linear-gradient(0deg,transparent 38%,#fff0cb30 49%,transparent 61%)}
+@keyframes agents-light-east{0%,12%{transform:translateX(-75%);opacity:0}25%{opacity:.8}65%{opacity:.8}80%,100%{transform:translateX(75%);opacity:0}}
+@keyframes agents-light-west{0%,12%{transform:translateX(75%);opacity:0}25%{opacity:.75}65%{opacity:.75}80%,100%{transform:translateX(-75%);opacity:0}}
+@keyframes agents-light-rise{0%,12%{transform:translateY(75%);opacity:0}30%{opacity:.65}60%{opacity:.65}85%,100%{transform:translateY(-75%);opacity:0}}
+/* The existing pause checkbox also controls the ambient section lighting. */
+.interior-site .agents-material:has(.agent-flow-pause:checked)>section::before{animation-play-state:paused}
+@media(max-width:640px){.interior-site .agents-material>section:not(:last-child){margin-bottom:-42px;padding-bottom:115px;mask-image:linear-gradient(to bottom,#000 calc(100% - 42px),transparent);-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 42px),transparent)}.interior-site .agents-material>section+section{padding-top:105px}}
+@media(prefers-reduced-motion:reduce){.interior-site .agents-material>section::before{animation:none;opacity:0}}
+.interior-site .agents-material>section:nth-child(1){z-index:5}
+.interior-site .agents-material>section:nth-child(2){z-index:4}
+.interior-site .agents-material>section:nth-child(3){z-index:3}
+.interior-site .agents-material>section:nth-child(4){z-index:2}
+.interior-site .agents-material>section:nth-child(5){z-index:1}
