@@ -94,3 +94,12 @@
 .interior-site .services-architecture h1{text-shadow:0 2px 22px #f8f4e9b3}
 .interior-site .services-architecture p{color:#49443a}
 @media(max-width:640px){.interior-site .services-architecture::before{background-position:45% top;opacity:.38}.interior-site .services-architecture::after{background:linear-gradient(90deg,#eee9dfe8,#eee9dfb8),linear-gradient(0deg,#eee9df,transparent 30%)}}
+
+/* Development: architectural detail across the row, fading toward the copy. */
+.interior-site .service-development{position:relative;isolation:isolate;min-height:660px;padding:70px 0}
+.interior-site .service-development .service-visual{display:none}
+.interior-site .service-development::before{content:"";position:absolute;inset:0 calc(-1 * max(32px,(100vw - 1280px)/2));z-index:-2;background:url('/brand/services-window-detail.png') left center/auto 125% no-repeat;pointer-events:none}
+.interior-site .service-development::after{content:"";position:absolute;inset:0 calc(-1 * max(32px,(100vw - 1280px)/2));z-index:-1;background:linear-gradient(90deg,#eee9df00 0%,#eee9df14 27%,#eee9dfb8 51%,#eee9dff5 68%,#eee9df 100%),linear-gradient(0deg,#eee9df,transparent 16%,transparent 85%,#eee9df);pointer-events:none}
+.interior-site .service-development .service-content{grid-column:8 / 13}
+.interior-site .service-development .service-content>span:first-child{color:#a69980}
+@media(max-width:767px){.interior-site .service-development{padding-top:200px;min-height:0}.interior-site .service-development .service-content{grid-column:1 / -1}.interior-site .service-development::before{background-size:auto 620px;background-position:28% top;opacity:.7}.interior-site .service-development::after{background:linear-gradient(180deg,#eee9df10,#eee9dfed 230px,#eee9df 70%)}}

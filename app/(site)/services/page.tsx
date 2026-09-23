@@ -136,13 +136,13 @@ export default function ServicesPage() {
           {services.map((service) => (
             <div
               key={service.number}
-              className="grid md:grid-cols-12 gap-12 md:gap-16 items-center"
+              className={cn("grid md:grid-cols-12 gap-12 md:gap-16 items-center", service.number === "01" && "service-development")}
             >
 
               {/* Image block */}
               <div
                 className={cn(
-                  'md:col-span-7',
+                  'md:col-span-7 service-visual',
                   service.reversed ? 'order-1 md:order-2' : ''
                 )}
               >
@@ -163,7 +163,7 @@ export default function ServicesPage() {
               {/* Content block */}
               <div
                 className={cn(
-                  'md:col-span-5',
+                  'md:col-span-5 service-content',
                   service.reversed ? 'order-2 md:order-1' : ''
                 )}
               >
