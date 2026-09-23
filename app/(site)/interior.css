@@ -86,3 +86,11 @@
 .interior-site .agents-material>section:nth-child(3){z-index:3}
 .interior-site .agents-material>section:nth-child(4){z-index:2}
 .interior-site .agents-material>section:nth-child(5){z-index:1}
+
+/* Architectural window study supplied by the user, framed with CSS only. */
+.interior-site main>section.services-architecture{position:relative;isolation:isolate;overflow:hidden;background:#eee9df}
+.interior-site .services-architecture::before{content:"";position:absolute;inset:0;z-index:-2;background-image:url('/brand/services-architecture.png');background-repeat:no-repeat;background-size:auto 180%;background-position:68% top;opacity:.65;pointer-events:none}
+.interior-site .services-architecture::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#eee9dff5 0%,#eee9dfed 30%,#eee9df9e 57%,#eee9df14 86%),linear-gradient(0deg,#eee9df 0%,transparent 22%,transparent 85%,#eee9df66);pointer-events:none}
+.interior-site .services-architecture h1{text-shadow:0 2px 22px #f8f4e9b3}
+.interior-site .services-architecture p{color:#49443a}
+@media(max-width:640px){.interior-site .services-architecture::before{background-position:45% top;opacity:.38}.interior-site .services-architecture::after{background:linear-gradient(90deg,#eee9dfe8,#eee9dfb8),linear-gradient(0deg,#eee9df,transparent 30%)}}

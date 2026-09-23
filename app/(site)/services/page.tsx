@@ -100,7 +100,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* ── 3.1 Hero ──────────────────────────────── */}
-      <section className="py-24 md:py-32 px-8 bg-surface">
+      <section className="services-architecture py-24 md:py-32 px-8 bg-surface">
         <div className="max-w-7xl mx-auto">
           <div className="max-w-3xl">
 
