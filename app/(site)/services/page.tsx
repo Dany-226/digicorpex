@@ -136,7 +136,7 @@ export default function ServicesPage() {
           {services.map((service) => (
             <div
               key={service.number}
-              className={cn("grid md:grid-cols-12 gap-12 md:gap-16 items-center", service.number === "01" && "service-development", service.number === "02" && "service-design")}
+              className={cn("grid md:grid-cols-12 gap-12 md:gap-16 items-center", service.number === "01" && "service-development", service.number === "02" && "service-design", service.number === "03" && "service-seo")}
             >
 
               {/* Image block */}

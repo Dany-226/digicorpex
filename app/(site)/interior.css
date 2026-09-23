@@ -112,3 +112,12 @@
 .interior-site .service-design .service-content{grid-column:1 / 6}
 .interior-site .service-design .service-content>span:first-child{color:#a69980}
 @media(max-width:767px){.interior-site .service-design{padding-top:220px;min-height:0}.interior-site .service-design .service-content{grid-column:1 / -1}.interior-site .service-design::before{background-size:auto 380px;background-position:right top;opacity:.85}.interior-site .service-design::after{background:linear-gradient(180deg,#eee9df00,#eee9dfed 245px,#eee9df 70%)}}
+
+/* SEO: original cornice and arched-window sketch, fading to the right. */
+.interior-site .service-seo{position:relative;isolation:isolate;min-height:660px;padding:70px 0}
+.interior-site .service-seo .service-visual{display:none}
+.interior-site .service-seo::before{content:"";position:absolute;inset:0 calc(-1 * max(32px,(100vw - 1280px)/2));z-index:-2;background:url('/brand/services-seo-sketch.webp') left center/cover no-repeat;pointer-events:none}
+.interior-site .service-seo::after{content:"";position:absolute;inset:0 calc(-1 * max(32px,(100vw - 1280px)/2));z-index:-1;background:linear-gradient(90deg,transparent 20%,#eee9df22 40%,#eee9dfbd 62%,#eee9dff5 83%),linear-gradient(0deg,#eee9df,transparent 14%,transparent 87%,#eee9df);pointer-events:none}
+.interior-site .service-seo .service-content{grid-column:8 / 13}
+.interior-site .service-seo .service-content>span:first-child{color:#a69980}
+@media(max-width:767px){.interior-site .service-seo{padding-top:230px;min-height:0}.interior-site .service-seo .service-content{grid-column:1 / -1}.interior-site .service-seo::before{background-size:auto 460px;background-position:left top}.interior-site .service-seo::after{background:linear-gradient(180deg,transparent,#eee9dfed 250px,#eee9df 70%)}}
