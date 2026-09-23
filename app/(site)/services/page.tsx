@@ -218,8 +218,8 @@ export default function ServicesPage() {
       </section>
 
       {/* ── 3.3 CTA finale ────────────────────────── */}
-      <section className="bg-secondary py-32 px-8">
-        <div className="max-w-7xl mx-auto text-center">
+      <section className="services-foundation py-32 px-8">
+        <div className="foundation-content max-w-7xl mx-auto">
 
           <h2 className="font-headline text-5xl font-extrabold text-on-secondary tracking-tight mb-6 leading-[1.1]">
             Un site solide,
