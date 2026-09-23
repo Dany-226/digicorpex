@@ -149,3 +149,11 @@
 .interior-site .blog-crystal aside [class*="text-outline-variant"]{color:#655b49}
 .interior-site .blog-crystal input{background:#f6f0e5b3}
 @media(max-width:640px){.interior-site .blog-crystal article{padding:25px}.interior-site .blog-crystal>section{padding-left:24px;padding-right:24px}}
+
+/* Consistent article covers, revealed from monochrome to color on scroll. */
+.interior-site .article-cover{filter:grayscale(1);transition:filter .15s linear}
+@supports(animation-timeline:view()){
+ .interior-site .article-cover{animation:article-cover-color linear both;animation-timeline:view();animation-range:entry 10% cover 45%}
+}
+@keyframes article-cover-color{from{filter:grayscale(1)}to{filter:grayscale(0)}}
+@media(prefers-reduced-motion:reduce){.interior-site .article-cover{animation:none;filter:none;transition:none}}
