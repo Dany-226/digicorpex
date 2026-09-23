@@ -103,3 +103,12 @@
 .interior-site .service-development .service-content{grid-column:8 / 13}
 .interior-site .service-development .service-content>span:first-child{color:#a69980}
 @media(max-width:767px){.interior-site .service-development{padding-top:200px;min-height:0}.interior-site .service-development .service-content{grid-column:1 / -1}.interior-site .service-development::before{background-size:auto 620px;background-position:28% top;opacity:.7}.interior-site .service-development::after{background:linear-gradient(180deg,#eee9df10,#eee9dfed 230px,#eee9df 70%)}}
+
+/* UX/UI: architectural plan, clear on the right and veiled beneath left copy. */
+.interior-site .service-design{position:relative;isolation:isolate;min-height:660px;padding:70px 0}
+.interior-site .service-design .service-visual{display:none}
+.interior-site .service-design::before{content:"";position:absolute;inset:0 calc(-1 * max(32px,(100vw - 1280px)/2));z-index:-2;background:url('/brand/services-plan-detail.png') right center/auto 110% no-repeat;pointer-events:none}
+.interior-site .service-design::after{content:"";position:absolute;inset:0 calc(-1 * max(32px,(100vw - 1280px)/2));z-index:-1;background:linear-gradient(90deg,#eee9df 0%,#eee9dff5 30%,#eee9dfb8 49%,#eee9df14 73%,#eee9df00 100%),linear-gradient(0deg,#eee9df,transparent 16%,transparent 85%,#eee9df);pointer-events:none}
+.interior-site .service-design .service-content{grid-column:1 / 6}
+.interior-site .service-design .service-content>span:first-child{color:#a69980}
+@media(max-width:767px){.interior-site .service-design{padding-top:220px;min-height:0}.interior-site .service-design .service-content{grid-column:1 / -1}.interior-site .service-design::before{background-size:auto 380px;background-position:right top;opacity:.85}.interior-site .service-design::after{background:linear-gradient(180deg,#eee9df00,#eee9dfed 245px,#eee9df 70%)}}
