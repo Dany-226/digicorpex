@@ -134,3 +134,18 @@
 .interior-site .foundation-content a:first-child:hover{background:#fffaf0}
 .interior-site .foundation-content a:last-child{color:#fff5e5;border-color:#fff5e599}
 @media(max-width:767px){.interior-site .services-foundation{min-height:860px;align-items:flex-start;padding-top:70px;padding-bottom:360px}.interior-site .services-foundation::before{background-size:auto 570px;background-position:70% bottom}.interior-site .services-foundation::after{background:linear-gradient(180deg,#171714 0%,#171714f2 35%,#17171499 53%,transparent 76%)}.interior-site .foundation-content h2{font-size:2.8rem}.interior-site .foundation-content a:first-child{padding-left:24px;padding-right:24px}}
+
+/* Blog: a single continuous illuminated-crystal-to-charcoal material. */
+.interior-site .blog-crystal{position:relative;isolation:isolate;background:#eee9df url('/brand/blog-crystal-gradient.webp') center top/100% 100% no-repeat;padding-bottom:50px}
+.interior-site .blog-crystal>section{background:transparent}
+.interior-site .blog-crystal>section:first-child{background:linear-gradient(180deg,#f5efe2a6,#f5efe233);border:0}
+.interior-site .blog-crystal h1{max-width:950px;font-size:clamp(3rem,5.4vw,5.3rem)}
+.interior-site .blog-crystal article{padding:32px;background:rgba(248,244,235,.94);border:1px solid #fff8e7a6;backdrop-filter:blur(8px);box-shadow:0 15px 45px -28px #17171480}
+.interior-site .blog-crystal article a{height:100%;display:block}
+.interior-site .blog-crystal article h3{font:400 26px/1.2 Georgia,serif}
+.interior-site .blog-crystal article:hover{background:#faf6ed}
+.interior-site .blog-crystal aside>div{padding:28px;background:rgba(248,244,235,.94);border:1px solid #fff8e780;backdrop-filter:blur(8px)}
+.interior-site .blog-crystal article [class*="text-on-surface-variant"],.interior-site .blog-crystal aside [class*="text-on-tertiary-container"]{color:#514b40}
+.interior-site .blog-crystal aside [class*="text-outline-variant"]{color:#655b49}
+.interior-site .blog-crystal input{background:#f6f0e5b3}
+@media(max-width:640px){.interior-site .blog-crystal article{padding:25px}.interior-site .blog-crystal>section{padding-left:24px;padding-right:24px}}

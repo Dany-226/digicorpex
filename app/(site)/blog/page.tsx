@@ -1,18 +1,17 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
 import { getAllArticles } from '@/lib/mdx'
 import { ArrowRight, Award } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Blog - Insights & Stratégie Digitale',
+  title: 'Automatiser pour ne plus y penser - Blog',
   description:
     'Articles sur le développement web, le design UX/UI et la stratégie SEO. Ressources éditoriales par Digicorpex, Bordeaux.',
   alternates: {
     canonical: 'https://www.digicorpex.com/blog',
   },
   openGraph: {
-    title: 'Blog Digicorpex -Insights & Stratégie Digitale',
+    title: 'Automatiser pour ne plus y penser - Digicorpex',
     description:
       'Articles sur le développement web, le design UX/UI et la stratégie SEO.',
     url: 'https://www.digicorpex.com/blog',
@@ -30,7 +29,7 @@ export default function BlogPage() {
   }, {})
 
   return (
-    <>
+    <div className="blog-crystal">
       {/* ── Editorial header ─────────────────────── */}
       <section className="py-24 md:py-32 px-8 bg-surface">
         <div className="max-w-7xl mx-auto">
@@ -39,12 +38,12 @@ export default function BlogPage() {
             {/* Left -badge + H1 */}
             <div>
               <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-tertiary-container text-on-tertiary-container text-xs font-label uppercase tracking-widest rounded-full mb-6 block w-fit">
-                Insights &amp; Strategy
+                Le blog Digicorpex
               </span>
               <h1 className="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter leading-[1.1] text-on-surface">
-                The Digital
+                Automatiser
                 <br />
-                <span className="text-secondary">Perspective.</span>
+                <span className="text-secondary">pour ne plus y penser</span>
               </h1>
             </div>
 
@@ -80,15 +79,7 @@ export default function BlogPage() {
                 <article>
                   <Link href={`/blog/${featured.slug}`} className="group block">
                     {/* Image */}
-                    <div className="relative aspect-[16/9] overflow-hidden rounded-sm bg-surface-container mb-8 grayscale hover:grayscale-0 transition-all duration-700">
-                      <Image
-                        src="/brand/composition-0.svg"
-                        alt={featured.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
-                        sizes="(max-width: 1024px) 100vw, 66vw"
-                      />
-                    </div>
+
 
                     {/* Meta */}
                     <div className="flex items-center gap-4 mb-3">
@@ -132,15 +123,7 @@ export default function BlogPage() {
                         className="group block"
                       >
                         {/* Image aspect-square */}
-                        <div className="relative aspect-square overflow-hidden rounded-sm bg-surface-container mb-5 grayscale hover:grayscale-0 transition-all duration-700">
-                          <Image
-                            src="/brand/composition-1.svg"
-                            alt={article.title}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-700"
-                            sizes="(max-width: 640px) 100vw, 33vw"
-                          />
-                        </div>
+
 
                         <span className="text-[11px] font-label uppercase tracking-widest text-secondary block mb-2">
                           {article.category}
@@ -231,6 +214,6 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }
