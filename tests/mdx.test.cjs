@@ -8,3 +8,11 @@ test('published articles preserve their slugs and can be loaded',()=>{
 test('draft, missing and path traversal slugs are never rendered',()=>{
  for(const slug of ['google-maps-local','contenu-ia-seo','missing','../package','../../README','/etc/passwd'])assert.equal(getArticleBySlug(slug),null,slug);
 });
+
+test('category variants share canonical labels and published counts',()=>{
+ const {normalizeCategory}=m.exports;
+ assert.equal(normalizeCategory("  CAS D’USAGE  "),normalizeCategory("Cas d'usage"));
+ assert.equal(normalizeCategory('STRATÉGIE'),normalizeCategory('Stratégie'));
+ const counts=getAllArticles().reduce((acc,a)=>{acc[a.category]=(acc[a.category]||0)+1;return acc},{});
+ assert.deepEqual(counts,{'Cas d’usage':4,'Stratégie':2,'SEO':1});
+});
