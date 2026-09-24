@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
 import { ArrowRight, Target, Zap, Eye, Users } from 'lucide-react'
 
 export const metadata: Metadata = {
@@ -65,7 +64,7 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="about-resin">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema).replace(/</g, '\\u003c') }}
@@ -101,23 +100,8 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
 
-            {/* Visual */}
-            <div className="lg:col-span-5">
-              <div className="aspect-square bg-surface-container-low p-2">
-                <div className="relative w-full h-full grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden rounded-sm">
-                  <Image
-                    src="/brand/composition-1.svg"
-                    alt="Composition minérale Digicorpex"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 42vw"
-                  />
-                </div>
-              </div>
-            </div>
-
             {/* Text */}
-            <div className="lg:col-span-7">
+            <div className="about-story lg:col-span-8 lg:col-start-3">
               <h2 className="font-headline text-3xl font-bold tracking-tight text-on-surface mb-4">
                 Pourquoi Digicorpex
               </h2>
@@ -220,6 +204,6 @@ export default function AboutPage() {
           </Link>
         </div>
       </section>
-    </>
+    </div>
   )
 }

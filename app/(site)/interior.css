@@ -157,3 +157,15 @@
 }
 @keyframes article-cover-color{from{filter:grayscale(1)}to{filter:grayscale(0)}}
 @media(prefers-reduced-motion:reduce){.interior-site .article-cover{animation:none;filter:none;transition:none}}
+
+/* About: continuous champagne resin, luminous ivory to smoked charcoal. */
+.interior-site .about-resin{background:#eee9df url('/brand/about-resin-gradient.webp') center top/100% 100% no-repeat;isolation:isolate}
+.interior-site .about-resin>section{background:transparent;border:0}
+.interior-site .about-resin>section:first-of-type{background:linear-gradient(90deg,#f5efe7d9,#f5efe74d 65%,transparent)}
+.interior-site .about-resin .about-story{padding:clamp(26px,4vw,55px);background:#f8f2e6e8;backdrop-filter:blur(12px);border-top:1px solid #fff9e6b3}
+.interior-site .about-resin>section:nth-of-type(3) h2{color:#fff5e5;text-shadow:0 2px 20px #171714cc}
+.interior-site .about-resin .editorial-shadow{background:#f8f2e6eb;backdrop-filter:blur(10px);border-top:1px solid #fff9e6b3;box-shadow:0 20px 40px -25px #17171480}
+.interior-site .about-resin>section:last-of-type{background:linear-gradient(180deg,transparent,#17171488);color:#fff5e5;padding-top:100px;padding-bottom:110px}
+.interior-site .about-resin>section:last-of-type h2,.interior-site .about-resin>section:last-of-type p{color:#fff5e5;text-shadow:0 2px 16px #171714}
+.interior-site .about-resin>section:last-of-type a{background:#f4efe5;color:#24231e}
+@media(max-width:640px){.interior-site .about-resin>section{padding-left:24px;padding-right:24px}.interior-site .about-resin .about-story{padding:26px}}
