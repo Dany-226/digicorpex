@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils'
 
 const navLinks = [
   { href: '/agents', label: 'Automatisation IA', emphasis: true },
+  { href: '/services', label: 'Services' },
   { href: '/blog', label: 'Blog' },
   { href: '/about', label: 'À propos' },
 ]
@@ -29,9 +30,9 @@ export default function Header() {
           <Link href="/" className="flex items-center shrink-0">
             <Image
               src="/logo-tagline.svg"
-              alt="Digicorpex - Vos Opérations, Automatisées"
-              width={753}
-              height={80}
+              alt="Digicorpex"
+              width={860}
+              height={190}
               priority
               className="h-8 w-auto"
             />
@@ -63,7 +64,7 @@ export default function Header() {
               href="/contact"
               className="hidden md:inline-flex items-center gap-2 bg-secondary text-on-secondary px-6 py-2.5 rounded-sm font-headline font-bold text-sm hover:bg-secondary-dim transition-all duration-150 active:scale-95"
             >
-              Obtenir un devis
+              Demander un diagnostic IA
             </Link>
 
             <button
@@ -105,7 +106,7 @@ export default function Header() {
               onClick={() => setIsOpen(false)}
               className="inline-flex items-center gap-2 bg-secondary text-on-secondary px-6 py-2.5 rounded-sm font-headline font-bold text-sm hover:bg-secondary-dim transition-all duration-150 active:scale-95 w-fit mt-2"
             >
-              Obtenir un devis
+              Demander un diagnostic IA
               <ArrowRight size={14} />
             </Link>
           </nav>

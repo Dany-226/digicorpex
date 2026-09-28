@@ -1,47 +1,33 @@
 import type { Metadata } from 'next'
-import { Manrope, Inter, DM_Sans } from 'next/font/google'
+import localFont from 'next/font/local'
 import './globals.css'
-import Header from '@/components/layout/Header'
-import Footer from '@/components/layout/Footer'
 
-const manrope = Manrope({
-  variable: '--font-manrope',
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-const inter = Inter({
-  variable: '--font-inter',
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-const dmSans = DM_Sans({
-  variable: '--font-dm-sans',
-  subsets: ['latin'],
-  display: 'swap',
-})
+const manrope = localFont({ src: './fonts/manrope.woff2', variable: '--font-manrope', weight: '200 800', display: 'swap' })
+const inter = localFont({ src: './fonts/inter.woff2', variable: '--font-inter', weight: '100 900', display: 'swap' })
+const dmSans = localFont({ src: './fonts/dm-sans.woff2', variable: '--font-dm-sans', weight: '100 1000', display: 'swap' })
 
 export const metadata: Metadata = {
   title: {
     template: '%s | Digicorpex',
-    default: 'Digicorpex - Agence Web & Digital',
+    default: 'Digicorpex - Agents IA & automatisation',
   },
   description:
-    'Digicorpex est une agence web & digital spécialisée en développement web, design UX/UI et stratégie SEO. Bordeaux.',
+    'Digicorpex relie vos outils et automatise vos opérations avec des agents IA sur mesure pour les PME et TPE. Bordeaux.',
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
+    images: [{ url: '/refonte/opengraph.jpg', width: 1200, height: 630, alt: 'Digicorpex - Vos opérations, automatisées.' }],
     siteName: 'Digicorpex',
-    title: 'Digicorpex - Agence Web & Digital',
+    title: 'Digicorpex - Agents IA & automatisation',
     description:
-      'Digicorpex est une agence web & digital spécialisée en développement web, design UX/UI et stratégie SEO. Bordeaux.',
+      'Digicorpex relie vos outils et automatise vos opérations avec des agents IA sur mesure pour les PME et TPE. Bordeaux.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Digicorpex - Agence Web & Digital',
+    images: ['/refonte/opengraph.jpg'],
+    title: 'Digicorpex - Agents IA & automatisation',
     description:
-      'Digicorpex est une agence web & digital spécialisée en développement web, design UX/UI et stratégie SEO.',
+      'Digicorpex relie vos outils et automatise vos opérations avec des agents IA sur mesure pour les PME et TPE.',
   },
   metadataBase: new URL('https://www.digicorpex.com'),
 }
@@ -50,6 +36,7 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'Digicorpex',
+  logo: 'https://www.digicorpex.com/brand/digicorpex-horizontal.svg',
   url: 'https://www.digicorpex.com',
   email: 'danielrollin@digicorpex.com',
   telephone: '+33674058657',
@@ -73,15 +60,11 @@ export default function RootLayout({
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema).replace(/</g, '\\u003c') }}
         />
       </head>
       <body className="bg-surface text-on-surface font-body min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1 pt-16">
-          {children}
-        </main>
-        <Footer />
+        {children}
       </body>
     </html>
   )

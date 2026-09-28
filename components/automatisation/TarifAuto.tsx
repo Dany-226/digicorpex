@@ -1,11 +1,11 @@
 const plans = [
   {
-    price: 'À partir de 3 000 €',
+    price: 'À partir de 1 990 €',
     label: 'Mise en place',
     text: 'Audit, déploiement, formation, 30 jours de calibration inclus.',
   },
   {
-    price: '300 € / mois',
+    price: '190 € / mois',
     label: 'Pour qu\'on reste à bord',
     text: 'Monitoring, corrections, évolutions. Sans engagement.',
   },

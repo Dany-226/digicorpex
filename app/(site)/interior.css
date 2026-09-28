@@ -1,0 +1,171 @@
+.interior-site{background:#eee9df;color:#24231e;font-family:var(--font-inter),sans-serif;min-height:100vh;--ring:38 24% 35%;--background:40 31% 91%;--foreground:48 9% 13%}
+.interior-site .glass-nav{background:rgba(238,233,223,.94);border-bottom:1px solid #24231e24}
+.interior-site h1,.interior-site h2{font-family:Georgia,serif;font-weight:400;letter-spacing:-.045em;text-wrap:balance}
+.interior-site h1{font-size:clamp(2.8rem,5.8vw,5.5rem);line-height:1.06}
+.interior-site h2{line-height:1.15}
+.interior-site h1 .text-secondary{font-style:italic}
+.interior-site h3{letter-spacing:-.02em}
+.interior-site main>section:first-of-type{border-bottom:1px solid #24231e24}
+.interior-site main>section:first-of-type:not(.bg-slate-900){background-image:radial-gradient(ellipse at 95% 0%,#c7b69235,transparent 60%)}
+.interior-site .bg-slate-900{background:#171714}
+.interior-site .bg-slate-800{background:#292823}
+.interior-site .text-slate-300{color:#d7d0c3}
+.interior-site .text-slate-400{color:#bbb3a5}
+.interior-site .text-on-surface{color:#24231e}
+.interior-site .text-on-surface-variant{color:#615c52}
+.interior-site .text-secondary,.interior-site .text-on-tertiary-container{color:#65573f}
+.interior-site .text-inverse-on-surface{color:#c0b7a6}
+.interior-site .border-outline-variant{border-color:#bdb3a2}
+.interior-site .border-secondary{border-color:#65573f}
+.interior-site .editorial-shadow{box-shadow:0 24px 60px -30px #33291e33}
+.interior-site input,.interior-site textarea,.interior-site select{accent-color:#65573f}
+.interior-site :focus-visible{outline:2px solid #9b7d49;outline-offset:4px}
+.interior-site ::selection{background:#d7c4a0;color:#171714}
+.interior-site .prose{line-height:1.85;color:#39362e}
+.interior-site .prose h2,.interior-site .prose h3{color:#24231e}
+.interior-site .prose a{text-decoration:underline;text-underline-offset:3px;color:#65573f}
+@media(max-width:640px){.interior-site section{padding-left:24px;padding-right:24px}.interior-site h1{overflow-wrap:break-word}}
+.interior-site .bg-surface{background-color:#eee9df}
+.interior-site .bg-surface-bright{background-color:#f4efe6}
+.interior-site .bg-surface-container-lowest{background-color:#faf7f0}
+.interior-site .bg-surface-container-low{background-color:#e7e1d6}
+.interior-site .bg-surface-container{background-color:#ddd6c9}
+.interior-site .bg-surface-container-high{background-color:#d8d0c2}
+.interior-site .bg-surface-container-highest{background-color:#d0c6b5}
+.interior-site .bg-primary{background-color:#24231e}
+.interior-site .bg-secondary{background-color:#65573f}
+.interior-site .bg-secondary-container{background-color:#dfd3bb}
+.interior-site .bg-tertiary-container{background-color:#ded3c0}
+.interior-site .bg-inverse-surface{background-color:#171714}
+
+/* Agents: tactile dark / crystal alternation, scoped to this page. */
+.interior-site .agents-material>section{position:relative;background-size:cover;background-position:center;isolation:isolate;border-bottom:1px solid #a99b7c55}
+.interior-site .agents-material>section:nth-child(odd){background-color:#171714;background-image:linear-gradient(90deg,#11110fe0,#11110f8c 65%,#11110fa8),var(--agent-dark-material);color:#f4efe5}
+.interior-site .agents-material>section:nth-child(even){background-color:#eee9df;background-image:linear-gradient(100deg,#f4efe5e8,#eee9df9e),var(--agent-light-material);color:#24231e}
+.interior-site .agents-material>section:first-child{padding-top:110px;padding-bottom:110px;background-position:center top}
+.interior-site .agents-material>section:nth-child(3){background-position:center 65%}
+.interior-site .agents-material>section:nth-child(5){background-position:center bottom}
+.interior-site .agents-material h2{font-size:clamp(2.5rem,4.4vw,4.5rem)}
+.interior-site .agents-material>section:nth-child(even) .text-white{color:#24231e}
+.interior-site .agents-material>section:nth-child(even) .text-slate-300,
+.interior-site .agents-material>section:nth-child(even) .text-slate-400{color:#615849}
+.interior-site .agents-material>section:nth-child(even) .grid>div{background:rgba(250,247,239,.88);border:1px solid #ab9b7e66;box-shadow:0 18px 40px -28px #47382080;backdrop-filter:blur(9px)}
+.interior-site .agents-material>section:nth-child(3) .text-slate-700{color:#cbb890;font-family:Georgia,serif;font-weight:400}
+.interior-site .agents-material>section:nth-child(3) .text-slate-400{color:#e0d7c8}
+.interior-site .agents-material>section:nth-child(3) .grid>div{padding:24px;background:#151512a6;border-top:1px solid #d4c1a080}
+.interior-site .agents-material>section:nth-child(5) .text-slate-400{color:#e0d7c8}
+.interior-site .agents-material .bg-green-50{background:#e6e1cf;color:#51492e}
+@media(max-width:640px){.interior-site .agents-material>section{background-size:auto 100%;padding-left:24px;padding-right:24px}.interior-site .agents-material>section:first-child{padding-top:75px;padding-bottom:75px}}
+
+/* Five different materials, one per section. */
+.interior-site .agents-material>section:nth-child(1){--agent-dark-material:url('/brand/agents-black.webp')}
+.interior-site .agents-material>section:nth-child(2){--agent-light-material:url('/brand/agents-crystal.webp')}
+.interior-site .agents-material>section:nth-child(3){--agent-dark-material:url('/brand/agents-slate.webp')}
+.interior-site .agents-material>section:nth-child(4){--agent-light-material:url('/brand/agents-ribbed-glass.webp')}
+.interior-site .agents-material>section:nth-child(5){--agent-dark-material:url('/brand/agents-obsidian.webp')}
+
+/* Soft material joins and slow, alternating light passages. */
+.interior-site .agents-material{background:#eee9df}
+.interior-site .agents-material>section{border-bottom:0;overflow:hidden}
+.interior-site .agents-material>section:not(:last-child){margin-bottom:-64px;padding-bottom:160px;mask-image:linear-gradient(to bottom,#000 calc(100% - 64px),transparent);-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 64px),transparent);z-index:1}
+.interior-site .agents-material>section+section{padding-top:150px}
+.interior-site .agents-material>section::before{content:"";position:absolute;inset:-25%;z-index:-1;pointer-events:none;background:linear-gradient(110deg,transparent 37%,#ffe9b908 43%,#fff4d83b 49%,#ffffff16 52%,transparent 60%);transform:translateX(-75%);animation:agents-light-east 19s ease-in-out infinite;filter:blur(15px);mix-blend-mode:screen}
+.interior-site .agents-material>section:nth-child(2)::before{background:radial-gradient(ellipse at center,#fffef4a6,transparent 58%);animation:agents-light-rise 23s ease-in-out -6s infinite;inset:0 -20%;filter:blur(24px)}
+.interior-site .agents-material>section:nth-child(3)::before{animation:agents-light-west 21s ease-in-out -7s infinite}
+.interior-site .agents-material>section:nth-child(4)::before{animation:agents-light-west 25s ease-in-out -13s infinite;background:linear-gradient(105deg,transparent 38%,#ffffff80 49%,transparent 61%)}
+.interior-site .agents-material>section:nth-child(5)::before{animation:agents-light-rise 22s ease-in-out -9s infinite;background:linear-gradient(0deg,transparent 38%,#fff0cb30 49%,transparent 61%)}
+@keyframes agents-light-east{0%,12%{transform:translateX(-75%);opacity:0}25%{opacity:.8}65%{opacity:.8}80%,100%{transform:translateX(75%);opacity:0}}
+@keyframes agents-light-west{0%,12%{transform:translateX(75%);opacity:0}25%{opacity:.75}65%{opacity:.75}80%,100%{transform:translateX(-75%);opacity:0}}
+@keyframes agents-light-rise{0%,12%{transform:translateY(75%);opacity:0}30%{opacity:.65}60%{opacity:.65}85%,100%{transform:translateY(-75%);opacity:0}}
+/* The existing pause checkbox also controls the ambient section lighting. */
+.interior-site .agents-material:has(.agent-flow-pause:checked)>section::before{animation-play-state:paused}
+@media(max-width:640px){.interior-site .agents-material>section:not(:last-child){margin-bottom:-42px;padding-bottom:115px;mask-image:linear-gradient(to bottom,#000 calc(100% - 42px),transparent);-webkit-mask-image:linear-gradient(to bottom,#000 calc(100% - 42px),transparent)}.interior-site .agents-material>section+section{padding-top:105px}}
+@media(prefers-reduced-motion:reduce){.interior-site .agents-material>section::before{animation:none;opacity:0}}
+.interior-site .agents-material>section:nth-child(1){z-index:5}
+.interior-site .agents-material>section:nth-child(2){z-index:4}
+.interior-site .agents-material>section:nth-child(3){z-index:3}
+.interior-site .agents-material>section:nth-child(4){z-index:2}
+.interior-site .agents-material>section:nth-child(5){z-index:1}
+
+/* Architectural window study supplied by the user, framed with CSS only. */
+.interior-site main>section.services-architecture{position:relative;isolation:isolate;overflow:hidden;background:#eee9df}
+.interior-site .services-architecture::before{content:"";position:absolute;inset:0;z-index:-2;background-image:url('/brand/services-architecture.png');background-repeat:no-repeat;background-size:auto 180%;background-position:68% top;opacity:.65;pointer-events:none}
+.interior-site .services-architecture::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#eee9dff5 0%,#eee9dfed 30%,#eee9df9e 57%,#eee9df14 86%),linear-gradient(0deg,#eee9df 0%,transparent 22%,transparent 85%,#eee9df66);pointer-events:none}
+.interior-site .services-architecture h1{text-shadow:0 2px 22px #f8f4e9b3}
+.interior-site .services-architecture p{color:#49443a}
+@media(max-width:640px){.interior-site .services-architecture::before{background-position:45% top;opacity:.38}.interior-site .services-architecture::after{background:linear-gradient(90deg,#eee9dfe8,#eee9dfb8),linear-gradient(0deg,#eee9df,transparent 30%)}}
+
+/* Development: architectural detail across the row, fading toward the copy. */
+.interior-site .service-development{position:relative;isolation:isolate;min-height:660px;padding:70px 0}
+.interior-site .service-development .service-visual{display:none}
+.interior-site .service-development::before{content:"";position:absolute;inset:0 calc(-1 * max(32px,(100vw - 1280px)/2));z-index:-2;background:url('/brand/services-window-detail.png') left center/auto 125% no-repeat;pointer-events:none}
+.interior-site .service-development::after{content:"";position:absolute;inset:0 calc(-1 * max(32px,(100vw - 1280px)/2));z-index:-1;background:linear-gradient(90deg,#eee9df00 0%,#eee9df14 27%,#eee9dfb8 51%,#eee9dff5 68%,#eee9df 100%),linear-gradient(0deg,#eee9df,transparent 16%,transparent 85%,#eee9df);pointer-events:none}
+.interior-site .service-development .service-content{grid-column:8 / 13}
+.interior-site .service-development .service-content>span:first-child{color:#a69980}
+@media(max-width:767px){.interior-site .service-development{padding-top:200px;min-height:0}.interior-site .service-development .service-content{grid-column:1 / -1}.interior-site .service-development::before{background-size:auto 620px;background-position:28% top;opacity:.7}.interior-site .service-development::after{background:linear-gradient(180deg,#eee9df10,#eee9dfed 230px,#eee9df 70%)}}
+
+/* UX/UI: architectural plan, clear on the right and veiled beneath left copy. */
+.interior-site .service-design{position:relative;isolation:isolate;min-height:660px;padding:70px 0}
+.interior-site .service-design .service-visual{display:none}
+.interior-site .service-design::before{content:"";position:absolute;inset:0 calc(-1 * max(32px,(100vw - 1280px)/2));z-index:-2;background:url('/brand/services-plan-detail.png') right center/auto 110% no-repeat;pointer-events:none}
+.interior-site .service-design::after{content:"";position:absolute;inset:0 calc(-1 * max(32px,(100vw - 1280px)/2));z-index:-1;background:linear-gradient(90deg,#eee9df 0%,#eee9dff5 30%,#eee9dfb8 49%,#eee9df14 73%,#eee9df00 100%),linear-gradient(0deg,#eee9df,transparent 16%,transparent 85%,#eee9df);pointer-events:none}
+.interior-site .service-design .service-content{grid-column:1 / 6}
+.interior-site .service-design .service-content>span:first-child{color:#a69980}
+@media(max-width:767px){.interior-site .service-design{padding-top:220px;min-height:0}.interior-site .service-design .service-content{grid-column:1 / -1}.interior-site .service-design::before{background-size:auto 380px;background-position:right top;opacity:.85}.interior-site .service-design::after{background:linear-gradient(180deg,#eee9df00,#eee9dfed 245px,#eee9df 70%)}}
+
+/* SEO: original cornice and arched-window sketch, fading to the right. */
+.interior-site .service-seo{position:relative;isolation:isolate;min-height:660px;padding:70px 0}
+.interior-site .service-seo .service-visual{display:none}
+.interior-site .service-seo::before{content:"";position:absolute;inset:0 calc(-1 * max(32px,(100vw - 1280px)/2));z-index:-2;background:url('/brand/services-seo-sketch.webp') left center/cover no-repeat;pointer-events:none}
+.interior-site .service-seo::after{content:"";position:absolute;inset:0 calc(-1 * max(32px,(100vw - 1280px)/2));z-index:-1;background:linear-gradient(90deg,transparent 20%,#eee9df22 40%,#eee9dfbd 62%,#eee9dff5 83%),linear-gradient(0deg,#eee9df,transparent 14%,transparent 87%,#eee9df);pointer-events:none}
+.interior-site .service-seo .service-content{grid-column:8 / 13}
+.interior-site .service-seo .service-content>span:first-child{color:#a69980}
+@media(max-width:767px){.interior-site .service-seo{padding-top:230px;min-height:0}.interior-site .service-seo .service-content{grid-column:1 / -1}.interior-site .service-seo::before{background-size:auto 460px;background-position:left top}.interior-site .service-seo::after{background:linear-gradient(180deg,transparent,#eee9dfed 250px,#eee9df 70%)}}
+
+/* Foundation CTA: monumental stone and a calm, high-contrast reading area. */
+.interior-site .services-foundation{position:relative;isolation:isolate;min-height:800px;display:flex;align-items:center;background:#282721;overflow:hidden}
+.interior-site .services-foundation::before{content:"";position:absolute;inset:0;z-index:-2;background:url('/brand/services-foundation.webp') center 60%/cover no-repeat;pointer-events:none}
+.interior-site .services-foundation::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,#171714f5 0%,#171714e8 24%,#171714b8 40%,#17171438 62%,transparent 85%),linear-gradient(0deg,#17171455,transparent 25%);pointer-events:none}
+.interior-site .foundation-content{width:100%;text-align:left}
+.interior-site .foundation-content h2{max-width:560px;font-size:clamp(2.8rem,4.7vw,4.7rem);color:#fff5e5}
+.interior-site .foundation-content p{max-width:410px;margin-left:0;margin-right:0;color:#eee5d6}
+.interior-site .foundation-content>div{justify-content:flex-start;align-items:flex-start;flex-direction:column;gap:24px}
+.interior-site .foundation-content a:first-child{background:#f4efe5;color:#24231e;border:1px solid #f4efe5}
+.interior-site .foundation-content a:first-child:hover{background:#fffaf0}
+.interior-site .foundation-content a:last-child{color:#fff5e5;border-color:#fff5e599}
+@media(max-width:767px){.interior-site .services-foundation{min-height:860px;align-items:flex-start;padding-top:70px;padding-bottom:360px}.interior-site .services-foundation::before{background-size:auto 570px;background-position:70% bottom}.interior-site .services-foundation::after{background:linear-gradient(180deg,#171714 0%,#171714f2 35%,#17171499 53%,transparent 76%)}.interior-site .foundation-content h2{font-size:2.8rem}.interior-site .foundation-content a:first-child{padding-left:24px;padding-right:24px}}
+
+/* Blog: a single continuous illuminated-crystal-to-charcoal material. */
+.interior-site .blog-crystal{position:relative;isolation:isolate;background:#eee9df url('/brand/blog-crystal-gradient.webp') center top/100% 100% no-repeat;padding-bottom:50px}
+.interior-site .blog-crystal>section{background:transparent}
+.interior-site .blog-crystal>section:first-child{background:linear-gradient(180deg,#f5efe2a6,#f5efe233);border:0}
+.interior-site .blog-crystal h1{max-width:950px;font-size:clamp(3rem,5.4vw,5.3rem)}
+.interior-site .blog-crystal article{padding:32px;background:rgba(248,244,235,.94);border:1px solid #fff8e7a6;backdrop-filter:blur(8px);box-shadow:0 15px 45px -28px #17171480}
+.interior-site .blog-crystal article a{height:100%;display:block}
+.interior-site .blog-crystal article h3{font:400 26px/1.2 Georgia,serif}
+.interior-site .blog-crystal article:hover{background:#faf6ed}
+.interior-site .blog-crystal aside>div{padding:28px;background:rgba(248,244,235,.94);border:1px solid #fff8e780;backdrop-filter:blur(8px)}
+.interior-site .blog-crystal article [class*="text-on-surface-variant"],.interior-site .blog-crystal aside [class*="text-on-tertiary-container"]{color:#514b40}
+.interior-site .blog-crystal aside [class*="text-outline-variant"]{color:#655b49}
+.interior-site .blog-crystal input{background:#f6f0e5b3}
+@media(max-width:640px){.interior-site .blog-crystal article{padding:25px}.interior-site .blog-crystal>section{padding-left:24px;padding-right:24px}}
+
+/* Consistent article covers, revealed from monochrome to color on scroll. */
+.interior-site .article-cover{filter:grayscale(1);transition:filter .15s linear}
+@supports(animation-timeline:view()){
+ .interior-site .article-cover{animation:article-cover-color linear both;animation-timeline:view();animation-range:entry 10% cover 45%}
+}
+@keyframes article-cover-color{from{filter:grayscale(1)}to{filter:grayscale(0)}}
+@media(prefers-reduced-motion:reduce){.interior-site .article-cover{animation:none;filter:none;transition:none}}
+
+/* About: continuous champagne resin, luminous ivory to smoked charcoal. */
+.interior-site .about-resin{background:#eee9df url('/brand/about-resin-gradient.webp') center top/100% 100% no-repeat;isolation:isolate}
+.interior-site .about-resin>section{background:transparent;border:0}
+.interior-site .about-resin>section:first-of-type{background:linear-gradient(90deg,#f5efe7d9,#f5efe74d 65%,transparent)}
+.interior-site .about-resin .about-story{padding:clamp(26px,4vw,55px);background:#f8f2e6e8;backdrop-filter:blur(12px);border-top:1px solid #fff9e6b3}
+.interior-site .about-resin>section:nth-of-type(3) h2{color:#fff5e5;text-shadow:0 2px 20px #171714cc}
+.interior-site .about-resin .editorial-shadow{background:#f8f2e6eb;backdrop-filter:blur(10px);border-top:1px solid #fff9e6b3;box-shadow:0 20px 40px -25px #17171480}
+.interior-site .about-resin>section:last-of-type{background:linear-gradient(180deg,transparent,#17171488);color:#fff5e5;padding-top:100px;padding-bottom:110px}
+.interior-site .about-resin>section:last-of-type h2,.interior-site .about-resin>section:last-of-type p{color:#fff5e5;text-shadow:0 2px 16px #171714}
+.interior-site .about-resin>section:last-of-type a{background:#f4efe5;color:#24231e}
+@media(max-width:640px){.interior-site .about-resin>section{padding-left:24px;padding-right:24px}.interior-site .about-resin .about-story{padding:26px}}

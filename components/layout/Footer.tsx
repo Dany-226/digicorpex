@@ -14,7 +14,6 @@ const navLinks = [
 const legalLinks = [
   { href: '/mentions-legales', label: 'Mentions légales' },
   { href: '/confidentialite', label: 'Confidentialité' },
-  { href: '/cgv', label: 'CGV' },
 ]
 
 export default function Footer() {
@@ -31,8 +30,8 @@ export default function Footer() {
               <Image
                 src="/logo-light.svg"
                 alt="Digicorpex"
-                width={454}
-                height={76}
+                width={860}
+                height={190}
                 className="h-8 w-auto"
               />
             </Link>

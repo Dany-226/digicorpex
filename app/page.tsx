@@ -1,40 +1,34 @@
 import type { Metadata } from 'next'
-import { getAllArticles } from '@/lib/mdx'
-import Hero from '@/components/home/Hero'
-import UseCasesSection from '@/components/home/UseCasesSection'
-import ServicesGrid from '@/components/home/ServicesGrid'
-import ContrastSection from '@/components/home/ContrastSection'
-import IntegrationsSection from '@/components/home/IntegrationsSection'
-import BlogPreview from '@/components/home/BlogPreview'
-import CTASection from '@/components/home/CTASection'
+import HomeNavigation from '@/components/refonte/HomeNavigation'
+import SculpturalHero from '@/components/refonte/SculpturalHero'
+import UseCases from '@/components/refonte/UseCases'
+import Integrations from '@/components/refonte/Integrations'
+import Method from '@/components/refonte/Method'
+import DiagnosticCTA from '@/components/refonte/DiagnosticCTA'
+import HomeFooter from '@/components/refonte/HomeFooter'
+import MotionController from '@/components/refonte/MotionController'
+import '@/components/refonte/refonte.css'
 
 export const metadata: Metadata = {
-  title: 'Digicorpex - Agents IA & Automatisation pour PME | Bordeaux',
-  description:
-    'Digicorpex conçoit des agents IA sur mesure pour les PME et TPE : automatisation des appels et des devis, wiki IA / mémoire d\'entreprise. Bordeaux.',
-  alternates: {
-    canonical: 'https://www.digicorpex.com',
-  },
+  title: { absolute: 'Digicorpex - Agents IA & Automatisation pour PME | Bordeaux' },
+  description: 'Vos opérations, automatisées. Digicorpex connecte téléphone, CRM, planning et outils métier pour les PME. Sans ressaisie, sans changer vos outils.',
+  alternates: { canonical: 'https://www.digicorpex.com' },
   openGraph: {
-    title: 'Digicorpex - Agents IA & Automatisation pour PME | Bordeaux',
-    description:
-      'Digicorpex conçoit des agents IA sur mesure pour les PME et TPE : automatisation des appels et des devis, wiki IA / mémoire d\'entreprise. Bordeaux.',
+    title: 'Digicorpex - Vos opérations, automatisées.',
+    description: 'Des agents IA pour des problèmes qui existent vraiment. Sans ressaisie. Sans rupture. Sans changer vos outils.',
     url: 'https://www.digicorpex.com',
+    images: [{ url: '/refonte/opengraph.jpg', width: 1200, height: 630 }],
   },
 }
 
 export default function Home() {
-  const articles = getAllArticles()
-
-  return (
-    <>
-      <Hero />
-      <UseCasesSection />
-      <ServicesGrid />
-      <ContrastSection />
-      <IntegrationsSection />
-      <BlogPreview articles={articles} />
-      <CTASection />
-    </>
-  )
+  return <div className="refonte">
+    <a href="#main-content" className="skip-link">Aller au contenu</a>
+    <HomeNavigation />
+    <MotionController />
+    <main id="main-content" tabIndex={-1}>
+      <SculpturalHero /><UseCases /><Integrations /><Method /><DiagnosticCTA />
+    </main>
+    <HomeFooter />
+  </div>
 }

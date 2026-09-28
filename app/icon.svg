@@ -1,11 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
-  <defs>
-    <linearGradient id="dxGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="120" y2="120">
-      <stop offset="0" stop-color="#8B2FF0"></stop>
-      <stop offset="0.5" stop-color="#5B4FE8"></stop>
-      <stop offset="1" stop-color="#2E9EF5"></stop>
-    </linearGradient>
-  </defs>
-  <path d="M 34 34 L 70 34 A 26 26 0 1 1 70 86 L 34 86" fill="none" stroke="url(#dxGrad)" stroke-width="16" stroke-linecap="butt" stroke-linejoin="round"></path>
-  <line x1="14" y1="60" x2="50" y2="60" stroke="url(#dxGrad)" stroke-width="16" stroke-linecap="round"></line>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Digicorpex symbol">
+  <rect width="240" height="240" rx="44" fill="#f4efe5"/><g fill="#151512">
+    <!-- Open D -->
+    <path d="M58 38H124C174 38 204 72 204 120C204 168 174 202 124 202H58V169H122C151 169 170 151 170 120C170 89 151 71 122 71H58Z"/>
+    <!-- Inner horizontal stroke -->
+    <rect x="32" y="103" width="78" height="34" rx="10"/>
+  </g>
 </svg>
